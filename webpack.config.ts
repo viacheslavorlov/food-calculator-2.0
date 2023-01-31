@@ -1,9 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
-import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
+import type {Configuration as DevServerConfiguration} from "webpack-dev-server";
 // import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
-
 
 
 type BuildMode = 'production' | 'development';
@@ -12,6 +11,7 @@ interface EnvProp {
     mode: BuildMode,
     port: number
 }
+
 const devServer = ({port}: EnvProp): DevServerConfiguration => {
     // console.log(env)
     return {
@@ -22,15 +22,18 @@ const devServer = ({port}: EnvProp): DevServerConfiguration => {
 }
 
 
-
 export default (env: EnvProp): webpack.Configuration => {
 
     const isDev = env.mode === "development";
 
     return {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
-        devtool:  isDev ? 'inline-source-map' : false,
-        mode: isDev ? "production" : "production",
+        devtool: isDev ? 'eval' : undefined,
+        mode: isDev ? "development" : "production",
+        performance: {
+            maxAssetSize: 1000000,
+            maxEntrypointSize: 200000,
+        },
         target: ['web', 'es5'],
         plugins: [
             new HtmlWebpackPlugin({
@@ -46,19 +49,43 @@ export default (env: EnvProp): webpack.Configuration => {
                 {
                     test: /\.tsx?$/,
                     use: 'ts-loader',
-                    exclude: /node_modules/,
+                    exclude: /node_modules/
+
                 },
                 {
                     test: /\.js$/,
                     enforce: "pre",
                     use: ["source-map-loader"],
                 },
+                {
+                    test: /\.scss$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'sass-loader'
+                    ]
+                },
+                {
+                    test: /\.css$/,
+                    use: [
+                        'style-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 1,
+                                modules: true
+                            }
+                        }
+                    ]
+                }
             ],
         },
         resolve: {
+
             extensions: [".ts", ".tsx", ".js"],
         },
         devServer: devServer(env),
+
         output: {
             path: path.resolve(__dirname, 'dist'),
             filename: '[name].[chunkhash:4].js',

@@ -1,10 +1,11 @@
 import {FC} from "react";
+import Header from "../header/Header";
 
 const App: FC = () => {
     return (
         <div>
-            <h1>Food price calculator</h1>
-            <div>asdfasdf</div>
+            <Header/>
+
         </div>
     );
 };

@@ -11,13 +11,15 @@
         //  как с обычными пакетами с помощью import
         "allowSyntheticDefaultImports": true, // симулирует дефолтный импорт пакета даже если таковой отсутствует
         "baseUrl": ".",
-        "paths": {
-            "*": ["./src/*"]
-        }
+//        "paths": {
+//            "*": ["./src/*"]
+//        },
+
     },
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"
         }
-    }
+    },
+    "exclude": ["node_modules"]
 }
