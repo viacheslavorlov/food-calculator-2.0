@@ -1,26 +1,45 @@
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import type { Configuration as DevServerConfiguration } from "webpack-dev-server";
+// import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
+
+
+
 type BuildMode = 'production' | 'development';
+
 interface EnvProp {
     mode: BuildMode,
     port: number
 }
+const devServer = ({port}: EnvProp): DevServerConfiguration => {
+    // console.log(env)
+    return {
+        open: true,
+        port: port || 3000,
+        historyApiFallback: true,
+    }
+}
+
 
 
 export default (env: EnvProp): webpack.Configuration => {
-    return {
-        entry: './src/index.ts',
-        devtool: 'inline-source-map',
-        mode: env.mode === "development" ? "development" : "production",
 
+    const isDev = env.mode === "development";
+
+    return {
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        devtool:  isDev ? 'inline-source-map' : false,
+        mode: isDev ? "production" : "production",
+        target: ['web', 'es5'],
         plugins: [
             new HtmlWebpackPlugin({
-                // title: 'Food Price Calculator',
                 template: path.resolve(__dirname, 'public', 'index.html'),
-                // scriptLoading: "defer",
-                // chunks: ['index']
+                title: 'Food Price Calculator',
+                scriptLoading: "defer",
             }),
+            new webpack.ProgressPlugin(),
+            // new BundleAnalyzerPlugin()
         ],
         module: {
             rules: [
@@ -29,14 +48,21 @@ export default (env: EnvProp): webpack.Configuration => {
                     use: 'ts-loader',
                     exclude: /node_modules/,
                 },
+                {
+                    test: /\.js$/,
+                    enforce: "pre",
+                    use: ["source-map-loader"],
+                },
             ],
         },
         resolve: {
-            extensions: ['.tsx', '.ts'],
+            extensions: [".ts", ".tsx", ".js"],
         },
+        devServer: devServer(env),
         output: {
             path: path.resolve(__dirname, 'dist'),
-            // filename: 'main.js',
+            filename: '[name].[chunkhash:4].js',
         },
+
     }
 };
