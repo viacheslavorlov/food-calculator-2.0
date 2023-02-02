@@ -1,0 +1,43 @@
+@import "../../index";
+
+.header {
+	width: 100vw;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.header__name {
+	font-size: 1.5em;
+}
+
+.header__navbar {
+	display: flex;
+
+
+}
+.header__navbar:last-child {
+}
+
+.header__navbar > div {
+}
+
+.header__navbar_link {
+	margin: 10px 20px;
+	border-radius: .5em;
+	padding: 10px;
+	font-weight: bold;
+	background-color: $background-light;
+	color: $color-dark;
+	font-size: 1em;
+	border: 2px solid $background-dark;
+
+}
+
+.active {
+	text-decoration: none;
+	background-color: $background-dark;
+	color: $color-light;
+}

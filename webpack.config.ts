@@ -38,7 +38,7 @@ export default (env: EnvProp): webpack.Configuration => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, 'public', 'index.html'),
-                title: 'Food Price Calculator',
+                // title: 'Food Price Calculator',
                 scriptLoading: "defer",
             }),
             new webpack.ProgressPlugin(),
