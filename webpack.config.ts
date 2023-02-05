@@ -1,33 +1,29 @@
 import path from 'path';
 import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import type {Configuration as DevServerConfiguration} from "webpack-dev-server";
 // import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
+import {devServer, EnvProp} from "./config/DevServer";
+import {plugins} from "./config/Plugins";
+import {loaders} from "./config/Loaders";
 
-
-type BuildMode = 'production' | 'development';
-
-interface EnvProp {
-    mode: BuildMode,
-    port: number
+export interface Paths {
+    entry: string
+    html: string
+    output: string
+    modules: string
 }
-
-const devServer = ({port}: EnvProp): DevServerConfiguration => {
-    // console.log(env)
-    return {
-        open: true,
-        port: port || 3000,
-        historyApiFallback: true,
-    }
-}
-
 
 export default (env: EnvProp): webpack.Configuration => {
+    const paths: Paths = {
+        entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        html: path.resolve(__dirname, 'public', 'index.html'),
+        output: path.resolve(__dirname, 'dist'),
+        modules: path.resolve(__dirname, 'node_modules')
+    }
 
     const isDev = env.mode === "development";
 
     return {
-        entry: path.resolve(__dirname, 'src', 'index.tsx'),
+        entry: paths.entry,
         devtool: isDev ? 'eval' : undefined,
         mode: isDev ? "development" : "production",
         // performance: {
@@ -35,59 +31,19 @@ export default (env: EnvProp): webpack.Configuration => {
         //     maxEntrypointSize: 200000,
         // },
         target: ['web', 'es5'],
-        plugins: [
-            new HtmlWebpackPlugin({
-                template: path.resolve(__dirname, 'public', 'index.html'),
-                // title: 'Food Price Calculator',
-                scriptLoading: "defer",
-            }),
-            new webpack.ProgressPlugin(),
-            // new BundleAnalyzerPlugin()
-        ],
+        plugins: plugins(paths),
         module: {
-            rules: [
-                {
-                    test: /\.tsx?$/,
-                    use: 'ts-loader',
-                    exclude: /node_modules/
-
-                },
-                {
-                    test: /\.js$/,
-                    enforce: "pre",
-                    use: ["source-map-loader"],
-                },
-                {
-                    test: /\.scss$/,
-                    use: [
-                        'style-loader',
-                        'css-loader',
-                        'sass-loader'
-                    ]
-                },
-                {
-                    test: /\.css$/,
-                    use: [
-                        'style-loader',
-                        {
-                            loader: 'css-loader',
-                            options: {
-                                importLoaders: 1,
-                                modules: true
-                            }
-                        }
-                    ]
-                }
-            ],
+            rules: loaders()
         },
         resolve: {
-
             extensions: [".ts", ".tsx", ".js"],
+            // modules: [paths.modules]
+
         },
         devServer: devServer(env),
 
         output: {
-            path: path.resolve(__dirname, 'dist'),
+            path: paths.output,
             filename: '[name].[chunkhash:4].js',
         },
 
