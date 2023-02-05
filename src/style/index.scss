@@ -1,0 +1,30 @@
+@import "./temes/dark";
+@import "./temes/light";
+//constants
+
+
+
+
+
+// base style
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.app {
+	background: var(--bg-color);
+	color: var(--text-color);
+	min-height: 100vh;
+	font-family: "Andale Mono", serif;
+}
+
+
+.active {
+
+	border: 2px solid var(--border-color);
+	background-color: var(--bg-active-link-color);
+	color: var(--link-active-text);
+}

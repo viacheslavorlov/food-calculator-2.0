@@ -30,10 +30,10 @@ export default (env: EnvProp): webpack.Configuration => {
         entry: path.resolve(__dirname, 'src', 'index.tsx'),
         devtool: isDev ? 'eval' : undefined,
         mode: isDev ? "development" : "production",
-        performance: {
-            maxAssetSize: 1000000,
-            maxEntrypointSize: 200000,
-        },
+        // performance: {
+        //     maxAssetSize: 1000000,
+        //     maxEntrypointSize: 200000,
+        // },
         target: ['web', 'es5'],
         plugins: [
             new HtmlWebpackPlugin({
