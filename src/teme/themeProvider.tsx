@@ -1,19 +1,23 @@
-import {LOCAL_STORAGE_KEY_THEME, ThemeConsts, ThemeProviderComponent} from "./temeConsts";
-import React, {useMemo, useState} from "react";
+import {LOCAL_STORAGE_KEY_THEME, ThemeConsts, ThemeProviderComponent} from './temeConsts';
+import {FC, ReactNode, useMemo, useState} from 'react';
+import { PropsWithChildren } from 'react';
 
 const defaultTheme = localStorage.getItem(LOCAL_STORAGE_KEY_THEME) || ThemeConsts.light;
-
-export const ThemeProvider = ({children}: any) => {
-    const [theme, setTheme] = useState(defaultTheme);
-
-
-    const defaultProps = useMemo(() => ({
-        theme: theme,
-        setTheme: setTheme
-    }), [theme])
-    return (
-        <ThemeProviderComponent.Provider value={defaultProps}>
-            {children}
-        </ThemeProviderComponent.Provider>
-    )
+interface ThemeProviderProps {
+	children: ReactNode
 }
+export const ThemeProvider: FC<PropsWithChildren<ThemeProviderProps>> = ({children}) => {
+	const [theme, setTheme] = useState(defaultTheme);
+
+
+	const defaultProps = useMemo(() => ({
+		theme: theme,
+		setTheme: setTheme
+	}), [theme]);
+	return (
+		<ThemeProviderComponent.Provider value={defaultProps}>
+			{children}
+		</ThemeProviderComponent.Provider>
+	);
+};
+

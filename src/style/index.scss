@@ -1,13 +1,7 @@
 @import "./temes/dark";
 @import "./temes/light";
-//constants
-
-
-
-
 
 // base style
-
 * {
 	margin: 0;
 	padding: 0;
@@ -23,8 +17,7 @@
 
 
 .active {
-
 	border: 2px solid var(--border-color);
 	background-color: var(--bg-active-link-color);
-	color: var(--link-active-text);
+	color: var(--link-active-text)
 }

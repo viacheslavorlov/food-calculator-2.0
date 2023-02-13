@@ -1,11 +1,9 @@
-import React from 'react';
-
 const Packages = () => {
-    return (
-        <div>
-            <h1>Упаковка</h1>
-        </div>
-    );
+	return (
+		<div>
+			<h1>Упаковка</h1>
+		</div>
+	);
 };
 
-export default Packages
+export default Packages;

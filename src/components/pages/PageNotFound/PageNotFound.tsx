@@ -1,11 +1,10 @@
-import React from 'react';
 
 const PageNotFound = () => {
-    return (
-        <div>
-            <h1>Страница не найдена...</h1>
-        </div>
-    );
+	return (
+		<div>
+			<h1>Страница не найдена...</h1>
+		</div>
+	);
 };
 
 export default PageNotFound;
