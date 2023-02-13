@@ -1,7 +1,7 @@
 import "./Header.scss";
 import {NavLink} from "react-router-dom";
 
-const Header = () => {
+export const Header = () => {
     return (
         <div className={"header"}>
             <h1 className={"header__name"}>Калькулятор себестоимости продуктов</h1>
@@ -15,4 +15,3 @@ const Header = () => {
     );
 };
 
-export default Header;
