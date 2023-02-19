@@ -1,7 +1,9 @@
-import {RouteProps} from 'react-router-dom';
 import {AddNewItems, DeleteItems, MainPage, Packages, PageNotFound} from '../pages';
+import {ReactNode} from 'react';
 
-export const routerConfig: RouteProps[] = [
+export type Paths = '/' | '/package' | '/new-item' | '/delete-item' | '*';
+
+export const routerConfig: {path: Paths, element: ReactNode}[] = [
 	{
 		path: '/',
 		element: <MainPage/>

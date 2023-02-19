@@ -1,4 +1,4 @@
-import './LoadingPage.scss';
+import './LoadingPage.module.scss';
 import {LoadingSpinner} from '../../shared/Loader/Loader';
 
 export const LoadingPage = () => {

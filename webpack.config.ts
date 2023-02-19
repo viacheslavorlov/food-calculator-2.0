@@ -38,7 +38,6 @@ export default (env: EnvProp): webpack.Configuration => {
 		resolve: {
 			extensions: ['.ts', '.tsx', '.js'],
 			// modules: [paths.modules]
-
 		},
 		devServer: devServer(env),
 

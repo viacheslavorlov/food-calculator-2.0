@@ -8,13 +8,18 @@ export const loaders = (): webpack.RuleSetRule[] => {
 		exclude: /node_modules/
 
 	};
+	const svgLoader = {
+		test: /\.svg$/i,
+		issuer: /\.[jt]sx?$/,
+		use: ['@svgr/webpack']
+	};
 	const javascriptLoader = {
 		test: /\.js$/,
 		enforce: 'pre',
 		use: ['source-map-loader'],
 	};
 	const scssLoader = {
-		test: /\.scss$/,
+		test: /(\.module)?.scss$/,
 		use: [
 			MiniCssExtractPlugin.loader,
 			'css-loader',
@@ -35,5 +40,5 @@ export const loaders = (): webpack.RuleSetRule[] => {
 			}
 		]
 	};
-	return [typeScriptLoader, javascriptLoader, cssLoader, scssLoader];
+	return [svgLoader, typeScriptLoader, javascriptLoader, cssLoader, scssLoader];
 };

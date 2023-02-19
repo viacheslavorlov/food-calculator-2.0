@@ -1,4 +1,4 @@
-import './LoadingSpinner.scss';
+import './LoadingSpinner.module.scss';
 
 export const LoadingSpinner = () => (
 	<div className="lds-roller">
