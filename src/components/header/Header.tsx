@@ -13,16 +13,16 @@ export const Header = () => {
 			<h1 className={cls.header__name}>Калькулятор себестоимости продуктов</h1>
 			<nav className={cls.header__navbar}>
 				<NavLink className={cls.header__navbar_link} to="new-item">
-					<AddIcon /> Добавить новый продукт
+					<AddIcon /> <span className={cls.header__navbar_text}>Добавить новый продукт</span>
 				</NavLink>
 				<NavLink className={cls.header__navbar_link} to="/">
-					<Products /> Список продуктов
+					<Products /> <span className={cls.header__navbar_text}>Список продуктов</span>
 				</NavLink>
 				<NavLink className={cls.header__navbar_link} to="package">
-					<Package/>Список упаковок
+					<Package /> <span className={cls.header__navbar_text}>Cписок упаковок</span>
 				</NavLink>
 				<NavLink className={cls.header__navbar_link} to={'delete-item'}>
-					<DeleteItem/>Удаление продуктов
+					<DeleteItem /> <span className={cls.header__navbar_text}>Удаление продуктов</span>
 				</NavLink>
 			</nav>
 		</div>

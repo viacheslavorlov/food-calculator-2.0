@@ -10,4 +10,7 @@ describe('classNames function testing', function () {
 	test('two param', async () => {
 		await expect(classNames('one', 'two', 'tree')).toBe('one two tree');
 	});
+	test('no param', async () => {
+		await expect(classNames()).toBe('');
+	});
 });
