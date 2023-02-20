@@ -12,7 +12,7 @@ export default {
 	},
 } as ComponentMeta<typeof LoadingSpinner>;
 
-const Template: ComponentStory<typeof LoadingSpinner> = (args) => <LoadingSpinner />;
+const Template: ComponentStory<typeof LoadingSpinner> = () => <LoadingSpinner />;
 
 export const Loader = Template.bind({});
 Loader.args = {};
