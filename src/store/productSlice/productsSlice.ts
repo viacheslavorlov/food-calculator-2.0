@@ -1,31 +1,11 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {IProduct, ProductsSliceInterface} from '../types';
 
-interface IProduct {
-    name: string;
-    price: number;
-    amountInOnePack: number;
-    metric: string;
-    amountCurrent: number;
-    id: string;
-}
-interface ProductsSliceInterface {
-    allProducts: IProduct[];
-    activeProducts: IProduct[];
-    newProduct: IProduct
-}
 
-const initialState: ProductsSliceInterface = {
+export const initialState: ProductsSliceInterface = {
 	activeProducts: [],
 	allProducts: [],
-	newProduct: {
-		name: '',
-		id: '',
-		metric: '',
-		price: 0,
-		amountCurrent: 0,
-		amountInOnePack: 0
 
-	}
 };
 
 export const productsSlice = createSlice({
