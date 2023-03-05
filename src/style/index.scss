@@ -1,6 +1,25 @@
 @import "./temes/dark";
 @import "./temes/light";
 
+// constants
+:root {
+	// colors
+	--red-color: #ff0000;
+	--black-color: #000;
+	--white-color: #fff;
+	--grey-color: #7f7f7f;
+	--green-color: #04a96c;
+	--yellow-color: #fff200;
+
+	// fonts
+	--font-s: 18px;
+	--font-m: 24px;
+	--font-l: 30px;
+	--font-xl: 36px;
+}
+
+
+
 // base style
 * {
 	margin: 0;

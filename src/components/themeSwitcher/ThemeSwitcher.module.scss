@@ -1,21 +1,25 @@
 .themeButton {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  border: 2px solid var(--bg-active-link-color);
-  border-top-right-radius: 100%;
-  background-color: var(--bg-active-link-color);
-  color: var(--link-active-text);
-  height: 55px;
-  width: 55px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
-  flex-direction: column-reverse;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border: 2px solid var(--bg-active-link-color);
+    border-top-right-radius: 100%;
+    background-color: var(--bg-active-link-color);
+    color: var(--link-active-text);
+    height: 55px;
+    width: 55px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column-reverse;
+}
 
-  svg {
-    fill: var(--bg-color);
+.dark {
+    transform: rotate(-45deg);
+}
+
+svg {
+    fill: var(--yellow-color);
     height: 40px;
     width: 40px;
-  }
 }

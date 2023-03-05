@@ -1,3 +1,21 @@
 .Button {
+    cursor: pointer;
+    font-size: var(--font-s);
     padding: 5px;
+    border: 1px solid var(--bg-color-inverted);
+}
+
+.round {
+    border-radius: 50%;
+    background-color: var(--bg-color-inverted);
+    color: var(--bg-color);
+}
+
+.rounded {
+    border-radius: 15px;
+    background-color: var(--grey-color);
+}
+
+.danger {
+    background-color: var(--red-color);
 }

@@ -1,5 +1,5 @@
-import {AddNewItemsAsync} from './addNewProduct/AddNewItemsAsync';
-import {DeleteItemsAsync} from './DeleteItems/DeleteItemsAsync';
+import {AddNewItemsAsync} from './addNewProduct/ui/page/AddNewItemsAsync';
+import {DeleteItemsAsync} from './DeleteItems/ui/page/DeleteItemsAsync';
 import {MainPageAsync} from './MainPage/MainPageAsync';
 import {PackagesAsync} from './Packages/PackagesAsync';
 import {PageNotFoundAsync} from './PageNotFound/PageNotFoundAsync';

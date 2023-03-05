@@ -5,12 +5,13 @@
         "module": "ESNext",
         "target": "ESNext",
         "jsx": "react-jsx",
+        "strict": true,
         "allowJs": true,  //компилятор обрабатывает не только ts, но и js файлы
         "moduleResolution": "node",
         "esModuleInterop": true, // позволяет работать с пакетами, которые используют common js,
         //  как с обычными пакетами с помощью import
         "allowSyntheticDefaultImports": true, // симулирует дефолтный импорт пакета даже если таковой отсутствует
-        "baseUrl": "."
+        "baseUrl": ".",
 //        "paths": {
 //            "*": ["./src/*"]
 //        },
@@ -23,6 +24,7 @@
     },
     "exclude": ["node_modules"],
     "include": [
+        "./.storybook/webpack.config.ts",
         "jest.config.ts",
         "./src/types.d.ts",
         "./src/**/*.ts",

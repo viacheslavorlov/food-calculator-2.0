@@ -1,0 +1,13 @@
+.Input {
+    width: 90%;
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 15px;
+    font-size: var(--font-s);
+}
+
+.Input:focus {
+    background-color: var(--green-color);
+    color: var(--white-color);
+
+}

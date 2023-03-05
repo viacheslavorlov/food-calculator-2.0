@@ -1,9 +1,3 @@
-export interface ProductsSliceInterface {
-	allProducts: IProduct[];
-	activeProducts: IProduct[];
-}
-
-
 export enum Metrics {
 	gramm = 'г',
 	ml = 'мл',
@@ -14,9 +8,19 @@ export enum Metrics {
 
 export interface IProduct {
 	name: string;
-	price: number;
-	amountInOnePack: number;
-	metric: Metrics;
-	amountCurrent: number;
-	id: string;
+	price: number | null;
+	amountInOnePack: number | null;
+	metric: string;
+	amountCurrent: number | null;
+	id: number | null;
+}
+
+export interface ProductsSliceInterface {
+	allProducts: IProduct[];
+	activeProducts: IProduct[];
+}
+
+export interface StateShema {
+	products: ProductsSliceInterface;
+	newProduct: IProduct;
 }

@@ -11,11 +11,15 @@ export const useTheme = () => {
 				return 'dark';
 			case 'dark':
 				return 'light';
+			case undefined:
+				return 'light';
 			default:
 				return 'light';
 			}
 		};
-		setTheme(newTheme());
+		if (setTheme) {
+			setTheme(newTheme());
+		}
 		localStorage.setItem(LOCAL_STORAGE_KEY_THEME, newTheme());
 	};
 	return {theme, toggleTheme};

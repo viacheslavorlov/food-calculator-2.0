@@ -1,8 +1,9 @@
+import {AddNewProductForm} from '../Form/AddNewProductForm';
 
 const AddNewItems = () => {
 	return (
 		<div>
-			<h1>Добавить новые объекты</h1>
+			<AddNewProductForm />
 		</div>
 	);
 };

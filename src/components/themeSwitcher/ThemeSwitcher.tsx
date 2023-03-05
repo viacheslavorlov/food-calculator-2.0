@@ -1,15 +1,19 @@
 import {useTheme} from '../../teme/useTheme';
 import cls from './ThemeSwitcher.module.scss';
 import Theme from '../../assets/night-mode-svgrepo-com.svg';
+import {classNames} from '../../helpers/classNames';
 
 const ThemeSwitcher = () => {
-	const {toggleTheme} = useTheme();
+	const {toggleTheme, theme = 'light'} = useTheme();
 	return (
 		<div>
 			<button
-				className={cls.themeButton}
+				className={classNames(cls.themeButton)}
 				onClick={toggleTheme}>
-				<Theme />
+				<div className={cls[theme]}>
+					<Theme />
+				</div>
+
 			</button>
 		</div>
 	);

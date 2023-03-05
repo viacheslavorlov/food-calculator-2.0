@@ -1,25 +1,25 @@
 import {IProduct, Metrics} from '../types';
-import {createSlice, nanoid, PayloadAction} from '@reduxjs/toolkit';
+import {createSlice,  PayloadAction} from '@reduxjs/toolkit';
 
 
 const initialState: IProduct = {
 	name: '',
-	id: '',
+	id: null,
 	metric: Metrics.none,
-	price: 0,
-	amountCurrent: 0,
-	amountInOnePack: 0
+	price: null,
+	amountCurrent: null,
+	amountInOnePack: null
 };
 
 const newProductSlice = createSlice({
 	name: 'newProducts',
 	initialState,
 	reducers: {
-		setProductName: (state, action: PayloadAction<string>) => {
+		setProductName: (state, action) => {
 			state.name = action.payload;
 		},
 		setProductId: (state) => {
-			state.id = nanoid();
+			state.id = Date.now();
 		},
 		setProductMetric: (state, action: PayloadAction<Metrics>) => {
 			state.metric = action.payload;
@@ -32,7 +32,7 @@ const newProductSlice = createSlice({
 		},
 		setDefaultValues: (state) => {
 			state.name = '';
-			state.id = '';
+			state.id = null;
 			state.metric = Metrics.none;
 			state.price = 0;
 			state.amountCurrent = 0;

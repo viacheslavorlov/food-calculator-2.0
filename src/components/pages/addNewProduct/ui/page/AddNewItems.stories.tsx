@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import AddNewItems from './AddNewItems';
-import {ThemeDecorator} from '../../../helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../teme/temeConsts';
+import {ThemeDecorator} from '../../../../../helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from '../../../../../teme/temeConsts';
 
 export default {
 	title: 'Pages/AddNewItems',
@@ -11,7 +11,7 @@ export default {
 	},
 } as ComponentMeta<typeof AddNewItems>;
 
-const Template: ComponentStory<typeof AddNewItems> = (args) => <AddNewItems />;
+const Template: ComponentStory<typeof AddNewItems> = (args) => <AddNewItems  />;
 
 export const AddNewItemsDark = Template.bind({});
 AddNewItemsDark.args = {};

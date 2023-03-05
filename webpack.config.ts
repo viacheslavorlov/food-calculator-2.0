@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-// import {BundleAnalyzerPlugin} from "webpack-bundle-analyzer";
+// import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import {devServer, EnvProp} from './config/DevServer';
 import {plugins} from './config/Plugins';
 import {loaders} from './config/Loaders';
