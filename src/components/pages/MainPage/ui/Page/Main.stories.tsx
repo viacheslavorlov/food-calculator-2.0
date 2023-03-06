@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import MainPage from './Main';
-import {ThemeDecorator} from '../../../helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../teme/temeConsts';
+import {ThemeDecorator} from '../../../../../helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from '../../../../../teme/temeConsts';
 
 export default {
 	title: 'Pages/MainPage',

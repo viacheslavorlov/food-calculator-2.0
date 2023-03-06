@@ -3,7 +3,7 @@ import {FormEvent, memo, useCallback} from 'react';
 import {classNames} from '../../../../../helpers/classNames';
 import {Input} from '../../../../shared/Input/Input';
 import cls from './AddNewProductForm.module.scss';
-import {Button, ButtonVariants} from '../../../../shared/Button/Button';
+import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/Button/Button';
 import {newProductNameSelector} from '../../../../../store/newProductSlice/selectors/newProductNameSelector';
 import {newProductPriceSelector} from '../../../../../store/newProductSlice/selectors/newProductPriceSelector';
 import {newProductMetricSelector} from '../../../../../store/newProductSlice/selectors/newProductMetricSelector';
@@ -95,10 +95,9 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				className={cls.button}
 				variant={ButtonVariants.rounded}
 				onClick={onAddNewProduct}
-			>
+				background={ButtonBackground.green}>
 				Сохранить
 			</Button>
 		</div>
 	);
 });
-

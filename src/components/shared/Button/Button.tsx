@@ -7,12 +7,18 @@ export enum ButtonVariants {
 	rounded= 'rounded',
 	rectangle = 'rectangle'
 }
+export enum ButtonBackground {
+	green = 'green',
+	red= 'red',
+	black= 'black',
+	white = 'white'
+}
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     className?: string;
 	children: ReactNode;
 	variant: ButtonVariants;
-	danger?: 'danger' | '';
+	background?: ButtonBackground;
 }
 
 export const Button = memo((props: ButtonProps) => {
@@ -20,14 +26,14 @@ export const Button = memo((props: ButtonProps) => {
 		className,
 		children,
 		variant = ButtonVariants.rounded,
-		danger = '',
+		background = ButtonBackground.green,
 		...otherProps
 	} = props;
 
 	return (
 		<button
 			{...otherProps}
-			className={classNames(cls.Button, className, cls[variant], cls[danger])}
+			className={classNames(cls.Button, className, cls[variant], cls[background])}
 		>
 			{children}
 		</button>

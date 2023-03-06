@@ -1,7 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ProductsSliceInterface, IProduct} from '../types';
+import {fetchProducts} from './fetchProducts/fetchProducts';
 
 export const initialState: ProductsSliceInterface = {
+	isLoading: false,
+	error: undefined,
 	activeProducts: [],
 	allProducts: [],
 };
@@ -24,6 +27,20 @@ const productsSlice = createSlice({
 		deleteFromActiveList: (state, action) => {
 			state.activeProducts.filter(product => product.id !== action.payload);
 		}
+	},
+	extraReducers: builder => {
+		builder
+			.addCase(fetchProducts.pending, (state, action) => {
+				state.isLoading = true;
+			})
+			.addCase(fetchProducts.fulfilled, (state, action) => {
+				state.isLoading = false;
+				state.allProducts = action.payload;
+			})
+			.addCase(fetchProducts.rejected, (state, action) => {
+				state.isLoading = false;
+				state.error = action.error.message;
+			});
 	}
 });
 

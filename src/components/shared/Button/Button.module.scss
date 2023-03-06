@@ -5,6 +5,11 @@
     border: 1px solid var(--bg-color-inverted);
 }
 
+.Button:active {
+    transition: all;
+    transform: rotate(10deg);
+}
+
 .round {
     border-radius: 50%;
     background-color: var(--bg-color-inverted);
@@ -13,9 +18,24 @@
 
 .rounded {
     border-radius: 15px;
-    background-color: var(--grey-color);
 }
 
 .danger {
     background-color: var(--red-color);
+}
+
+.green {
+    background-color: var(--green-color);
+}
+
+.red {
+    background-color: var(--red-color);
+}
+
+.black {
+    background-color: var(--black-color);
+}
+
+.white {
+    background-color: var(--white-color);
 }

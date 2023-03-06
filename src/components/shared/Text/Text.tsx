@@ -7,9 +7,9 @@ interface TextProps {
 	content?: string | undefined;
 }
 export const Text = memo((props: TextProps) => {
-	const {content, title} = props;
+	const {content, title, className} = props;
 	return (
-		<div className={classNames(cls.Text)}>
+		<div className={classNames(cls.Text, className)}>
 			<div className={cls.title}>{title}</div>
 			<div className={cls.content}>{content}</div>
 		</div>

@@ -1,0 +1,59 @@
+{
+    "products": [
+        {
+            "name": "Яйцо",
+            "id": 123456789,
+            "metric": "шт",
+            "price": 100,
+            "amountCurrent": null,
+            "amountInOnePack": 10
+        },
+        {
+            "name": "Молоко",
+            "id": 123456785,
+            "metric": "мл",
+            "price": 80,
+            "amountCurrent": null,
+            "amountInOnePack": 900
+        },
+        {
+            "name": "Мука",
+            "id": 123456781,
+            "metric": "г",
+            "price": 90,
+            "amountCurrent": null,
+            "amountInOnePack": 2000
+        }
+    ],
+    "recipes": [
+        {
+            "name": "Блины",
+            "ingredients": [
+                {
+                    "name": "Яйцо",
+                    "id": 123456789,
+                    "metric": "шт",
+                    "price": 100,
+                    "amountCurrent": 2,
+                    "amountInOnePack": 10
+                },
+                {
+                    "name": "Молоко",
+                    "id": 123456785,
+                    "metric": "мл",
+                    "price": 80,
+                    "amountCurrent": 400,
+                    "amountInOnePack": 900
+                },
+                {
+                    "name": "Мука",
+                    "id": 123456781,
+                    "metric": "г",
+                    "price": 90,
+                    "amountCurrent": 200,
+                    "amountInOnePack": 2000
+                }
+            ]
+        }
+    ]
+}

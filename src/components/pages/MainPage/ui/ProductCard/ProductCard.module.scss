@@ -1,0 +1,18 @@
+.ProductCard {
+    display: flex;
+
+    margin-top: 10px;
+    width: 80vw;
+    align-items: center;
+}
+
+.btn {
+    align-self: flex-end;
+}
+
+.line {
+    border: 1.5px solid var(--bg-color-inverted);
+    margin: 5px;
+    flex-grow: 10;
+    justify-self: baseline;
+}

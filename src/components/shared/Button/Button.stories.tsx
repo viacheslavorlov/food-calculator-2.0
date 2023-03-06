@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 
-import {Button, ButtonVariants} from './Button';
+import {Button, ButtonBackground, ButtonVariants} from './Button';
 import {ThemeDecorator} from '../../../helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../teme/temeConsts';
 
@@ -27,4 +27,4 @@ ButtonRounded.args = {variant: ButtonVariants.rectangle};
 ButtonRounded.decorators = [ThemeDecorator(ThemeConsts.light)];
 
 export const ButtonDanger = Template.bind({});
-ButtonDanger.args = {variant: ButtonVariants.rounded, danger: 'danger'};
+ButtonDanger.args = {variant: ButtonVariants.rounded, background: ButtonBackground.green};

@@ -1,6 +1,6 @@
 import {AddNewItemsAsync} from './addNewProduct/ui/page/AddNewItemsAsync';
 import {DeleteItemsAsync} from './DeleteItems/ui/page/DeleteItemsAsync';
-import {MainPageAsync} from './MainPage/MainPageAsync';
+import {MainPageAsync} from './MainPage/ui/Page/MainPageAsync';
 import {PackagesAsync} from './Packages/PackagesAsync';
 import {PageNotFoundAsync} from './PageNotFound/PageNotFoundAsync';
 import {LoadingPage} from './LoadingPage/LoadingPage';

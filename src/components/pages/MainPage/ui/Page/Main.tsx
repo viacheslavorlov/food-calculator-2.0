@@ -1,0 +1,36 @@
+import {memo, useEffect} from 'react';
+import {useAppDispatch, useAppSelector} from '../../../../../store/hooks';
+import {fetchProducts} from '../../../../../store/productSlice/fetchProducts/fetchProducts';
+import {getAllProductsSelector} from '../../../../../store/productSlice/selectors/getAllProductsSelector';
+import {ProductCard} from '../ProductCard/ProductCard';
+import cls from './MainPage.module.scss';
+import {getActiveProductsSelector} from '../../../../../store/productSlice/selectors/getActiveProductsSelector';
+import ProductDetaildCard from '../ProductDetaildCard/ProductDetaildCard';
+
+
+const MainPage = memo(() => {
+	const dispatch = useAppDispatch();
+	const products = useAppSelector(getAllProductsSelector);
+	const activeProducts = useAppSelector(getActiveProductsSelector);
+	useEffect(() => {
+		dispatch(fetchProducts());
+	}, []);
+
+	return (
+		<div className={cls.MainPage}>
+			{products
+				.filter(item => activeProducts.indexOf(item) < 0)
+				.map(item => <ProductCard key={item.id} name={item.name}  id={item.id!}/>)}
+			{activeProducts.map(product => <ProductDetaildCard
+				key={product.id +product.name}
+				name={product.name}
+				price={product.price!}
+				amountInOnePack={product.amountInOnePack!}
+				metric={product.metric}
+				amountCurrent={product.amountCurrent}
+				id={product.id!}/>)}
+		</div>
+	);
+});
+
+export default MainPage;
