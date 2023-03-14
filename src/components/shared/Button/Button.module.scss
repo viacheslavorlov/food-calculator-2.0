@@ -1,8 +1,11 @@
 .Button {
     cursor: pointer;
     font-size: var(--font-s);
-    padding: 5px;
-    border: none;
+    padding: 8px;
+    border: 1px solid var(--black-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .Button:active {

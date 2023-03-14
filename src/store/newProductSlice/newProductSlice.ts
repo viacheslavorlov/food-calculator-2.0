@@ -1,14 +1,20 @@
-import {IProduct, Metrics} from '../types';
+import {Metrics, NewProductSliceSchema} from '../types';
 import {createSlice,  PayloadAction} from '@reduxjs/toolkit';
+import {addProductToDB} from './services/addProductToDB';
 
 
-const initialState: IProduct = {
-	name: '',
-	id: null,
-	metric: Metrics.none,
-	price: null,
-	amountCurrent: null,
-	amountInOnePack: null
+
+const initialState: NewProductSliceSchema = {
+	loading: false,
+	error: undefined,
+	newProduct: {
+		name: '',
+		id: null,
+		metric: Metrics.none,
+		price: 0,
+		amountCurrent: 0,
+		amountInOnePack: 0
+	}
 };
 
 const newProductSlice = createSlice({
@@ -16,28 +22,42 @@ const newProductSlice = createSlice({
 	initialState,
 	reducers: {
 		setProductName: (state, action) => {
-			state.name = action.payload;
+			state.newProduct.name = action.payload;
 		},
 		setProductId: (state) => {
-			state.id = Date.now();
+			state.newProduct.id = Date.now();
 		},
 		setProductMetric: (state, action: PayloadAction<Metrics>) => {
-			state.metric = action.payload;
+			state.newProduct.metric = action.payload;
 		},
 		setProductPrice: (state, action: PayloadAction<number>) => {
-			state.price = action.payload;
+			state.newProduct.price = action.payload;
 		},
 		setProductAmountInOnePack: (state, action: PayloadAction<number>) => {
-			state.amountInOnePack = action.payload;
+			state.newProduct.amountInOnePack = action.payload;
 		},
 		setDefaultValues: (state) => {
-			state.name = '';
-			state.id = null;
-			state.metric = Metrics.none;
-			state.price = 0;
-			state.amountCurrent = 0;
-			state.amountInOnePack = 0;
+			state.newProduct.name = '';
+			state.newProduct.id = null;
+			state.newProduct.metric = Metrics.none;
+			state.newProduct.price = 0;
+			state.newProduct.amountCurrent = 0;
+			state.newProduct.amountInOnePack = 0;
 		}
+	},
+	extraReducers: builder => {
+		builder
+			.addCase(addProductToDB.pending, (state, action) => {
+				state.loading = true;
+				state.error = undefined;
+			})
+			.addCase(addProductToDB.fulfilled, (state, action) => {
+				console.log('added to server!');
+				state.newProduct = action.payload;
+			})
+			.addCase(addProductToDB.rejected, (state, action) => {
+				state.error = action.error.message;
+			});
 	}
 });
 

@@ -1,7 +1,7 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ProductsSliceInterface, IProduct} from '../types';
 import {fetchProducts} from './fetchProducts/fetchProducts';
-import {ChangeEvent} from 'react';
+import {putProduct} from './putProduct/putProduct';
 
 export const initialState: ProductsSliceInterface = {
 	isLoading: false,
@@ -11,7 +11,8 @@ export const initialState: ProductsSliceInterface = {
 };
 
 interface ChangeDataAction {
-	e: ChangeEvent<HTMLInputElement>;
+	name: string;
+	value: number;
 	id: number;
 }
 
@@ -30,20 +31,20 @@ const productsSlice = createSlice({
 				state.activeProducts.unshift(...newActiveProduct);
 			}
 		},
-		changeProductData: (state, action: PayloadAction<ChangeDataAction> ) => {
+		changeProductData: (state, action: PayloadAction<ChangeDataAction>) => {
 			state.activeProducts = state.activeProducts.map(item => {
 				if (item.id === action.payload.id) {
 					return {
 						...item,
-						[action.payload.e.target.name]: action.payload.e.target.value
+						[action.payload.name]: action.payload.value
 					};
 				}
 				return item;
 			});
 		},
-		deleteFromActiveList: (state, action) => {
-			state.activeProducts.filter(product => product.id !== action.payload);
-		}
+		deleteFromActiveList: (state, action: PayloadAction<number>) => {
+			state.activeProducts = state.activeProducts.filter((product) => product.id != action.payload);
+		},
 	},
 	extraReducers: builder => {
 		builder
@@ -52,10 +53,23 @@ const productsSlice = createSlice({
 			})
 			.addCase(fetchProducts.fulfilled, (state, action) => {
 				state.isLoading = false;
-				state.allProducts = action.payload;
+				if (action.payload) {
+					state.allProducts = action.payload;
+				}
 			})
 			.addCase(fetchProducts.rejected, (state, action) => {
 				state.isLoading = false;
+				state.error = action.error.message;
+			});
+		builder
+			.addCase(putProduct.pending, (state, action) => {
+				state.isLoading = true;
+				state.error = undefined;
+			})
+			.addCase(putProduct.fulfilled, (state, action) => {
+				state.isLoading = false;
+			})
+			.addCase(putProduct.rejected, (state, action) => {
 				state.error = action.error.message;
 			});
 	}

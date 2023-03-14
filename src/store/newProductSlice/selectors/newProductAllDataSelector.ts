@@ -1,3 +1,3 @@
-import {RootState} from '../../store/store';
+import {StateShema} from '../../types';
 
-export const newProductAllDataSelector = (state: RootState) => state.newProduct;
+export const newProductAllDataSelector = (state: StateShema) => state.newProduct.newProduct;

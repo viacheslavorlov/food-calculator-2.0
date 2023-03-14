@@ -1,59 +1,67 @@
 {
-    "products": [
+  "products": [
+    {
+      "name": "Яйцо",
+      "price": 100,
+      "amountInOnePack": 10,
+      "metric": "шт",
+      "amountCurrent": null,
+      "id": 123456789
+    },
+    {
+      "name": "Молоко",
+      "price": 80,
+      "amountInOnePack": 900,
+      "metric": "мл",
+      "amountCurrent": null,
+      "id": 123456785
+    },
+    {
+      "name": "Мука",
+      "price": 120,
+      "amountInOnePack": 2000,
+      "metric": "г",
+      "amountCurrent": null,
+      "id": 123456781
+    },
+    {
+      "name": "Масло сливочное",
+      "price": 1800,
+      "amountInOnePack": 180,
+      "metric": "г",
+      "amountCurrent": 0,
+      "id": 1678818098288
+    }
+  ],
+  "recipes": [
+    {
+      "name": "Блины",
+      "ingredients": [
         {
-            "name": "Яйцо",
-            "id": 123456789,
-            "metric": "шт",
-            "price": 100,
-            "amountCurrent": null,
-            "amountInOnePack": 10
+          "name": "Яйцо",
+          "id": 123456789,
+          "metric": "шт",
+          "price": 100,
+          "amountCurrent": 2,
+          "amountInOnePack": 10
         },
         {
-            "name": "Молоко",
-            "id": 123456785,
-            "metric": "мл",
-            "price": 80,
-            "amountCurrent": null,
-            "amountInOnePack": 900
+          "name": "Молоко",
+          "id": 123456785,
+          "metric": "мл",
+          "price": 80,
+          "amountCurrent": 400,
+          "amountInOnePack": 900
         },
         {
-            "name": "Мука",
-            "id": 123456781,
-            "metric": "г",
-            "price": 90,
-            "amountCurrent": null,
-            "amountInOnePack": 2000
+          "name": "Мука",
+          "id": 123456781,
+          "metric": "г",
+          "price": 90,
+          "amountCurrent": 200,
+          "amountInOnePack": 2000
         }
-    ],
-    "recipes": [
-        {
-            "name": "Блины",
-            "ingredients": [
-                {
-                    "name": "Яйцо",
-                    "id": 123456789,
-                    "metric": "шт",
-                    "price": 100,
-                    "amountCurrent": 2,
-                    "amountInOnePack": 10
-                },
-                {
-                    "name": "Молоко",
-                    "id": 123456785,
-                    "metric": "мл",
-                    "price": 80,
-                    "amountCurrent": 400,
-                    "amountInOnePack": 900
-                },
-                {
-                    "name": "Мука",
-                    "id": 123456781,
-                    "metric": "г",
-                    "price": 90,
-                    "amountCurrent": 200,
-                    "amountInOnePack": 2000
-                }
-            ]
-        }
-    ]
+      ]
+    }
+  ]
 }

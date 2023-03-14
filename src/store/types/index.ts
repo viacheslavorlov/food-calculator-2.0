@@ -6,12 +6,18 @@ export enum Metrics {
 	none = ''
 }
 
+export interface NewProductSliceSchema {
+	loading: boolean;
+	error: string | undefined;
+	newProduct: IProduct;
+}
+
 export interface IProduct {
 	name: string;
 	price: number | null;
 	amountInOnePack: number | null;
 	metric: string;
-	amountCurrent: number | null;
+	amountCurrent: number;
 	id: number | null;
 }
 
@@ -24,5 +30,5 @@ export interface ProductsSliceInterface {
 
 export interface StateShema {
 	products: ProductsSliceInterface;
-	newProduct: IProduct;
+	newProduct: NewProductSliceSchema;
 }

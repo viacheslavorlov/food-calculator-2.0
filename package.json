@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "description": "new food-price-calculator",
   "scripts": {
+    "dev": "concurrently \"webpack serve --env port=3333 mode=development\" \"json-server --watch db/db.json\"",
     "start": "webpack serve --env port=3333 mode=development",
     "server": "json-server --watch db/db.json",
     "production": "webpack --env mode=production",
@@ -42,6 +43,7 @@
     "@typescript-eslint/parser": "^5.51.0",
     "babel-jest": "^29.4.3",
     "babel-loader": "^8.3.0",
+    "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
     "eslint-plugin-react": "^7.32.2",

@@ -14,6 +14,7 @@ import {
 	newProductPackAmountSelector
 } from '../../../../../store/newProductSlice/selectors/newProductPackAmountSelector';
 import {productsActions} from '../../../../../store/productSlice/productsSlice';
+import {addProductToDB} from '../../../../../store/newProductSlice/services/addProductToDB';
 
 interface AddNewProductFormProps {
 	className?: string;
@@ -44,15 +45,16 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 	const onAddNewProduct = useCallback(() => {
 		if(name !== '' && price !== null) {
 			const product: IProduct = {
-				name: name,
+				name,
 				id: Date.now(),
-				price: price,
-				metric: metric,
+				price,
+				metric,
 				amountInOnePack: packAmount,
 				amountCurrent: 0
 			};
 			dispatch(productsActions.addNewProduct(product));
 			dispatch(newProductActions.setDefaultValues());
+			dispatch(addProductToDB(product));
 			alert('Продукт добавлен!');
 		} else {
 			alert('Введите корректные данные!');

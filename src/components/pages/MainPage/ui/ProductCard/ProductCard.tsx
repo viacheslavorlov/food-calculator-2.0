@@ -22,7 +22,6 @@ export const ProductCard = memo((props: ProductCardProps) => {
 
 	const onAddProduct = useCallback((id: number) => {
 		dispatch(productsActions.addProductToActive(id));
-		dispatch(productsActions.deleteFromActiveList(id));
 	}, [dispatch]);
 
 	return (

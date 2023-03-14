@@ -1,4 +1,4 @@
-import { memo, useEffect} from 'react';
+import {memo, useEffect, useMemo} from 'react';
 import {useAppDispatch, useAppSelector} from '../../../../../store/hooks';
 import {fetchProducts} from '../../../../../store/productSlice/fetchProducts/fetchProducts';
 import {getAllProductsSelector} from '../../../../../store/productSlice/selectors/getAllProductsSelector';
@@ -14,12 +14,13 @@ const MainPage = memo(() => {
 	useEffect(() => {
 		dispatch(fetchProducts());
 	}, []);
-
+	const productsIDs = products.map(prod => prod.id);
+	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
 	return (
 		<div className={cls.MainPage}>
 			{products
-				.filter(item => activeProducts.indexOf(item) < 0)
+				.filter(item => activeProductsIDs.indexOf(item.id) < 0)
 				.map(item => <ProductCard key={item.id} name={item.name}  id={item.id!}/>)}
 			{activeProducts.map(product => <ProductDetaildCard
 				key={product.id +product.name}
