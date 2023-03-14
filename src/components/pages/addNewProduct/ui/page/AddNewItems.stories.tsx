@@ -11,7 +11,7 @@ export default {
 	},
 } as ComponentMeta<typeof AddNewItems>;
 
-const Template: ComponentStory<typeof AddNewItems> = (args) => <AddNewItems  />;
+const Template: ComponentStory<typeof AddNewItems> = (args) => <AddNewItems />;
 
 export const AddNewItemsDark = Template.bind({});
 AddNewItemsDark.args = {};
