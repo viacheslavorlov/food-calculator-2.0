@@ -1,4 +1,4 @@
-import {memo, useEffect} from 'react';
+import { memo, useEffect} from 'react';
 import {useAppDispatch, useAppSelector} from '../../../../../store/hooks';
 import {fetchProducts} from '../../../../../store/productSlice/fetchProducts/fetchProducts';
 import {getAllProductsSelector} from '../../../../../store/productSlice/selectors/getAllProductsSelector';
@@ -7,7 +7,6 @@ import cls from './MainPage.module.scss';
 import {getActiveProductsSelector} from '../../../../../store/productSlice/selectors/getActiveProductsSelector';
 import ProductDetaildCard from '../ProductDetaildCard/ProductDetaildCard';
 
-
 const MainPage = memo(() => {
 	const dispatch = useAppDispatch();
 	const products = useAppSelector(getAllProductsSelector);
@@ -15,6 +14,7 @@ const MainPage = memo(() => {
 	useEffect(() => {
 		dispatch(fetchProducts());
 	}, []);
+
 
 	return (
 		<div className={cls.MainPage}>
@@ -28,7 +28,8 @@ const MainPage = memo(() => {
 				amountInOnePack={product.amountInOnePack!}
 				metric={product.metric}
 				amountCurrent={product.amountCurrent}
-				id={product.id!}/>)}
+				id={product.id!}
+			/>)}
 		</div>
 	);
 });

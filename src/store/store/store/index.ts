@@ -1,7 +1,7 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
-import {productsReducer} from '../productSlice/productsSlice';
-import {newProductReducer} from '../newProductSlice/newProductSlice';
-import {StateShema} from '../types';
+import {productsReducer} from '../../productSlice/productsSlice';
+import {newProductReducer} from '../../newProductSlice/newProductSlice';
+import {StateShema} from '../../types';
 
 export const store  = configureStore<StateShema>({
 	devTools: true,

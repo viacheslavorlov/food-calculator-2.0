@@ -5,8 +5,9 @@ import AddIcon from '../../assets/add-item-alt-svgrepo-com.svg';
 import Products from '../../assets/list2-svgrepo-com.svg';
 import Package from '../../assets/package-svgrepo-com.svg';
 import DeleteItem from '../../assets/delete-1-svgrepo-com.svg';
+import {memo} from 'react';
 
-export const Header = () => {
+export const Header = memo(() => {
 	return (
 		<div className={cls.header}>
 			<ThemeSwitcher/>
@@ -27,5 +28,5 @@ export const Header = () => {
 			</nav>
 		</div>
 	);
-};
+});
 

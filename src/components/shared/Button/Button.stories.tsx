@@ -27,4 +27,4 @@ ButtonRounded.args = {variant: ButtonVariants.rectangle};
 ButtonRounded.decorators = [ThemeDecorator(ThemeConsts.light)];
 
 export const ButtonDanger = Template.bind({});
-ButtonDanger.args = {variant: ButtonVariants.rounded, background: ButtonBackground.green};
+ButtonDanger.args = {variant: ButtonVariants.rounded, background: ButtonBackground.red};
