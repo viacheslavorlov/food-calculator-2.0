@@ -34,9 +34,10 @@ const productsSlice = createSlice({
 		changeProductData: (state, action: PayloadAction<ChangeDataAction>) => {
 			state.activeProducts = state.activeProducts.map(item => {
 				if (item.id === action.payload.id) {
+					console.log(action.payload);
 					return {
 						...item,
-						[action.payload.name]: action.payload.value
+						amountCurrent: action.payload.value
 					};
 				}
 				return item;

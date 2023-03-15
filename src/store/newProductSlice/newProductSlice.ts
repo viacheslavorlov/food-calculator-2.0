@@ -9,7 +9,7 @@ const initialState: NewProductSliceSchema = {
 	error: undefined,
 	newProduct: {
 		name: '',
-		id: null,
+		id: Date.now(),
 		metric: Metrics.none,
 		price: 0,
 		amountCurrent: 0,
@@ -38,7 +38,7 @@ const newProductSlice = createSlice({
 		},
 		setDefaultValues: (state) => {
 			state.newProduct.name = '';
-			state.newProduct.id = null;
+			state.newProduct.id = Date.now();
 			state.newProduct.metric = Metrics.none;
 			state.newProduct.price = 0;
 			state.newProduct.amountCurrent = 0;

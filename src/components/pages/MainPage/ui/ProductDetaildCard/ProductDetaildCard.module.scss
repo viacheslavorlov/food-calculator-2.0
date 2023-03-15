@@ -2,11 +2,14 @@
     display: flex;
     flex-direction: column;
     margin-top: 10px;
-    width: 80%;
+    width: 80vw;
     align-items: center;
+    transition: all 0.3s;
 }
 
 .inputBlock {
+    margin-top: 5px;
+    width: 80vw;
     display: flex;
     justify-content: center;
     align-items: baseline;
@@ -15,6 +18,7 @@
 .space {
     margin-right: 10px;
 }
+
 .text {
     width: 95%;
 }
@@ -25,8 +29,16 @@
 }
 
 .result {
-    font-weight: bolder;
-    border: 2px solid var(--green-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--green-color);
     border-radius: 6px;
     padding: 4px;
+}
+
+.deleteBtn {
+    margin-left: auto;
+    align-self: center;
+    justify-self: center;
 }

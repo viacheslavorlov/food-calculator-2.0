@@ -21,12 +21,12 @@
       "price": 120,
       "amountInOnePack": 2000,
       "metric": "г",
-      "amountCurrent": null,
+      "amountCurrent": 12,
       "id": 123456781
     },
     {
       "name": "Масло сливочное",
-      "price": 1800,
+      "price": 180,
       "amountInOnePack": 180,
       "metric": "г",
       "amountCurrent": 0,

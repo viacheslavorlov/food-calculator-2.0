@@ -1,16 +1,17 @@
 .Button {
     cursor: pointer;
     font-size: var(--font-s);
-    padding: 8px;
+    padding: 6px;
     border: 1px solid var(--black-color);
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .Button:active {
-    transition: all;
     transform: rotate(10deg);
+    transition: all 0.3s;
 }
 
 .round {

@@ -14,11 +14,11 @@ export interface NewProductSliceSchema {
 
 export interface IProduct {
 	name: string;
-	price: number | null;
-	amountInOnePack: number | null;
+	price: number | undefined;
+	amountInOnePack: number | undefined;
 	metric: string;
 	amountCurrent: number;
-	id: number | null;
+	id: number;
 }
 
 export interface ProductsSliceInterface {

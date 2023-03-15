@@ -6,7 +6,7 @@ import {useAppDispatch} from '../../../../../store/hooks';
 import {productsActions} from '../../../../../store/productSlice/productsSlice';
 import {putProduct} from '../../../../../store/productSlice/putProduct/putProduct';
 import {calculatePriceOfProduct} from '../../../../../helpers/calculationFunctions';
-import {Button, ButtonVariants} from '../../../../shared/Button/Button';
+import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/Button/Button';
 
 
 interface ProductDetaildCardProps {
@@ -62,7 +62,7 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 			dispatch(productsActions.changeProductData({name, value, id}));
 		}
 	};
-	
+
 	const onDeleteProduct = (id: number) => {
 		dispatch(productsActions.deleteFromActiveList(id));
 	};
@@ -96,14 +96,14 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 					onChange={onPriceChangeHandler} name="price"/>
 			</div>
 			<div className={cls.inputBlock}>
-				<Text className={cls.text} content="Количество в одной упаковке: "/>
+				<Text className={cls.text} content="В упаковке: "/>
 				<Input
 					className={cls.input}
 					onChange={onPackAmountChangeHandler}
 					value={productAmountInOnePack} name="amountInOnePack"/>
 			</div>
 			<div className={cls.inputBlock}>
-				<Text className={cls.text} content="Израсходованное количество: "/>
+				<Text className={cls.text} content="Израсходовано: "/>
 				<Input
 					className={cls.input}
 					value={productCurrentAmount || ''}
@@ -113,12 +113,16 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 			<div className={cls.inputBlock}>
 				<Text
 					className={cls.result}
-					content={`Стоимость израсходованного продукта: ${
-						calculatePriceOfProduct(productPrice, productCurrentAmount, productAmountInOnePack)
-					} р`}
-				/>
+					content={'Стоимость израсходованного продукта: ' +
+					calculatePriceOfProduct(
+						productPrice,
+						productCurrentAmount,
+						productAmountInOnePack
+					).toFixed(2) + 'р'}/>
 				<Button
+					className={cls.deleteBtn}
 					variant={ButtonVariants.rounded}
+					background={ButtonBackground.red}
 					onClick={() => onDeleteProduct(id)}
 				>
 					Удалить
