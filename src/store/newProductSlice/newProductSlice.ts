@@ -52,8 +52,7 @@ const newProductSlice = createSlice({
 				state.error = undefined;
 			})
 			.addCase(addProductToDB.fulfilled, (state, action) => {
-				console.log('added to server!');
-				state.newProduct = action.payload;
+				state.newProduct = initialState.newProduct;
 			})
 			.addCase(addProductToDB.rejected, (state, action) => {
 				state.error = action.error.message;

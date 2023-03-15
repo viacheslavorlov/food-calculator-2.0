@@ -5,7 +5,7 @@
       "price": 100,
       "amountInOnePack": 10,
       "metric": "шт",
-      "amountCurrent": null,
+      "amountCurrent": 0,
       "id": 123456789
     },
     {
@@ -13,7 +13,7 @@
       "price": 80,
       "amountInOnePack": 900,
       "metric": "мл",
-      "amountCurrent": null,
+      "amountCurrent": 0,
       "id": 123456785
     },
     {
@@ -21,16 +21,8 @@
       "price": 120,
       "amountInOnePack": 2000,
       "metric": "г",
-      "amountCurrent": 12,
-      "id": 123456781
-    },
-    {
-      "name": "Масло сливочное",
-      "price": 180,
-      "amountInOnePack": 180,
-      "metric": "г",
       "amountCurrent": 0,
-      "id": 1678818098288
+      "id": 123456781
     }
   ],
   "recipes": [

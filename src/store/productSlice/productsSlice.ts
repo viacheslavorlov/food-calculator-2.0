@@ -2,6 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ProductsSliceInterface, IProduct} from '../types';
 import {fetchProducts} from './fetchProducts/fetchProducts';
 import {putProduct} from './putProduct/putProduct';
+import {deleteFrofDB} from './deleteFromDB/deleteFrofDB';
 
 export const initialState: ProductsSliceInterface = {
 	isLoading: false,
@@ -46,6 +47,9 @@ const productsSlice = createSlice({
 		deleteFromActiveList: (state, action: PayloadAction<number>) => {
 			state.activeProducts = state.activeProducts.filter((product) => product.id != action.payload);
 		},
+		deleteProduct: (state, action: PayloadAction<number>) => {
+			state.allProducts = state.allProducts.filter(item => item.id !== action.payload);
+		}
 	},
 	extraReducers: builder => {
 		builder
@@ -69,8 +73,26 @@ const productsSlice = createSlice({
 			})
 			.addCase(putProduct.fulfilled, (state, action) => {
 				state.isLoading = false;
+				state.activeProducts = state.activeProducts.map(item => {
+					if (item.id === action.meta.arg.id) {
+						return action.meta.arg;
+					} else {
+						return item;
+					}
+				});
 			})
 			.addCase(putProduct.rejected, (state, action) => {
+				state.error = action.error.message;
+			});
+		builder
+			.addCase(deleteFrofDB.pending, (state, action) => {
+				state.isLoading = true;
+				state.error = undefined;
+			})
+			.addCase(deleteFrofDB.fulfilled, (state, action) => {
+				console.log('delete action', action.meta.arg);
+			})
+			.addCase(deleteFrofDB.rejected, (state, action) => {
 				state.error = action.error.message;
 			});
 	}

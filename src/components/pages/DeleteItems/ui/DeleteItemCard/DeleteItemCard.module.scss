@@ -1,0 +1,24 @@
+.DeleteItemCard {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    width: 80vw;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn {
+    margin-left: auto;
+}
+
+.line {
+    border: 1.5px solid var(--bg-color-inverted);
+    margin: 5px;
+    flex-grow: 10;
+}
+
+@media screen and (max-width: 600px) {
+    .line {
+        display: none;
+    }
+}

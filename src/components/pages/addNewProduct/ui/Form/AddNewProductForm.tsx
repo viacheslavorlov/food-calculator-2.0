@@ -13,7 +13,6 @@ import {IProduct, Metrics} from '../../../../../store/types';
 import {
 	newProductPackAmountSelector
 } from '../../../../../store/newProductSlice/selectors/newProductPackAmountSelector';
-import {productsActions} from '../../../../../store/productSlice/productsSlice';
 import {addProductToDB} from '../../../../../store/newProductSlice/services/addProductToDB';
 
 interface AddNewProductFormProps {
@@ -52,10 +51,9 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				amountInOnePack: packAmount,
 				amountCurrent: 0
 			};
-			dispatch(productsActions.addNewProduct(product));
+			// dispatch(productsActions.addNewProduct(product));
 			dispatch(newProductActions.setDefaultValues());
 			dispatch(addProductToDB(product));
-			alert('Продукт добавлен!');
 		} else {
 			alert('Введите корректные данные!');
 		}
