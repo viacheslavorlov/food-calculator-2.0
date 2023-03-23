@@ -21,18 +21,18 @@ const productsSlice = createSlice({
 	initialState,
 	name: 'products',
 	reducers: {
-		addNewProduct: (state, action: PayloadAction<IProduct>) => {
+		addNewProduct: (state: ProductsSliceInterface, action: PayloadAction<IProduct>) => {
 			state.allProducts.push(action.payload);
 		},
 
-		addProductToActive: (state, action: PayloadAction<number>) => {
+		addProductToActive: (state: ProductsSliceInterface, action: PayloadAction<number>) => {
 			const alreadyInList = state.activeProducts.findIndex(product => product.id === action.payload);
 			if (alreadyInList < 0) {
 				const newActiveProduct = state.allProducts.filter(product => product.id === action.payload);
 				state.activeProducts.unshift(...newActiveProduct);
 			}
 		},
-		changeProductData: (state, action: PayloadAction<ChangeDataAction>) => {
+		changeProductData: (state: ProductsSliceInterface, action: PayloadAction<ChangeDataAction>) => {
 			state.activeProducts = state.activeProducts.map(item => {
 				if (item.id === action.payload.id) {
 					console.log(action.payload);
@@ -44,34 +44,34 @@ const productsSlice = createSlice({
 				return item;
 			});
 		},
-		deleteFromActiveList: (state, action: PayloadAction<number>) => {
+		deleteFromActiveList: (state: ProductsSliceInterface, action: PayloadAction<number>) => {
 			state.activeProducts = state.activeProducts.filter((product) => product.id != action.payload);
 		},
-		deleteProduct: (state, action: PayloadAction<number>) => {
+		deleteProduct: (state: ProductsSliceInterface, action: PayloadAction<number>) => {
 			state.allProducts = state.allProducts.filter(item => item.id !== action.payload);
 		}
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(fetchProducts.pending, (state, action) => {
+			.addCase(fetchProducts.pending, (state: ProductsSliceInterface, action) => {
 				state.isLoading = true;
 			})
-			.addCase(fetchProducts.fulfilled, (state, action) => {
+			.addCase(fetchProducts.fulfilled, (state: ProductsSliceInterface, action) => {
 				state.isLoading = false;
 				if (action.payload) {
 					state.allProducts = action.payload;
 				}
 			})
-			.addCase(fetchProducts.rejected, (state, action) => {
+			.addCase(fetchProducts.rejected, (state: ProductsSliceInterface, action) => {
 				state.isLoading = false;
-				state.error = action.error.message;
+				state.error = action.payload;
 			});
 		builder
-			.addCase(putProduct.pending, (state, action) => {
+			.addCase(putProduct.pending, (state: ProductsSliceInterface, action) => {
 				state.isLoading = true;
 				state.error = undefined;
 			})
-			.addCase(putProduct.fulfilled, (state, action) => {
+			.addCase(putProduct.fulfilled, (state: ProductsSliceInterface, action) => {
 				state.isLoading = false;
 				state.activeProducts = state.activeProducts.map(item => {
 					if (item.id === action.meta.arg.id) {
@@ -81,18 +81,18 @@ const productsSlice = createSlice({
 					}
 				});
 			})
-			.addCase(putProduct.rejected, (state, action) => {
-				state.error = action.error.message;
+			.addCase(putProduct.rejected, (state: ProductsSliceInterface, action) => {
+				state.error = action.payload;
 			});
 		builder
-			.addCase(deleteFrofDB.pending, (state, action) => {
+			.addCase(deleteFrofDB.pending, (state: ProductsSliceInterface, action) => {
 				state.isLoading = true;
 				state.error = undefined;
 			})
-			.addCase(deleteFrofDB.fulfilled, (state, action) => {
+			.addCase(deleteFrofDB.fulfilled, (state: ProductsSliceInterface, action) => {
 				console.log('delete action', action.meta.arg);
 			})
-			.addCase(deleteFrofDB.rejected, (state, action) => {
+			.addCase(deleteFrofDB.rejected, (state: ProductsSliceInterface, action) => {
 				state.error = action.error.message;
 			});
 	}

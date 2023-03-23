@@ -1,10 +1,10 @@
 import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
-import {IProduct} from '../../types';
+import {IProduct, ThunkConfig} from '../../types';
 
-export const addProductToDB = createAsyncThunk(
+export const addProductToDB = createAsyncThunk<IProduct, IProduct, ThunkConfig<string>>(
 	'newProducts/addProductToDB',
-	async (data: IProduct) => {
+	async (data, thunkAPI) => {
 		try {
 			const listOfProducts = await axios.get<IProduct[]>('http://localhost:3000/products');
 			const indexOfNewProduct = listOfProducts.data.findIndex(item => item.name === data.name);
@@ -13,10 +13,10 @@ export const addProductToDB = createAsyncThunk(
 				const response = await axios.post<IProduct>('http://localhost:3000/products', data);
 				return response.data;
 			} else {
-				alert('такой продукт уже сучествует');
+				throw new Error();
 			}
 		} catch (e) {
-			console.log(e);
+			return thunkAPI.rejectWithValue('error while adding product to DB');
 		}
 	}
 );

@@ -1,3 +1,5 @@
+import {AppDispatch} from '../store/store';
+
 export enum Metrics {
 	gramm = 'г',
 	ml = 'мл',
@@ -28,7 +30,14 @@ export interface ProductsSliceInterface {
 	activeProducts: IProduct[];
 }
 
-export interface StateShema {
+export interface StateSchema {
 	products: ProductsSliceInterface;
 	newProduct: NewProductSliceSchema;
+}
+
+
+export interface ThunkConfig<T> {
+	dispatch: AppDispatch,
+	rejectValue: T,
+	state: StateSchema
 }

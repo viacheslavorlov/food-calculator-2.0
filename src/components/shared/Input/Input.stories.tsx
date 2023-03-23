@@ -7,9 +7,7 @@ import {ThemeConsts} from '../../../teme/temeConsts';
 export default {
 	title: 'shared/Input',
 	component: Input,
-	argTypes: {
 
-	},
 } as ComponentMeta<typeof Input>;
 
 const Template: ComponentStory<typeof Input> = (args) => <Input {...args} />;

@@ -1,3 +1,3 @@
-import {StateShema} from '../../types';
+import {StateSchema} from '../../types';
 
-export const getErrorProductsSelector = (state: StateShema) => state.products.error;
+export const getErrorProductsSelector = (state: StateSchema) => state.products.error;

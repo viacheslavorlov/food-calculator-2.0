@@ -51,6 +51,7 @@
 @media screen and (max-width: 600px) {
 	.header__navbar_link {
 		flex-basis: 15%;
+		justify-content: center;
 	}
 	.header__navbar_text {
 		display: none;

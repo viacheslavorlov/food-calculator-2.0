@@ -1,7 +1,6 @@
 import {Metrics, NewProductSliceSchema} from '../types';
-import {createSlice,  PayloadAction} from '@reduxjs/toolkit';
+import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {addProductToDB} from './services/addProductToDB';
-
 
 
 const initialState: NewProductSliceSchema = {
@@ -21,22 +20,22 @@ const newProductSlice = createSlice({
 	name: 'newProducts',
 	initialState,
 	reducers: {
-		setProductName: (state, action) => {
+		setProductName: (state: NewProductSliceSchema, action) => {
 			state.newProduct.name = action.payload;
 		},
-		setProductId: (state) => {
+		setProductId: (state: NewProductSliceSchema) => {
 			state.newProduct.id = Date.now();
 		},
-		setProductMetric: (state, action: PayloadAction<Metrics>) => {
+		setProductMetric: (state: NewProductSliceSchema, action: PayloadAction<Metrics>) => {
 			state.newProduct.metric = action.payload;
 		},
-		setProductPrice: (state, action: PayloadAction<number>) => {
+		setProductPrice: (state: NewProductSliceSchema, action: PayloadAction<number>) => {
 			state.newProduct.price = action.payload;
 		},
-		setProductAmountInOnePack: (state, action: PayloadAction<number>) => {
+		setProductAmountInOnePack: (state: NewProductSliceSchema, action: PayloadAction<number>) => {
 			state.newProduct.amountInOnePack = action.payload;
 		},
-		setDefaultValues: (state) => {
+		setDefaultValues: (state: NewProductSliceSchema) => {
 			state.newProduct.name = '';
 			state.newProduct.id = Date.now();
 			state.newProduct.metric = Metrics.none;
@@ -47,15 +46,15 @@ const newProductSlice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(addProductToDB.pending, (state, action) => {
+			.addCase(addProductToDB.pending, (state: NewProductSliceSchema, action) => {
 				state.loading = true;
 				state.error = undefined;
 			})
-			.addCase(addProductToDB.fulfilled, (state, action) => {
+			.addCase(addProductToDB.fulfilled, (state: NewProductSliceSchema, action) => {
 				state.newProduct = initialState.newProduct;
 			})
-			.addCase(addProductToDB.rejected, (state, action) => {
-				state.error = action.error.message;
+			.addCase(addProductToDB.rejected, (state: NewProductSliceSchema, action) => {
+				state.error = 'error';
 			});
 	}
 });

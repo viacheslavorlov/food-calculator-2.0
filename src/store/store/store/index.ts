@@ -1,9 +1,9 @@
 import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {productsReducer} from '../../productSlice/productsSlice';
 import {newProductReducer} from '../../newProductSlice/newProductSlice';
-import {StateShema} from '../../types';
+import {StateSchema} from '../../types';
 
-export const store  = configureStore<StateShema>({
+export const store  = configureStore<StateSchema>({
 	devTools: true,
 	reducer: combineReducers({
 		products: productsReducer,

@@ -1,3 +1,3 @@
-import {StateShema} from '../../types';
+import {StateSchema} from '../../types';
 
-export const getActiveProductsSelector = (state: StateShema) => state.products.activeProducts;
+export const getActiveProductsSelector = (state: StateSchema) => state.products.activeProducts;
