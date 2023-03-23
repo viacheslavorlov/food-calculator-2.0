@@ -11,10 +11,10 @@ import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/Butto
 
 interface ProductDetaildCardProps {
 	name: string;
-	price: number;
-	amountInOnePack: number;
+	price?: number;
+	amountInOnePack?: number;
 	metric: string;
-	amountCurrent: number;
+	amountCurrent?: number;
 	id: number;
 }
 
@@ -28,9 +28,9 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 		amountCurrent = 0,
 	} = props;
 	const dispatch = useAppDispatch();
-	const [productPrice, setProductPrice] = useState<number>(price);
+	const [productPrice, setProductPrice] = useState<number>(price || 0);
 	const [productCurrentAmount, setProductCurrentAmount] = useState<number>(amountCurrent || 0);
-	const [productAmountInOnePack, setProductAmountInOnePack] = useState<number>(amountInOnePack);
+	const [productAmountInOnePack, setProductAmountInOnePack] = useState<number>(amountInOnePack || 0);
 
 	const onPriceChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
@@ -44,7 +44,11 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 			}
 			dispatch(productsActions.changeProductData({name, value, id}));
 			dispatch(putProduct({
-				...props,
+				id,
+				metric,
+				name,
+				amountCurrent,
+				amountInOnePack,
 				price: value
 			}));
 		}
