@@ -1,6 +1,6 @@
 .header {
-	width: 100vw;
-	margin: 0 auto;
+	width: 90vw;
+	margin: 0 auto 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -22,7 +22,6 @@
 }
 
 .header__navbar_link {
-	margin: 5px;
 	border-radius: .5em;
 	font-weight: bold;
 	font-size: 1em;

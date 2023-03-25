@@ -4,12 +4,10 @@
     text-decoration: none;
 }
 
-
-
 .header__navbar_link {
     color: var(--text-color);
     text-decoration: none;
-    margin: 5px;
+    //margin: 5px;
     border-radius: .5em;
     font-weight: bold;
     flex-basis: 20%;
@@ -17,6 +15,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: center;
+    transition: all 0.3s;
 }
 
 @media screen and (max-width: 1000px) {
