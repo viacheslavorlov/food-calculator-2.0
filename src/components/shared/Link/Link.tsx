@@ -25,10 +25,10 @@ export const Link = memo((props: LinkPrors) => {
 		<NavLink
 			className={
 				({isActive}) => isActive ? classNames(cls.header__navbar_link, 'active')
-					: cls.header__navbar_link
+					: classNames(cls.header__navbar_link, 'inactive')
 			}
 			to={to}>
-			<IconSVG Icon={Icon}/>
+			<IconSVG className={cls.icon} Icon={Icon}/>
 			<Text className={cls.header__navbar_text} content={title}/>
 		</NavLink>
 	);

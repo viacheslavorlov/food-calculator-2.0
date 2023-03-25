@@ -1,6 +1,6 @@
 import AddIcon from '../../../assets/add-item-alt-svgrepo-com.svg';
 import Products from '../../../assets/list2-svgrepo-com.svg';
-import Packages from '../../../assets/package-svgrepo-com.svg';
+import Packages from '../../../assets/package-delivery-box-3-svgrepo-com.svg';
 import Delete from '../../../assets/delete-1-svgrepo-com.svg';
 
 

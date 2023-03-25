@@ -22,8 +22,6 @@
 }
 
 .header__navbar_link {
-	color: inherit;
-	text-decoration: none;
 	margin: 5px;
 	border-radius: .5em;
 	font-weight: bold;
@@ -32,32 +30,10 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-
-	svg {
-		fill: gray;
-		width: 40px;
-		height: 40px;
-	}
-}
-
-
-@media screen and (max-width: 1000px) {
-	.header__navbar_link {
-		flex-basis: 40%;
-		justify-content: flex-start;
-	}
 }
 
 @media screen and (max-width: 600px) {
-	.header__navbar_link {
-		flex-basis: 15%;
-		justify-content: center;
-	}
-	.header__navbar_text {
-		display: none;
-	}
-
 	.header__navbar {
-		flex-wrap: nowrap;
+		flex-direction: column;
 	}
 }

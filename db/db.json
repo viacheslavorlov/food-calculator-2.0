@@ -23,6 +23,14 @@
       "metric": "г",
       "amountCurrent": 0,
       "id": 123456781
+    },
+    {
+      "name": "сыр",
+      "id": 1679601132492,
+      "price": 600,
+      "metric": "г",
+      "amountInOnePack": 1000,
+      "amountCurrent": 0
     }
   ],
   "recipes": [

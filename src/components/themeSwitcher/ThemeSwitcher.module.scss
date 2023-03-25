@@ -14,12 +14,13 @@
     flex-direction: column-reverse;
 }
 
-.dark {
-    transform: rotate(-45deg);
+
+.light {
+    fill:  #ffae69
 }
 
 svg {
-    fill: var(--yellow-color);
+    //fill: var(--yellow-color);
     height: 40px;
     width: 40px;
 }
