@@ -9,6 +9,7 @@ export const initialState: ProductsSliceInterface = {
 	error: undefined,
 	activeProducts: [],
 	allProducts: [],
+	searchValue: ''
 };
 
 interface ChangeDataAction {
@@ -49,6 +50,9 @@ const productsSlice = createSlice({
 		},
 		deleteProduct: (state: ProductsSliceInterface, action: PayloadAction<number>) => {
 			state.allProducts = state.allProducts.filter(item => item.id !== action.payload);
+		},
+		setSearchValue: (state:ProductsSliceInterface, action: PayloadAction<string>) => {
+			state.searchValue = action.payload;
 		}
 	},
 	extraReducers: builder => {

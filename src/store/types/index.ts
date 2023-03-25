@@ -26,6 +26,7 @@ export interface IProduct {
 export interface ProductsSliceInterface {
 	isLoading: boolean;
 	error: string | undefined;
+	searchValue: string;
 	allProducts: IProduct[];
 	activeProducts: IProduct[];
 }
