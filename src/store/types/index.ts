@@ -1,4 +1,4 @@
-import {AppDispatch} from '../store/store';
+import {AppDispatch} from '../../app/store/store';
 
 export enum Metrics {
 	gramm = 'г',

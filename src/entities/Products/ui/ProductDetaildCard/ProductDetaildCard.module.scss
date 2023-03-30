@@ -1,0 +1,40 @@
+.ProductDetaildCard {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    padding: 5px;
+    width: 80vw;
+    align-items: center;
+    transition: all 0.3s;
+    border: solid 1px var(--border-color);
+    border-radius: 6px;
+}
+
+.inputBlock {
+    margin-top: 5px;
+    width: 75vw;
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+}
+
+.space {
+    margin-right: 10px;
+}
+
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--green-color);
+    border-radius: 6px;
+    padding: 4px;
+    margin-right: 10px;
+}
+
+.deleteBtn {
+    margin-left: auto;
+    align-self: center;
+    justify-self: center;
+}

@@ -1,0 +1,50 @@
+@import "./temes/dark";
+@import "./temes/light";
+
+// constants
+:root {
+	// colors
+	--red-color: #e14134;
+	--black-color: #000;
+	--white-color: #fff;
+	--grey-color: #7f7f7f;
+	--green-color: #01918e;
+	--yellow-color: #fff200;
+
+	// fonts
+	--font-s: 16px;
+	--font-m: 20px;
+	--font-l: 24px;
+	--font-xl: 30px;
+}
+
+
+
+// base style
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.app {
+	background: var(--bg-color);
+	color: var(--text-color);
+	min-height: 100vh;
+	font-family: "Andale Mono", serif;
+}
+
+
+.active {
+	//border: 2px solid var(--border-color);
+	background-color: var(--bg-active-link-color);
+	color: var(--link-active-text);
+	fill: var(--link-active-text);
+}
+
+.inactive {
+	//border: 2px solid var(--border-color);
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	fill: var(--text-color);
+}

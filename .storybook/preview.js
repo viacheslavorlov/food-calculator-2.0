@@ -1,7 +1,7 @@
 import {addDecorator} from '@storybook/react';
-import {RouterDecorator, StyleDecorator, ThemeDecorator} from '../src/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../src/teme/temeConsts';
-import {StoreDecorator} from '../src/helpers/storybookDecorators/StorybookDecorator';
+import {RouterDecorator, StyleDecorator, ThemeDecorator} from '../src/shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from '../src/widgets/themeSwitcher/teme/temeConsts';
+import {StoreDecorator} from '../src/shared/helpers/storybookDecorators/StorybookDecorator';
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },

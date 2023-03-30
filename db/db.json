@@ -1,4 +1,18 @@
 {
+  "expenses": [
+    {
+      "id": 1234,
+      "date": "30.03.23",
+      "amount": 324
+    }
+  ],
+  "income": [
+    {
+      "id": 1234,
+      "date": "30.03.23",
+      "amount": 326
+    }
+  ],
   "products": [
     {
       "name": "Яйцо",
@@ -29,6 +43,14 @@
       "id": 1679601132492,
       "price": 600,
       "metric": "г",
+      "amountInOnePack": 1000,
+      "amountCurrent": 0
+    },
+    {
+      "name": "Вода",
+      "id": 1680171712901,
+      "price": 5,
+      "metric": "мл",
       "amountInOnePack": 1000,
       "amountCurrent": 0
     }
