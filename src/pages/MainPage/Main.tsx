@@ -10,6 +10,7 @@ import {ResultValue} from '../../entities/Products/ui/ResultValue/ResultValue';
 import {getSearchValue} from '../../entities/Products/model/selectors/getSerchValue';
 import {wordSearch} from '../../shared/helpers/search/wordSearch';
 import {Search} from '../../widgets/Search/Search';
+import {IncomeOutcomePage} from '../IncomeOutcomePage/IncomeOutcomePage';
 
 const MainPage = memo(() => {
 	const dispatch = useAppDispatch();
@@ -41,6 +42,7 @@ const MainPage = memo(() => {
 				/>)}
 				<ResultValue list={activeProducts} className={cls.result}/>
 			</div>
+			<IncomeOutcomePage />
 		</>
 	);
 });

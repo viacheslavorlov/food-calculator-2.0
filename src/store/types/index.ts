@@ -1,4 +1,5 @@
 import {AppDispatch} from '../../app/store/store';
+import {IncomeOutcomeSchema} from '../../entities/IncomeOutcome/model/type/IncomeOutcomeTypes';
 
 export enum Metrics {
 	gramm = 'г',
@@ -34,6 +35,7 @@ export interface ProductsSliceInterface {
 export interface StateSchema {
 	products: ProductsSliceInterface;
 	newProduct: NewProductSliceSchema;
+	incomeOutcome: IncomeOutcomeSchema;
 }
 
 
