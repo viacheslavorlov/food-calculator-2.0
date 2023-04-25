@@ -1,19 +1,13 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-
+import {Meta, StoryObj} from '@storybook/react';
 import {LoadingSpinner} from './Loader';
 import {ThemeDecorator} from '../../helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';
 
-export default {
-	title: 'Example/LoadingSpinner',
-	component: LoadingSpinner,
-	argTypes: {
-		backgroundColor: { control: 'color' },
-	},
-} as ComponentMeta<typeof LoadingSpinner>;
+const meta: Meta<typeof LoadingSpinner> = { component: LoadingSpinner };
+export default meta;
 
-const Template: ComponentStory<typeof LoadingSpinner> = () => <LoadingSpinner />;
+type Story = StoryObj<typeof LoadingSpinner>;
 
-export const Loader = Template.bind({});
-Loader.args = {};
-Loader.decorators = [ThemeDecorator(ThemeConsts.dark)];
+export const Primary: Story = { args: { primary: true } };
+Primary.args = {};
+Primary.decorators = [ThemeDecorator(ThemeConsts.dark)];

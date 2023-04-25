@@ -1,23 +1,17 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ThemeDecorator} from 'shared/config/themeDecorator/themeDecorator';
-import {Theme} from 'app/providers/TemeProvider';
-import {StoreDecorator} from 'shared/config/StoreDecorator/StoreDecorator';
+import {Meta, StoryObj} from '@storybook/react';
+import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
+import {StoreDecorator} from '../../shared/helpers/storybookDecorators/StorybookDecorator';
 import {IncomeOutcomePage} from './IncomeOutcomePage';
 
-export default {
-	title: 'entities/IncomeOutcomePage',
-	component: IncomeOutcomePage,
-	argTypes: {
-		background: {control: 'background'},
-	},
-} as ComponentMeta<typeof IncomeOutcomePage>;
 
-const Template: ComponentStory<typeof IncomeOutcomePage> = (args) => <IncomeOutcomePage {...args} />;
 
-export const LightIncomeOutcome = Template.bind({});
-LightIncomeOutcome.args = {};
-LightIncomeOutcome.decorators = [];
+const meta: Meta<typeof IncomeOutcomePage> = { component: IncomeOutcomePage };
+export default meta;
 
-export const DarkIncomeOutcome = Template.bind({});
-DarkIncomeOutcome.args = {};
-DarkIncomeOutcome.decorators = [ThemeDecorator(Theme.DARK)];
+type Story = StoryObj<typeof IncomeOutcomePage>;
+
+export const LightIncomeOutcome: Story = { args: {} };
+
+export const DarkIncomeOutcome: Story = { args: {} };
+DarkIncomeOutcome.decorators = [ThemeDecorator(ThemeConsts.dark)];
