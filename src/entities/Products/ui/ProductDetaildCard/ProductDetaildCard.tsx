@@ -7,18 +7,10 @@ import {productsActions} from '../../model/slice/productsSlice';
 import {putProduct} from '../../model/services/putProduct/putProduct';
 import {calculatePriceOfProduct} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
 import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
+import {IProduct} from '../../../../store/types';
 
 
-interface ProductDetaildCardProps {
-	name: string;
-	price?: number;
-	amountInOnePack?: number;
-	metric: string;
-	amountCurrent?: number;
-	id: number;
-}
-
-const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
+const ProductDetaildCard = memo((props: IProduct) => {
 	const {
 		id,
 		metric,
@@ -26,6 +18,7 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 		price,
 		amountInOnePack,
 		amountCurrent = 0,
+		timesUsed
 	} = props;
 	const dispatch = useAppDispatch();
 	const [productPrice, setProductPrice] = useState<number>(price || 0);
@@ -49,7 +42,8 @@ const ProductDetaildCard = memo((props: ProductDetaildCardProps) => {
 				name,
 				amountCurrent,
 				amountInOnePack,
-				price: value
+				price: value,
+				timesUsed
 			}));
 		}
 	};

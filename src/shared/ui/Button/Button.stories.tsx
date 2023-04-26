@@ -1,5 +1,4 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-
 import {Button, ButtonBackground, ButtonVariants} from './Button';
 import {ThemeDecorator} from '../../helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';

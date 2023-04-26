@@ -5,6 +5,7 @@ import {Text} from '../../../../shared/ui/Text/Text';
 import {Button, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import {useAppDispatch} from '../../../../store/hooks';
 import {productsActions} from '../../model/slice/productsSlice';
+import {addViewsCount} from '../../model/services/addViewsCount/addViewsCount';
 
 interface ProductCardProps {
 	className?: string;
@@ -21,7 +22,9 @@ export const ProductCard = memo((props: ProductCardProps) => {
 	} = props;
 
 	const onAddProduct = useCallback((id: number) => {
+		dispatch(addViewsCount(id));
 		dispatch(productsActions.addProductToActive(id));
+
 	}, [dispatch]);
 
 	return (

@@ -1,21 +1,40 @@
-import { classNames } from '../../helpers/classNames/classNames';
+import {classNames} from '../../helpers/classNames/classNames';
 import cls from './Select.module.scss';
-import { memo } from 'react';
+import {ChangeEvent} from 'react';
 
-interface SelectProps {
-    className?: string;
-	options: string[];
+export interface SelectOption<T extends string> {
+	name: string;
+	value: T;
 }
 
-export const Select = memo((props: SelectProps) => {
+interface SelectProps<T extends string> {
+	className?: string;
+	optionsVariants: SelectOption<T>[];
+	defaultOption?: string;
+	onChange?: (value: T) => void;
+}
+
+export const Select = <T extends string>(props: SelectProps<T>) => {
 	const {
-		className,
-		options
+		className = '',
+		optionsVariants,
+		defaultOption,
+		onChange
 	} = props;
-    
+
+	const onChangeHandler = (e: ChangeEvent<HTMLSelectElement>) => {
+		if (onChange) {
+			onChange(e.target.value as T);
+		}
+	};
+
 	return (
-		<select className={classNames(cls.Select, className)}>
-			{options.map(option => <option key={option} value={option}>{option}</option>)}
+		<select
+			defaultValue={defaultOption}
+			className={classNames(cls.Select, className)}
+			onChange={onChangeHandler}
+		>
+			{optionsVariants.map(option => <option key={option.name} value={option.value}>{option.name}</option>)}
 		</select>
 	);
-});
+};

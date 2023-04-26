@@ -2,13 +2,13 @@ import {createAsyncThunk} from '@reduxjs/toolkit';
 import axios from 'axios';
 import {ThunkConfig} from '../../../../store/types';
 
-export const deleteFrofDB = createAsyncThunk<void, number, ThunkConfig<string>>(
+export const deleteFrofDB = createAsyncThunk<number, number, ThunkConfig<string>>(
 	'deleteProducts/deletefromDB',
-	async (id: number, thunkAPI) => {
+	async (id, thunkAPI) => {
 		try {
 			if (id) {
 				const response = await axios.delete(`http://localhost:3000/products/${id}`);
-				return response.data;
+				return response.data.id;
 			} else {
 				throw new Error();
 			}

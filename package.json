@@ -12,7 +12,7 @@
     "style:fix": "npx stylelint \"**/*.scss\" --fix",
     "test:jest": "jest",
     "test": "jest --config ./jest.config.ts",
-    "storybook": "storybook build",
+    "storybook": "storybook dev",
     "build-storybook": "build-storybook"
   },
   "author": "viacheslavorlov@gmail.com",

@@ -9,7 +9,6 @@ export const initialState: ProductsSliceInterface = {
 	error: undefined,
 	activeProducts: [],
 	allProducts: [],
-	searchValue: ''
 };
 
 interface ChangeDataAction {
@@ -36,7 +35,6 @@ const productsSlice = createSlice({
 		changeProductData: (state: ProductsSliceInterface, action: PayloadAction<ChangeDataAction>) => {
 			state.activeProducts = state.activeProducts.map(item => {
 				if (item.id === action.payload.id) {
-					console.log(action.payload);
 					return {
 						...item,
 						amountCurrent: action.payload.value
@@ -51,13 +49,11 @@ const productsSlice = createSlice({
 		deleteProduct: (state: ProductsSliceInterface, action: PayloadAction<number>) => {
 			state.allProducts = state.allProducts.filter(item => item.id !== action.payload);
 		},
-		setSearchValue: (state:ProductsSliceInterface, action: PayloadAction<string>) => {
-			state.searchValue = action.payload;
-		}
+
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(fetchProducts.pending, (state: ProductsSliceInterface, action) => {
+			.addCase(fetchProducts.pending, (state: ProductsSliceInterface) => {
 				state.isLoading = true;
 			})
 			.addCase(fetchProducts.fulfilled, (state: ProductsSliceInterface, action) => {
@@ -71,7 +67,7 @@ const productsSlice = createSlice({
 				state.error = action.payload;
 			});
 		builder
-			.addCase(putProduct.pending, (state: ProductsSliceInterface, action) => {
+			.addCase(putProduct.pending, (state: ProductsSliceInterface) => {
 				state.isLoading = true;
 				state.error = undefined;
 			})
@@ -89,12 +85,14 @@ const productsSlice = createSlice({
 				state.error = action.payload;
 			});
 		builder
-			.addCase(deleteFrofDB.pending, (state: ProductsSliceInterface, action) => {
+			.addCase(deleteFrofDB.pending, (state) => {
 				state.isLoading = true;
 				state.error = undefined;
 			})
 			.addCase(deleteFrofDB.fulfilled, (state: ProductsSliceInterface, action) => {
-				console.log('delete action', action.meta.arg);
+				if (action.payload) {
+					state.allProducts.filter(product => product.id !== action.payload);
+				}
 			})
 			.addCase(deleteFrofDB.rejected, (state: ProductsSliceInterface, action) => {
 				state.error = action.error.message;

@@ -12,7 +12,8 @@ const initialState: NewProductSliceSchema = {
 		metric: Metrics.none,
 		price: 0,
 		amountCurrent: 0,
-		amountInOnePack: 0
+		amountInOnePack: 0,
+		timesUsed: 0
 	}
 };
 
@@ -46,14 +47,14 @@ const newProductSlice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(addProductToDB.pending, (state: NewProductSliceSchema, action) => {
+			.addCase(addProductToDB.pending, (state: NewProductSliceSchema) => {
 				state.loading = true;
 				state.error = undefined;
 			})
-			.addCase(addProductToDB.fulfilled, (state: NewProductSliceSchema, action) => {
+			.addCase(addProductToDB.fulfilled, (state: NewProductSliceSchema) => {
 				state.newProduct = initialState.newProduct;
 			})
-			.addCase(addProductToDB.rejected, (state: NewProductSliceSchema, action) => {
+			.addCase(addProductToDB.rejected, (state: NewProductSliceSchema) => {
 				state.error = 'error';
 			});
 	}

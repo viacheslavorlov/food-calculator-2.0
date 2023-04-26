@@ -49,11 +49,11 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				price,
 				metric,
 				amountInOnePack: packAmount,
-				amountCurrent: 0
+				amountCurrent: 0,
+				timesUsed: 0
 			};
-			// dispatch(productsActions.addNewProduct(product));
-			dispatch(newProductActions.setDefaultValues());
 			dispatch(addProductToDB(product));
+			dispatch(newProductActions.setDefaultValues());
 		} else {
 			alert('Введите корректные данные!');
 		}

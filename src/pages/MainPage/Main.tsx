@@ -7,20 +7,19 @@ import cls from './MainPage.module.scss';
 import {getActiveProductsSelector} from '../../entities/Products/model/selectors/getActiveProductsSelector';
 import ProductDetaildCard from '../../entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
 import {ResultValue} from '../../entities/Products/ui/ResultValue/ResultValue';
-import {getSearchValue} from '../../entities/Products/model/selectors/getSerchValue';
 import {wordSearch} from '../../shared/helpers/search/wordSearch';
-import {Search} from '../../widgets/Search/Search';
+import {Search} from '../../features/searchProducts/ui/Search';
 import {IncomeOutcomePage} from '../IncomeOutcomePage/IncomeOutcomePage';
+import {searchValueSelector} from '../../features/searchProducts/model/selectors/searchSelectors';
 
 const MainPage = memo(() => {
 	const dispatch = useAppDispatch();
 	const products = useAppSelector(getAllProductsSelector);
 	const activeProducts = useAppSelector(getActiveProductsSelector);
-	const searchValue = useAppSelector(getSearchValue);
+	const searchValue = useAppSelector(searchValueSelector);
 	useEffect(() => {
 		dispatch(fetchProducts());
 	}, []);
-	// const productsIDs = products.map(prod => prod.id);
 	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
 	return (
@@ -39,10 +38,11 @@ const MainPage = memo(() => {
 					metric={product.metric}
 					amountCurrent={product.amountCurrent}
 					id={product.id}
+					timesUsed={product.timesUsed}
 				/>)}
 				<ResultValue list={activeProducts} className={cls.result}/>
 			</div>
-			<IncomeOutcomePage />
+			<IncomeOutcomePage/>
 		</>
 	);
 });

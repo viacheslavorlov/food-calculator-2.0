@@ -1,5 +1,4 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-
 import {Input} from './Input';
 import {ThemeDecorator} from '../../helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';

@@ -20,7 +20,8 @@
       "amountInOnePack": 10,
       "metric": "шт",
       "amountCurrent": 0,
-      "id": 123456789
+      "id": 123456789,
+      "timesUsed": null
     },
     {
       "name": "Молоко",
@@ -47,12 +48,22 @@
       "amountCurrent": 0
     },
     {
-      "name": "Вода",
-      "id": 1680171712901,
-      "price": 5,
+      "name": "Спирт",
+      "id": 1682496426709,
+      "price": 300,
       "metric": "мл",
-      "amountInOnePack": 1000,
-      "amountCurrent": 0
+      "amountInOnePack": 500,
+      "amountCurrent": 0,
+      "timesUsed": 1
+    },
+    {
+      "name": "смысл жизни",
+      "id": 1682497777743,
+      "price": 1000000,
+      "metric": "ж",
+      "amountInOnePack": 1,
+      "amountCurrent": 0,
+      "timesUsed": 7
     }
   ],
   "recipes": [
