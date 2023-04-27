@@ -21,7 +21,7 @@
       "metric": "шт",
       "amountCurrent": 0,
       "id": 123456789,
-      "timesUsed": null
+      "timesUsed": 2
     },
     {
       "name": "Молоко",
@@ -29,7 +29,8 @@
       "amountInOnePack": 900,
       "metric": "мл",
       "amountCurrent": 0,
-      "id": 123456785
+      "id": 123456785,
+      "timesUsed": 1
     },
     {
       "name": "Мука",
@@ -37,7 +38,8 @@
       "amountInOnePack": 2000,
       "metric": "г",
       "amountCurrent": 0,
-      "id": 123456781
+      "id": 123456781,
+      "timesUsed": 1
     },
     {
       "name": "сыр",
@@ -45,7 +47,8 @@
       "price": 600,
       "metric": "г",
       "amountInOnePack": 1000,
-      "amountCurrent": 0
+      "amountCurrent": 0,
+      "timesUsed": 2
     },
     {
       "name": "Спирт",
@@ -54,7 +57,7 @@
       "metric": "мл",
       "amountInOnePack": 500,
       "amountCurrent": 0,
-      "timesUsed": 1
+      "timesUsed": 3
     },
     {
       "name": "смысл жизни",
@@ -63,7 +66,16 @@
       "metric": "ж",
       "amountInOnePack": 1,
       "amountCurrent": 0,
-      "timesUsed": 7
+      "timesUsed": 8
+    },
+    {
+      "name": "чечел",
+      "id": 1682629882313,
+      "price": 234,
+      "metric": "г",
+      "amountInOnePack": 1000,
+      "amountCurrent": 0,
+      "timesUsed": 3
     }
   ],
   "recipes": [

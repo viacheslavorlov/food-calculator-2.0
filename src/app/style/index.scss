@@ -1,7 +1,6 @@
 @import "./temes/dark";
 @import "./temes/light";
 
-// constants
 :root {
 	// colors
 	--red-color: #e14134;
@@ -16,6 +15,9 @@
 	--font-m: 20px;
 	--font-l: 24px;
 	--font-xl: 30px;
+
+	// constants
+	--header-height: 55px;
 }
 
 

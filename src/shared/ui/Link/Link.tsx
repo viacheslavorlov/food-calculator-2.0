@@ -11,6 +11,7 @@ interface LinkPrors {
 	to: string;
 	title: string;
 	children?: ReactNode;
+	onClick?: () => void;
 }
 
 export const Link = memo((props: LinkPrors) => {
@@ -18,11 +19,13 @@ export const Link = memo((props: LinkPrors) => {
 		className,
 		Icon,
 		to,
-		title
+		title,
+		onClick
 	} = props;
 
 	return (
 		<NavLink
+			onClick={onClick}
 			className={
 				({isActive}) => isActive ? classNames(cls.header__navbar_link, 'active')
 					: classNames(cls.header__navbar_link, 'inactive')

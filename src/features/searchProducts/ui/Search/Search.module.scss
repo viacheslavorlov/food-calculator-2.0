@@ -1,0 +1,12 @@
+.Search {
+    padding: 0 10%;
+    display: flex;
+    gap: 5px;
+    flex-direction: column;
+    transition: all 0.3s;
+}
+
+.SearchItem {
+    display: flex;
+    align-items: baseline;
+}

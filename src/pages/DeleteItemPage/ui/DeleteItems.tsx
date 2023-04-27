@@ -4,7 +4,7 @@ import {getAllProductsSelector} from '../../../entities/Products/model/selectors
 import {DeleteItemCard} from '../../../entities/DeleteItems/ui/DeleteItemCard/DeleteItemCard';
 import {fetchProducts} from '../../../entities/Products/model/services/fetchProducts/fetchProducts';
 import {memo, useEffect} from 'react';
-import {Search} from '../../../features/searchProducts/ui/Search';
+import {Search} from '../../../features/searchProducts/ui/Search/Search';
 import {wordSearch} from '../../../shared/helpers/search/wordSearch';
 import {searchValueSelector} from '../../../features/searchProducts/model/selectors/searchSelectors';
 

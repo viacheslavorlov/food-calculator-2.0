@@ -1,5 +1,5 @@
 .header {
-	width: 90vw;
+	width: 100vw;
 	margin: 0 auto 10px;
 	display: flex;
 	flex-direction: column;
@@ -29,6 +29,20 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+}
+.headerWrapper {
+	height: var(--header-height);
+	display: flex;
+	justify-content: space-between;
+	align-items: stretch;
+}
+
+.btn {
+	border-bottom-left-radius: 50%;
+}
+
+.icon {
+	height: 35px;
 }
 
 @media screen and (max-width: 600px) {

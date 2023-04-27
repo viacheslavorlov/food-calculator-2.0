@@ -1,11 +1,11 @@
 import {useTheme} from '../../teme/useTheme';
 import cls from './ThemeSwitcher.module.scss';
-// import Theme from '../../assets/night-mode-svgrepo-com.svg';
 import Day from '../../../../shared/assets/sun-black-shape-of-a-circle-with-triangles-svgrepo-com.svg';
 import Night from '../../../../shared/assets/night-moon-and-star-shapes-svgrepo-com.svg';
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
+import {memo} from 'react';
 
-const ThemeSwitcher = () => {
+const ThemeSwitcher = memo(() => {
 	const {toggleTheme, theme = 'light'} = useTheme();
 	const fill = theme === 'light' ? '#ffae69' : '';
 	const day = theme === 'light';
@@ -20,6 +20,6 @@ const ThemeSwitcher = () => {
 			</button>
 		</div>
 	);
-};
+});
 
 export default ThemeSwitcher;
