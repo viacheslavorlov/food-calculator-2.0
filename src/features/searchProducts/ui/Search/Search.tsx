@@ -49,8 +49,9 @@ export const Search = memo((props: SearchProps) => {
 		<div className={classNames(cls.Search, className)}>
 			<div className={cls.SearchItem}>
 				<Input
+					className={cls.strInput}
 					type="text"
-					placeholder={'Начните вводить названиеma'}
+					placeholder={'Начните вводить название'}
 					value={searchValue}
 					onChange={onChangeHandle}
 				/>

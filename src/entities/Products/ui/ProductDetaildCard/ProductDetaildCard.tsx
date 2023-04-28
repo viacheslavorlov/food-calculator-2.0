@@ -83,9 +83,7 @@ const ProductDetaildCard = memo((props: IProduct) => {
 		<div className={cls.ProductDetaildCard}>
 			<div className={cls.inputBlock}>
 				<Text className={cls.space} title={name}/>
-				<Text title={metric}/>
 			</div>
-
 			<div className={cls.inputBlock}>
 				<Text className={cls.text} content="Цена: "/>
 				<Input
@@ -99,14 +97,18 @@ const ProductDetaildCard = memo((props: IProduct) => {
 					className={cls.input}
 					onChange={onPackAmountChangeHandler}
 					value={productAmountInOnePack} name="amountInOnePack"/>
+				<Text content={metric} />
 			</div>
 			<div className={cls.inputBlock}>
 				<Text className={cls.text} content="Израсходовано: "/>
 				<Input
+					placeholder={`... ${metric} израсходовано`}
 					className={cls.input}
 					value={productCurrentAmount || ''}
 					onChange={onCurrentAmountChangeHandler}
-					name="amountCurrent"/>
+					name="amountCurrent"
+				/>
+				<Text content={metric} />
 			</div>
 			<div className={cls.inputBlock}>
 				<Text
