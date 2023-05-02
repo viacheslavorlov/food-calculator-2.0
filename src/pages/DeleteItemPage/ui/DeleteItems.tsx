@@ -1,7 +1,7 @@
 import cls from './DeleteItems.module.scss';
 import {useAppDispatch, useAppSelector} from '../../../store/hooks';
 import {getAllProductsSelector} from '../../../entities/Products/model/selectors/getAllProductsSelector';
-import {DeleteItemCard} from '../../../entities/DeleteItems/ui/DeleteItemCard/DeleteItemCard';
+import {DeleteItemCard} from '../../../features/DeleteItems/ui/DeleteItemCard/DeleteItemCard';
 import {fetchProducts} from '../../../entities/Products/model/services/fetchProducts/fetchProducts';
 import {memo, useEffect} from 'react';
 import {Search} from '../../../features/searchProducts/ui/Search/Search';

@@ -1,17 +1,17 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import Packages from './Packages';
+import RecipesPage from './RecipesPage';
 import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
 
 export default {
-	title: 'Pages/PackagesPage',
-	component: Packages,
+	title: 'Pages/RecipesPage',
+	component: RecipesPage,
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof Packages>;
+} as ComponentMeta<typeof RecipesPage>;
 
-const Template: ComponentStory<typeof Packages> = (args) => <Packages />;
+const Template: ComponentStory<typeof RecipesPage> = (args) => <RecipesPage />;
 
 export const PackagesDark = Template.bind({});
 PackagesDark.args = {};

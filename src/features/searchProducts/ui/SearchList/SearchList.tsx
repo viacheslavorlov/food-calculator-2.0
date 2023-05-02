@@ -6,13 +6,13 @@ import {ProductCard} from '../../../../entities/Products/ui/ProductCard/ProductC
 import {useAppSelector} from '../../../../store/hooks';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
 
-interface SearchListPrors {
+interface SearchListProps {
 	className?: string;
 	products: IProduct[];
 	idList: number[];
 }
 
-export const SearchList = memo((props: SearchListPrors) => {
+export const SearchList = memo((props: SearchListProps) => {
 	const {
 		className,
 		products,

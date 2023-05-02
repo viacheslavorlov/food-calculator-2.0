@@ -5,7 +5,7 @@ import {Text} from '../../../../shared/ui/Text/Text';
 import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import {useAppDispatch} from '../../../../store/hooks';
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
-import {productsActions} from '../../../Products/model/slice/productsSlice';
+import {productsActions} from '../../../../entities/Products/model/slice/productsSlice';
 import {deleteFrofDB} from '../../model/deleteFromDB/deleteFrofDB';
 
 interface DeleteItemCardProps {

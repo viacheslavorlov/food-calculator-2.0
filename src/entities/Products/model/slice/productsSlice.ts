@@ -2,7 +2,7 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ProductsSliceInterface, IProduct} from '../../../../store/types';
 import {fetchProducts} from '../services/fetchProducts/fetchProducts';
 import {putProduct} from '../services/putProduct/putProduct';
-import {deleteFrofDB} from '../../../DeleteItems/model/deleteFromDB/deleteFrofDB';
+import {deleteFrofDB} from '../../../../features/DeleteItems/model/deleteFromDB/deleteFrofDB';
 
 export const initialState: ProductsSliceInterface = {
 	isLoading: false,
@@ -84,19 +84,7 @@ const productsSlice = createSlice({
 			.addCase(putProduct.rejected, (state: ProductsSliceInterface, action) => {
 				state.error = action.payload;
 			});
-		builder
-			.addCase(deleteFrofDB.pending, (state) => {
-				state.isLoading = true;
-				state.error = undefined;
-			})
-			.addCase(deleteFrofDB.fulfilled, (state: ProductsSliceInterface, action) => {
-				if (action.payload) {
-					state.allProducts.filter(product => product.id !== action.payload);
-				}
-			})
-			.addCase(deleteFrofDB.rejected, (state: ProductsSliceInterface, action) => {
-				state.error = action.error.message;
-			});
+
 	}
 });
 
