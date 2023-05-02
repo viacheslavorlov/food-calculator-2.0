@@ -2,7 +2,6 @@ import {createSlice, PayloadAction} from '@reduxjs/toolkit';
 import {ProductsSliceInterface, IProduct} from '../../../../store/types';
 import {fetchProducts} from '../services/fetchProducts/fetchProducts';
 import {putProduct} from '../services/putProduct/putProduct';
-import {deleteFrofDB} from '../../../../features/DeleteItems/model/deleteFromDB/deleteFrofDB';
 
 export const initialState: ProductsSliceInterface = {
 	isLoading: false,
@@ -37,7 +36,7 @@ const productsSlice = createSlice({
 				if (item.id === action.payload.id) {
 					return {
 						...item,
-						amountCurrent: action.payload.value
+						[action.payload.name]: action.payload.value
 					};
 				}
 				return item;

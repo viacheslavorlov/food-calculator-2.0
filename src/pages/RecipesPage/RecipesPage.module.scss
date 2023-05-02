@@ -1,4 +1,4 @@
-.MainPage {
+.RecipesPage {
     border: 1px solid var(--bg-color-inverted);
     border-radius: 15px;
     padding: 10px;
@@ -9,14 +9,4 @@
     margin: 0 auto;
     width: 98vw;
     transition: all 0.3s;
-}
-
-.cls.result {
-    display: flex;
-    border: var(--green-color);
-}
-
-.SearchList {
-    display: flex;
-    flex-direction: column;
 }

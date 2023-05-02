@@ -1,8 +1,6 @@
 import {AppDispatch} from '../../app/store/store';
 import {IncomeOutcomeSchema} from '../../entities/IncomeOutcome/model/type/IncomeOutcomeTypes';
 import {SearchProductsSchema} from '../../features/searchProducts/model/type/SearchProductsSchema';
-import {RecipeSchema} from '../../features/recipies/model/type/RecipeShema';
-import {recipesApi} from '../../features/recipies/model/service/fetchAllRecipes';
 import {rtkApi} from '../../shared/helpers/api/rtkApi';
 
 export enum Metrics {

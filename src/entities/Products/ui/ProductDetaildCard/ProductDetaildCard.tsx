@@ -27,7 +27,6 @@ const ProductDetaildCard = memo((props: IProduct) => {
 
 	const onPriceChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
-		const name = e.target.name;
 		if (!Number.isNaN(value)) {
 			if (value === 0) {
 				setProductPrice(0);
@@ -35,7 +34,7 @@ const ProductDetaildCard = memo((props: IProduct) => {
 			if (value > 0) {
 				setProductPrice(value);
 			}
-			dispatch(productsActions.changeProductData({name, value, id}));
+			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			dispatch(putProduct({
 				id,
 				metric,
@@ -57,7 +56,7 @@ const ProductDetaildCard = memo((props: IProduct) => {
 			if (value > 0) {
 				setProductAmountInOnePack(value);
 			}
-			dispatch(productsActions.changeProductData({name, value, id}));
+			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 		}
 	};
 
@@ -74,7 +73,7 @@ const ProductDetaildCard = memo((props: IProduct) => {
 			if (value > 0) {
 				setProductCurrentAmount(value);
 			}
-			dispatch(productsActions.changeProductData({name, value, id}));
+			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 		}
 	};
 
@@ -94,7 +93,6 @@ const ProductDetaildCard = memo((props: IProduct) => {
 			<div className={cls.inputBlock}>
 				<Text className={cls.text} content="В упаковке: "/>
 				<Input
-					className={cls.input}
 					onChange={onPackAmountChangeHandler}
 					value={productAmountInOnePack} name="amountInOnePack"/>
 				<Text content={metric} />
@@ -103,7 +101,6 @@ const ProductDetaildCard = memo((props: IProduct) => {
 				<Text className={cls.text} content="Израсходовано: "/>
 				<Input
 					placeholder={`... ${metric} израсходовано`}
-					className={cls.input}
 					value={productCurrentAmount || ''}
 					onChange={onCurrentAmountChangeHandler}
 					name="amountCurrent"

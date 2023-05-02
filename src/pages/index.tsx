@@ -10,6 +10,6 @@ export {
 	AddNewItemsAsync as AddNewItems,
 	DeleteItemsAsync as DeleteItems,
 	MainPageAsync as MainPage,
-	RecipesPageAsync as Packages,
+	RecipesPageAsync as RecipesPage,
 	PageNotFoundAsync as PageNotFound
 };

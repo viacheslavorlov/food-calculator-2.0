@@ -17,8 +17,8 @@ export const links = [
 	},
 	{
 		Icon: Packages,
-		to: 'package',
-		title: 'Список упаковок',
+		to: 'recipes',
+		title: 'Список рецептов',
 	},
 	{
 		Icon: Delete,

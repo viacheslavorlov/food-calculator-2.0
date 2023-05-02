@@ -8,8 +8,13 @@ export const recipesApi = rtkApi.injectEndpoints({
 				url: '/recipes'
 			})
 		}),
+		getRecipeById: build.query<IRecipe, number>({
+			query: (id) => ({
+				url: `/recipes/${id}`
+			})
+		})
 	}),
 	overrideExisting: false,
 });
 
-export const {useGetAllRecipesQuery} = recipesApi;
+export const {useGetAllRecipesQuery, useGetRecipeByIdQuery} = recipesApi;

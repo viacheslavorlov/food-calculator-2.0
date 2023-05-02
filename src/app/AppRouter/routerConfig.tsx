@@ -1,7 +1,7 @@
-import {AddNewItems, DeleteItems, MainPage, Packages, PageNotFound} from '../../pages';
+import {AddNewItems, DeleteItems, MainPage, PageNotFound, RecipesPage} from '../../pages';
 import {ReactNode} from 'react';
 
-export type Paths = '/' | '/package' | '/new-item' | '/delete-item' | '*';
+export type Paths = '/' | '/recipes' | '/new-item' | '/delete-item' | '*';
 
 export const routerConfig: {path: Paths, element: ReactNode}[] = [
 	{
@@ -9,8 +9,8 @@ export const routerConfig: {path: Paths, element: ReactNode}[] = [
 		element: <MainPage/>
 	},
 	{
-		path: '/package',
-		element: <Packages/>
+		path: '/recipes',
+		element: <RecipesPage/>
 	},
 	{
 		path: '/new-item',

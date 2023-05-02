@@ -1,3 +1,19 @@
 .RecipeCard {
+    display: block;
+    width: 80vw;
+    border-radius: 8px;
+    padding: 8px;
+}
 
+.cardHeader {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.separator {
+    height: 2px;
+    background-color: var(--border-color);
+    border-radius: 1px;
 }

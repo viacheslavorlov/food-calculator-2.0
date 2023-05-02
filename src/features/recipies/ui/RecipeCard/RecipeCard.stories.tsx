@@ -1,7 +1,6 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ThemeDecorator} from 'shared/config/themeDecorator/themeDecorator';
-import {Theme} from 'app/providers/TemeProvider';
-import {StoreDecorator} from 'shared/config/StoreDecorator/StoreDecorator';
+import {ComponentStory, Meta} from '@storybook/react';
+import {ThemeDecorator} from '../../../../shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from '../../../../widgets/themeSwitcher/teme/temeConsts';
 import {RecipeCard} from './RecipeCard';
 
 export default {
@@ -10,14 +9,29 @@ export default {
 	argTypes: {
 		background: {control: 'background'},
 	},
-} as ComponentMeta<typeof RecipeCard>;
+} as Meta<typeof RecipeCard>;
 
 const Template: ComponentStory<typeof RecipeCard> = (args) => <RecipeCard {...args} />;
 
+const recipe = {
+	recipeName: 'Название рецепта',
+	id: 1234,
+	ingredients: [
+		{
+			name: 'первый ингредиент',
+			id: 12345, metric: 'г',
+			price: 100,
+			timesUsed: 10,
+			amountCurrent: 0,
+			amountInOnePack: 1000
+		}
+	],
+	timesUsed: 12
+};
 export const LightRecipeCard = Template.bind({});
-LightRecipeCard.args = {};
+LightRecipeCard.args = {recipe};
 LightRecipeCard.decorators = [];
 
 export const DarkRecipeCard = Template.bind({});
-DarkRecipeCard.args = {};
-DarkRecipeCard.decorators = [ThemeDecorator(Theme.DARK)];
+DarkRecipeCard.args = {recipe};
+DarkRecipeCard.decorators = [ThemeDecorator(ThemeConsts.dark)];

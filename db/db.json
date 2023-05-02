@@ -1,104 +1,134 @@
 {
-	"expenses": [
-		{
-			"id": 1234,
-			"date": "2023.03.23",
-			"amount": 324
-		}
-	],
-	"income": [
-		{
-			"id": 1234,
-			"date": "2023.03.23",
-			"amount": 326
-		}
-	],
-	"products": [
-		{
-			"name": "Яйцо",
-			"price": 100,
-			"amountInOnePack": 10,
-			"metric": "шт",
-			"amountCurrent": 0,
-			"id": 123456789,
-			"timesUsed": 3
-		},
-		{
-			"name": "Молоко",
-			"price": 80,
-			"amountInOnePack": 900,
-			"metric": "мл",
-			"amountCurrent": 0,
-			"id": 123456785,
-			"timesUsed": 7
-		},
-		{
-			"name": "Мука",
-			"price": 120,
-			"amountInOnePack": 2000,
-			"metric": "г",
-			"amountCurrent": 0,
-			"id": 123456781,
-			"timesUsed": 7
-		},
-		{
-			"name": "сыр",
-			"id": 1679601132492,
-			"price": 600,
-			"metric": "г",
-			"amountInOnePack": 1000,
-			"amountCurrent": 0,
-			"timesUsed": 5
-		},
-		{
-			"name": "чечел",
-			"id": 1682629882313,
-			"price": 234,
-			"metric": "г",
-			"amountInOnePack": 1000,
-			"amountCurrent": 0,
-			"timesUsed": 3
-		},
-		{
-			"name": "масло",
-			"id": 1682793359785,
-			"price": 190,
-			"metric": "г",
-			"amountInOnePack": 180,
-			"amountCurrent": 0,
-			"timesUsed": 0
-		}
-	],
-	"recipes": [
-		{
-			"recipeName": "Блины",
-			"id": 926481237,
-			"ingredients": [
-				{
-					"name": "Яйцо",
-					"id": 123456789,
-					"metric": "шт",
-					"price": 100,
-					"amountCurrent": 2,
-					"amountInOnePack": 10
-				},
-				{
-					"name": "Молоко",
-					"id": 123456785,
-					"metric": "мл",
-					"price": 80,
-					"amountCurrent": 400,
-					"amountInOnePack": 900
-				},
-				{
-					"name": "Мука",
-					"id": 123456781,
-					"metric": "г",
-					"price": 90,
-					"amountCurrent": 200,
-					"amountInOnePack": 2000
-				}
-			]
-		}
-	]
+  "expenses": [
+    {
+      "id": 1234,
+      "date": "2023.03.23",
+      "amount": 324
+    }
+  ],
+  "income": [
+    {
+      "id": 1234,
+      "date": "2023.03.23",
+      "amount": 326
+    }
+  ],
+  "products": [
+    {
+      "id": 123456789,
+      "metric": "шт",
+      "name": "Яйцо",
+      "amountCurrent": 1,
+      "amountInOnePack": 10,
+      "price": 100,
+      "timesUsed": 6
+    },
+    {
+      "name": "Молоко",
+      "price": 80,
+      "amountInOnePack": 900,
+      "metric": "мл",
+      "amountCurrent": 0,
+      "id": 123456785,
+      "timesUsed": 14
+    },
+    {
+      "name": "Мука",
+      "price": 120,
+      "amountInOnePack": 2000,
+      "metric": "г",
+      "amountCurrent": 0,
+      "id": 123456781,
+      "timesUsed": 11
+    },
+    {
+      "name": "сыр",
+      "id": 1679601132492,
+      "price": 600,
+      "metric": "г",
+      "amountInOnePack": 1000,
+      "amountCurrent": 0,
+      "timesUsed": 8
+    },
+    {
+      "name": "чечел",
+      "id": 1682629882313,
+      "price": 234,
+      "metric": "г",
+      "amountInOnePack": 1000,
+      "amountCurrent": 0,
+      "timesUsed": 4
+    },
+    {
+      "name": "масло",
+      "id": 1682793359785,
+      "price": 190,
+      "metric": "г",
+      "amountInOnePack": 180,
+      "amountCurrent": 0,
+      "timesUsed": 0
+    }
+  ],
+  "recipes": [
+    {
+      "recipeName": "Блины",
+      "id": 926481237,
+      "ingredients": [
+        {
+          "name": "Яйцо",
+          "id": 123456789,
+          "metric": "шт",
+          "price": 100,
+          "amountCurrent": 2,
+          "amountInOnePack": 10
+        },
+        {
+          "name": "Молоко",
+          "id": 123456785,
+          "metric": "мл",
+          "price": 80,
+          "amountCurrent": 400,
+          "amountInOnePack": 900
+        },
+        {
+          "name": "Мука",
+          "id": 123456781,
+          "metric": "г",
+          "price": 90,
+          "amountCurrent": 200,
+          "amountInOnePack": 2000
+        }
+      ]
+    },
+    {
+      "recipeName": "Оладушки",
+      "id": 926481237,
+      "ingredients": [
+        {
+          "name": "Яйцо",
+          "id": 123456789,
+          "metric": "шт",
+          "price": 100,
+          "amountCurrent": 2,
+          "amountInOnePack": 10
+        },
+        {
+          "name": "Молоко",
+          "id": 123456785,
+          "metric": "мл",
+          "price": 80,
+          "amountCurrent": 400,
+          "amountInOnePack": 900
+        },
+        {
+          "name": "Мука",
+          "id": 123456781,
+          "metric": "г",
+          "price": 90,
+          "amountCurrent": 200,
+          "amountInOnePack": 2000
+        }
+      ]
+    }
+  ]
 }

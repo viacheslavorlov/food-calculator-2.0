@@ -1,9 +1,10 @@
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
 import cls from './RecipeList.module.scss';
 import {memo, ReactNode} from 'react';
-import {useGetAllRecipesQuery} from '../../model/service/fetchAllRecipes';
+import {useGetAllRecipesQuery} from '../../model/service/recipesApi';
 import {Text} from '../../../../shared/ui/Text/Text';
-import ProductDetaildCard from '../../../../entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
+import {RecipeCard} from '../RecipeCard/RecipeCard';
+import {LoadingPage} from '../../../../widgets/LoadingPage/LoadingPage';
 
 interface RecipeCardProps {
 	className?: string;
@@ -17,14 +18,24 @@ export const RecipeList = memo((props: RecipeCardProps) => {
 
 	let content: ReactNode;
 
+	if (isLoading) {
+		return (
+			<div className={classNames(cls.RecipeList, className)}>
+				<LoadingPage/>
+			</div>);
+	}
+
 	if (!data) {
 		content = <Text title={'Рецепты не найдены'}/>;
 	} else {
-		content = data.map(recipe => <ProductDetaildCard />);
+		content = data.map(recipe => <RecipeCard key={recipe.recipeName} recipe={recipe}/>);
+	}
+	if (isError) {
+		return <Text title={'Ошибка при загрузке рецептов'} />;
 	}
 
 	return (
-		<div className={classNames(cls.RecipeCard, className)}>
+		<div className={classNames(cls.RecipeList, className)}>
 			{content}
 		</div>
 	);
