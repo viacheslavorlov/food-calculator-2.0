@@ -1,7 +1,6 @@
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
 import cls from './RecipeCard.module.scss';
 import {memo, useState} from 'react';
-import {IRecipe} from '../../model/type/RecipeShema';
 import {Text} from '../../../../shared/ui/Text/Text';
 import {List} from '../../../../shared/ui/List/List';
 import {IProduct} from '../../../../store/types';
@@ -9,6 +8,7 @@ import {Button, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import ProductDetaildCard from '../../../../entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
 import {finalPrice} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
 import {useGetRecipeByIdQuery} from '../../model/service/recipesApi';
+import {IRecipe} from '../../../../entities/recipe/type/recipeType';
 
 interface RecipeCardProps {
 	className?: string;

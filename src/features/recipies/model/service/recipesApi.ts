@@ -1,5 +1,5 @@
 import {rtkApi} from '../../../../shared/helpers/api/rtkApi';
-import {IRecipe} from '../type/RecipeShema';
+import {IRecipe} from '../../../../entities/recipe/type/recipeType';
 
 export const recipesApi = rtkApi.injectEndpoints({
 	endpoints: (build) => ({

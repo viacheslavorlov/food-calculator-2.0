@@ -1,4 +1,4 @@
-import {IProduct} from '../../../../store/types';
+import {IProduct} from '../../../store/types';
 
 export interface IRecipe {
 	timesUsed: number;
@@ -6,9 +6,10 @@ export interface IRecipe {
 	recipeName: string;
 	ingredients: IProduct[];
 }
+
 export interface RecipeSchema {
 	recipes: IRecipe[];
-	currentRecipe: IRecipe;
 	isLoading: boolean;
 	error: undefined | string;
+	currentRecipe: IRecipe;
 }
