@@ -3,10 +3,10 @@ import {DeleteItemsAsync} from './DeleteItemPage/ui/DeleteItemsAsync';
 import {MainPageAsync} from './MainPage/MainPageAsync';
 import {RecipesPageAsync} from './RecipesPage/RecipesPageAsync';
 import {PageNotFoundAsync} from './PageNotFound/PageNotFoundAsync';
-import {LoadingPage} from '../widgets/LoadingPage/LoadingPage';
+import {LoadingPageAsync} from './LoadingPage/LoadingPageAsync';
 
 export {
-	LoadingPage,
+	LoadingPageAsync as LoadingPage,
 	AddNewItemsAsync as AddNewItems,
 	DeleteItemsAsync as DeleteItems,
 	MainPageAsync as MainPage,

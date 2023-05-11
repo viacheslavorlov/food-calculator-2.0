@@ -8,6 +8,8 @@ import {putProduct} from '../../model/services/putProduct/putProduct';
 import {calculatePriceOfProduct} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
 import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import {IProduct} from '../../../../store/types';
+import {classNames} from '../../../../shared/helpers/classNames/classNames';
+import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
 
 
 const ProductDetaildCard = memo((props: IProduct) => {
@@ -77,55 +79,56 @@ const ProductDetaildCard = memo((props: IProduct) => {
 		}
 	};
 
-
 	return (
-		<div className={cls.ProductDetaildCard}>
-			<div className={cls.inputBlock}>
-				<Text className={cls.space} title={name}/>
-			</div>
-			<div className={cls.inputBlock}>
-				<Text className={cls.text} content="Цена: "/>
-				<Input
-					className={cls.input}
-					value={productPrice}
-					onChange={onPriceChangeHandler} name="price"/>
-			</div>
-			<div className={cls.inputBlock}>
-				<Text className={cls.text} content="В упаковке: "/>
-				<Input
-					onChange={onPackAmountChangeHandler}
-					value={productAmountInOnePack} name="amountInOnePack"/>
-				<Text content={metric} />
-			</div>
-			<div className={cls.inputBlock}>
-				<Text className={cls.text} content="Израсходовано: "/>
-				<Input
-					placeholder={`... ${metric} израсходовано`}
-					value={productCurrentAmount || ''}
-					onChange={onCurrentAmountChangeHandler}
-					name="amountCurrent"
-				/>
-				<Text content={metric} />
-			</div>
-			<div className={cls.inputBlock}>
-				<Text
-					className={cls.result}
-					content={'Стоимость израсходованного продукта: ' +
+		<AppearAnimation initOnRender>
+			<div className={classNames(cls.ProductDetaildCard)}>
+				<div className={cls.inputBlock}>
+					<Text className={cls.space} title={name}/>
+				</div>
+				<div className={cls.inputBlock}>
+					<Text className={cls.text} content="Цена: "/>
+					<Input
+						className={cls.input}
+						value={productPrice}
+						onChange={onPriceChangeHandler} name="price"/>
+				</div>
+				<div className={cls.inputBlock}>
+					<Text className={cls.text} content="В упаковке: "/>
+					<Input
+						className={cls.input}
+						onChange={onPackAmountChangeHandler}
+						value={productAmountInOnePack} name="amountInOnePack"/>
+				</div>
+				<div className={cls.inputBlock}>
+					<Text content="Израсходовано: "/>
+					<Input
+						className={cls.input}
+						placeholder={`... ${metric} израсходовано`}
+						value={productCurrentAmount || ''}
+						onChange={onCurrentAmountChangeHandler}
+						name="amountCurrent"
+					/>
+				</div>
+				<div className={cls.inputBlock}>
+					<Text
+						className={cls.result}
+						content={'Стоимость израсходованного продукта: ' +
 					calculatePriceOfProduct(
 						productPrice,
 						productCurrentAmount,
 						productAmountInOnePack
 					).toFixed(2) + 'р'}/>
-				<Button
-					className={cls.deleteBtn}
-					variant={ButtonVariants.rounded}
-					background={ButtonBackground.red}
-					onClick={() => onDeleteProduct(id)}
-				>
+					<Button
+						className={cls.deleteBtn}
+						variant={ButtonVariants.rounded}
+						background={ButtonBackground.red}
+						onClick={() => onDeleteProduct(id)}
+					>
 					Удалить
-				</Button>
+					</Button>
+				</div>
 			</div>
-		</div>
+		</AppearAnimation>
 	);
 });
 

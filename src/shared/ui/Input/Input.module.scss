@@ -1,7 +1,8 @@
 .Input {
-    width: 80px;
-    max-width: 100px;
-    margin: 0 auto;
+    min-width: 90px;
+    max-width: 200px;
+    //width: 50%;
+    //margin: 0 auto;
     padding: 0 10px;
     border-radius: 15px;
     font-size: var(--font-s);
@@ -10,4 +11,10 @@
 .Input:focus {
     background-color: var(--green-color);
     color: var(--white-color);
+}
+
+@media screen and (device-width: 400px) {
+    .Input {
+        min-width: 50px;
+    }
 }

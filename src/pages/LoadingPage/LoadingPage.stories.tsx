@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {LoadingPage} from './LoadingPage';
+import LoadingPage from './LoadingPage';
 import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../themeSwitcher/teme/temeConsts';
+import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
 
 export default {
 	title: 'Pages/LoadingPage',

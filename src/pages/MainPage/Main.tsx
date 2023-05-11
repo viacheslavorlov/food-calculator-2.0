@@ -41,6 +41,7 @@ const MainPage = memo(() => {
 				<ResultValue list={activeProducts} className={cls.result}/>
 			</div>
 		</>
+		
 	);
 });
 

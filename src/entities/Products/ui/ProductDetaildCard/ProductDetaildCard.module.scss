@@ -1,9 +1,11 @@
 .ProductDetaildCard {
+    position: relative;
+    //opacity: 0;
     display: flex;
     flex-direction: column;
     margin-top: 10px;
     padding: 5px;
-    width: 80vw;
+    width: 90vw;
     align-items: center;
     transition: all 0.3s;
     border: solid 1px var(--border-color);
@@ -11,18 +13,20 @@
 }
 
 .inputBlock {
+    width: 100%;
     margin-top: 5px;
-    width: 75vw;
     display: flex;
-    gap: 10px;
-    //justify-content: flex-start;
-    //align-items: baseline;
+    justify-content: space-between;
+    align-items: baseline;
 }
 
 .space {
     margin-right: 10px;
 }
 
+.input {
+    flex-basis: 40%;
+}
 
 .result {
     display: flex;
@@ -32,10 +36,15 @@
     border-radius: 6px;
     padding: 4px;
     margin-right: 10px;
+    transition: all 0.3s;
 }
 
 .deleteBtn {
     margin-left: auto;
     align-self: center;
     justify-self: center;
+}
+
+.start {
+    opacity: 1;
 }

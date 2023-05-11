@@ -73,7 +73,9 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@react-spring/web": "^9.7.2",
     "@reduxjs/toolkit": "^1.9.2",
+    "@types/react-transition-group": "^4.4.6",
     "axios": "^1.3.4",
     "css-loader-shorter-classnames": "^2.0.1",
     "dexie": "^3.2.3",
@@ -82,6 +84,7 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
+    "react-transition-group": "^4.4.5",
     "typescript-plugin-css-modules": "^4.2.1"
   }
 }

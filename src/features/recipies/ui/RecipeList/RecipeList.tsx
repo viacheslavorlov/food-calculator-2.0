@@ -4,7 +4,7 @@ import {memo, ReactNode} from 'react';
 import {useGetAllRecipesQuery} from '../../model/service/recipesApi';
 import {Text} from '../../../../shared/ui/Text/Text';
 import {RecipeCard} from '../RecipeCard/RecipeCard';
-import {LoadingPage} from '../../../../widgets/LoadingPage/LoadingPage';
+import {LoadingPage} from '../../../../pages';
 
 interface RecipeCardProps {
 	className?: string;
