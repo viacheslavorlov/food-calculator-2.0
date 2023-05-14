@@ -5,23 +5,25 @@ import {incomeOutcomeSliceReducer} from '../../../entities/IncomeOutcome/model/s
 import {searchReducer} from '../../../features/searchProducts/model/slice/searchProductSlice';
 import {recipesApi} from '../../../features/recipies/model/service/recipesApi';
 import {rtkApi} from '../../../shared/helpers/api/rtkApi';
-import {setupListeners} from '@reduxjs/toolkit/query';
+import {recipeReducer} from '../../../features/recipies';
 
-export const store  = configureStore({
+
+export const rootReducer = combineReducers({
+	products: productsReducer,
+	newProduct: newProductReducer,
+	incomeOutcome: incomeOutcomeSliceReducer,
+	searchProducts: searchReducer,
+	recipe: recipeReducer,
+	[recipesApi.reducerPath]: recipesApi.reducer
+});
+
+export const store = (initialState?: ReturnType<typeof rootReducer>) => configureStore({
 	devTools: true,
-	reducer: combineReducers({
-		products: productsReducer,
-		newProduct: newProductReducer,
-		incomeOutcome: incomeOutcomeSliceReducer,
-		searchProducts: searchReducer,
-		[recipesApi.reducerPath]: recipesApi.reducer
-	}),
+	preloadedState: initialState,
+	reducer: rootReducer,
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(rtkApi.middleware).concat(recipesApi.middleware),
 });
 
-setupListeners(store.dispatch);
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch;
+export type AppDispatch = ReturnType<typeof store>['dispatch'];
 

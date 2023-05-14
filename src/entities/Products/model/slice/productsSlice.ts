@@ -52,16 +52,16 @@ const productsSlice = createSlice({
 	},
 	extraReducers: builder => {
 		builder
-			.addCase(fetchProducts.pending, (state: ProductsSliceInterface) => {
+			.addCase(fetchProducts.pending, (state) => {
 				state.isLoading = true;
 			})
-			.addCase(fetchProducts.fulfilled, (state: ProductsSliceInterface, action) => {
+			.addCase(fetchProducts.fulfilled, (state, action: PayloadAction<IProduct[]>) => {
 				state.isLoading = false;
 				if (action.payload) {
 					state.allProducts = action.payload;
 				}
 			})
-			.addCase(fetchProducts.rejected, (state: ProductsSliceInterface, action) => {
+			.addCase(fetchProducts.rejected, (state, action) => {
 				state.isLoading = false;
 				state.error = action.payload;
 			});

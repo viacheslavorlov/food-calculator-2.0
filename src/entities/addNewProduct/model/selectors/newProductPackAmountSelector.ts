@@ -1,3 +1,3 @@
-import {RootState} from '../../../../app/store/store';
+import {StateSchema} from '../../../../store/types';
 
-export const newProductPackAmountSelector = (state: RootState) => state.newProduct.newProduct.amountInOnePack;
+export const newProductPackAmountSelector = (state: StateSchema) => state.newProduct.newProduct.amountInOnePack;

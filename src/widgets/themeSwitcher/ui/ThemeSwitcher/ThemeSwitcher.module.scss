@@ -12,6 +12,12 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column-reverse;
+
+    svg {
+        height: 40px;
+        width: 40px;
+    }
+
     svg:hover {
         animation: rotate 2s ease-in-out infinite;
     }
@@ -21,10 +27,7 @@
     fill:  #ffae69
 }
 
-svg {
-    height: 40px;
-    width: 40px;
-}
+
 
 @keyframes rotate {
     0% {

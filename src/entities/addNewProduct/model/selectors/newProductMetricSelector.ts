@@ -1,3 +1,3 @@
-import {RootState} from '../../../../app/store/store';
+import {StateSchema} from '../../../../store/types';
 
-export const newProductMetricSelector = (state: RootState) => state.newProduct.newProduct.metric;
+export const newProductMetricSelector = (state: StateSchema) => state.newProduct.newProduct.metric;

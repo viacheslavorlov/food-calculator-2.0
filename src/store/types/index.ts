@@ -2,6 +2,7 @@ import {AppDispatch} from '../../app/store/store';
 import {IncomeOutcomeSchema} from '../../entities/IncomeOutcome/model/type/IncomeOutcomeTypes';
 import {SearchProductsSchema} from '../../features/searchProducts/model/type/SearchProductsSchema';
 import {rtkApi} from '../../shared/helpers/api/rtkApi';
+import {RecipeSchema} from '../../entities/recipe';
 
 export enum Metrics {
 	gramm = 'г',
@@ -39,6 +40,7 @@ export interface StateSchema {
 	newProduct: NewProductSliceSchema;
 	incomeOutcome: IncomeOutcomeSchema;
 	searchProducts: SearchProductsSchema;
+	recipe: RecipeSchema;
 	[rtkApi.reducerPath]: ReturnType<typeof rtkApi.reducer>;
 }
 

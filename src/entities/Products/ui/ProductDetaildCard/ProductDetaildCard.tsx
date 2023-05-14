@@ -11,8 +11,12 @@ import {IProduct} from '../../../../store/types';
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
 import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
 
+interface ProductDetaildCardProps {
+	product: IProduct;
+	onChangeIngredient?: (product: IProduct) => void;
+}
 
-const ProductDetaildCard = memo((props: IProduct) => {
+const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCardProps) => {
 	const {
 		id,
 		metric,
@@ -21,7 +25,7 @@ const ProductDetaildCard = memo((props: IProduct) => {
 		amountInOnePack,
 		amountCurrent = 0,
 		timesUsed
-	} = props;
+	} = product;
 	const dispatch = useAppDispatch();
 	const [productPrice, setProductPrice] = useState<number>(price || 0);
 	const [productCurrentAmount, setProductCurrentAmount] = useState<number>(amountCurrent || 0);
@@ -46,6 +50,14 @@ const ProductDetaildCard = memo((props: IProduct) => {
 				price: value,
 				timesUsed
 			}));
+			if (onChangeIngredient) {
+				onChangeIngredient({
+					...product,
+					[e.target.name]: value,
+					amountCurrent: productCurrentAmount,
+					amountInOnePack: productAmountInOnePack,
+				});
+			}
 		}
 	};
 
@@ -59,6 +71,14 @@ const ProductDetaildCard = memo((props: IProduct) => {
 				setProductAmountInOnePack(value);
 			}
 			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
+			if (onChangeIngredient) {
+				onChangeIngredient({
+					...product,
+					[e.target.name]: value,
+					amountCurrent: productCurrentAmount,
+					price: productPrice
+				});
+			}
 		}
 	};
 
@@ -76,7 +96,16 @@ const ProductDetaildCard = memo((props: IProduct) => {
 				setProductCurrentAmount(value);
 			}
 			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
+			if (onChangeIngredient) {
+				onChangeIngredient({
+					...product,
+					amountCurrent: value,
+					amountInOnePack: productAmountInOnePack,
+					price: productPrice
+				});
+			}
 		}
+
 	};
 
 	return (

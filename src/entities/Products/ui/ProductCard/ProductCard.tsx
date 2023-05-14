@@ -6,6 +6,7 @@ import {Button, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import {useAppDispatch} from '../../../../store/hooks';
 import {productsActions} from '../../model/slice/productsSlice';
 import {addViewsCount} from '../../model/services/addViewsCount/addViewsCount';
+import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
 
 interface ProductCardProps {
 	className?: string;
@@ -28,7 +29,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
 	}, [dispatch]);
 
 	return (
-		<div className={classNames(cls.ProductCard, className)}>
+		<AppearAnimation initOnRender className={classNames(cls.ProductCard, className)}>
 			<Text content={name}/>
 			<hr className={cls.line}/>
 			<Button
@@ -38,7 +39,7 @@ export const ProductCard = memo((props: ProductCardProps) => {
 			>
 				Добавить
 			</Button>
-		</div>
+		</AppearAnimation>
 	);
 });
 

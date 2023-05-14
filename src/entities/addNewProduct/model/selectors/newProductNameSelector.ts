@@ -1,3 +1,3 @@
-import {RootState} from '../../../../app/store/store';
+import {StateSchema} from '../../../../store/types';
 
-export const newProductNameSelector = (state: RootState) => state.newProduct.newProduct.name;
+export const newProductNameSelector = (state: StateSchema) => state.newProduct.newProduct.name;

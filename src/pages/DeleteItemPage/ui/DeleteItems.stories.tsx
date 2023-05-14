@@ -2,8 +2,7 @@ import {ComponentMeta, ComponentStory} from '@storybook/react';
 import DeleteItems from './DeleteItems';
 import {ThemeDecorator} from '../../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';
-import {StoreProvider} from '../../../app/store/StoreProvider/StoreProvider';
-import {store} from '../../../app/store/store';
+import {StoreDecorator} from '../../../shared/helpers/storybookDecorators/StorybookDecorator';
 
 export default {
 	title: 'Pages/DeleteItems',
@@ -11,7 +10,7 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [(story) => <StoreProvider store={store}>{story()}</StoreProvider>]
+	decorators: [StoreDecorator({})]
 } as ComponentMeta<typeof DeleteItems>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

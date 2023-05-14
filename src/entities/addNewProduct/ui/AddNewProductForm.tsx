@@ -14,6 +14,7 @@ import {
 	newProductPackAmountSelector
 } from '../model/selectors/newProductPackAmountSelector';
 import {addProductToDB} from '../model/services/addProductToDB';
+import {HStack} from '../../../shared/ui/Stack';
 
 interface AddNewProductFormProps {
 	className?: string;
@@ -62,30 +63,37 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 
 	return (
 		<div className={classNames(cls.AddNewProductForm, className)}>
-			<Text title={'Добавить новый продукт'}/>
-			<Text content={'Название продукта:'}/>
+			<Text className={cls.text} title={'Добавить новый продукт'}/>
+			<HStack max justify={'between'} className={cls.wrap}>
+				<Text className={cls.text} content={'Название продукта:'}/>
+				<Input
+					className={cls.input}
+					value={name}
+					type="text"
+					onChange={onNameChange}
+					placeholder="Введите название продукта"
+				/>
+			</HStack>
+
+			<Text className={cls.text} content={'Единицы измерения:'}/>
 			<Input
-				value={name}
-				type="text"
-				onChange={onNameChange}
-				placeholder="Введите название продукта"
-			/>
-			<Text content={'Единицы измерения:'}/>
-			<Input
+				className={cls.input}
 				value={metric}
 				type="text"
 				onChange={onMetricChange}
 				placeholder="Введите единицы измерения продукта"
 			/>
-			<Text content={'Цена за упаковку:'}/>
+			<Text className={cls.text} content={'Цена за упаковку:'}/>
 			<Input
+				className={cls.input}
 				value={price || ''}
 				onInput={onPriceChange}
 				type="number"
 				placeholder="Введите цену за упаковку"
 			/>
-			<Text content={'Количество в одной упаковке:'}/>
+			<Text className={cls.text} content={'Количество в одной упаковке:'}/>
 			<Input
+				className={cls.input}
 				value={packAmount || ''}
 				onChange={onPackAmountChange}
 				type="number"

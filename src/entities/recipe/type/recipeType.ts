@@ -8,8 +8,8 @@ export interface IRecipe {
 }
 
 export interface RecipeSchema {
-	recipes: IRecipe[];
 	isLoading: boolean;
-	error: undefined | string;
-	currentRecipe: IRecipe;
+	error: string | undefined;
+	recipes: IRecipe[];
+	currentRecipe?: IRecipe;
 }

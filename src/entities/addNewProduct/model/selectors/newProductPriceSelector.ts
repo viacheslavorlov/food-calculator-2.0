@@ -1,3 +1,3 @@
-import {RootState} from '../../../../app/store/store';
+import {StateSchema} from '../../../../store/types';
 
-export const newProductPriceSelector = (state: RootState) => state.newProduct.newProduct.price;
+export const newProductPriceSelector = (state: StateSchema) => state.newProduct.newProduct.price;
