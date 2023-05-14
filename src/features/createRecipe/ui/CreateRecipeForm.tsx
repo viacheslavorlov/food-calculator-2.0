@@ -19,14 +19,13 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		className
 	} = props;
 	const [recipeName, setRecipeName] = useState('');
-	const activeProducts = useAppSelector(getActiveProductsSelector);
-	const [createRecipe] = useCreateRecipeMutation();
+
 	const onInputHandler = () => (e: ChangeEvent<HTMLInputElement>) => {
 		setRecipeName(e.target.value);
 	};
 	const newRecipe: IRecipe = {
 		id: Date.now(),
-		ingredients: activeProducts,
+		ingredients: [],
 		recipeName,
 		timesUsed: 0
 	};
@@ -37,7 +36,7 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 			.some(ingredient => ingredient.amountCurrent === 0);
 
 		if (!unUsedItems) {
-			createRecipe(newRecipe);
+			// createRecipe(newRecipe);
 			setRecipeName('');
 		} else {
 			alert('не все включенные в рецепт ингредиенты используются:' +

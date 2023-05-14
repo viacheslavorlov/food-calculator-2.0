@@ -1,7 +1,8 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import LoadingPage from './LoadingPage';
+import {Meta, StoryFn} from '@storybook/react';
+import {LoadingPage} from './LoadingPage';
 import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
+import {SuspenseDecorator} from '../../shared/helpers/storybookDecorators/SuspenseDecorator';
 
 export default {
 	title: 'Pages/LoadingPage',
@@ -9,9 +10,10 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-} as ComponentMeta<typeof LoadingPage>;
+	decorators: [SuspenseDecorator]
+} as Meta<typeof LoadingPage>;
 
-const Template: ComponentStory<typeof LoadingPage> = (args) => <LoadingPage />;
+const Template: StoryFn<typeof LoadingPage> = (args) => <LoadingPage />;
 
 export const LoadingPageDark = Template.bind({});
 LoadingPageDark.args = {};

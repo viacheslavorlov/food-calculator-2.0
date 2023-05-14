@@ -26,23 +26,20 @@ const searchPropOptions: SelectOption<SearchProp>[] = [
 ];
 
 export const Search = memo((props: SearchProps) => {
-	const searchValue = useAppSelector(searchValueSelector);
-	const searchOrder = useAppSelector(searchOrderSelector);
-	const searchProp = useAppSelector(searchPropSelector);
-	const dispatch = useAppDispatch();
+
 	const {
 		className
 	} = props;
 
 	const onChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
-		dispatch(searchActions.setSearchValue(e.target.value));
+		// dispatch(searchActions.setSearchValue(e.target.value));
 	};
 	const onOrderChange = (value: SearchOrder) => {
-		dispatch(searchActions.setSearchOrder(value));
+		// dispatch(searchActions.setSearchOrder(value));
 	};
 
 	const onSearchPropChange = (value: SearchProp) => {
-		dispatch(searchActions.setSearchProp(value));
+		// dispatch(searchActions.setSearchProp(value));
 	};
 
 	return (
@@ -52,7 +49,7 @@ export const Search = memo((props: SearchProps) => {
 					className={cls.strInput}
 					type="text"
 					placeholder={'Начните вводить название'}
-					value={searchValue}
+					// value={searchValue}
 					onChange={onChangeHandle}
 				/>
 			</div>
@@ -61,7 +58,7 @@ export const Search = memo((props: SearchProps) => {
 				<Select
 					onChange={onOrderChange}
 					optionsVariants={searchOrderOptions}
-					defaultOption={searchOrder}
+					// defaultOption={searchOrder}
 				/>
 			</div>
 			<div className={cls.SearchItem}>
@@ -69,7 +66,7 @@ export const Search = memo((props: SearchProps) => {
 				<Select
 					onChange={onSearchPropChange}
 					optionsVariants={searchPropOptions}
-					defaultOption={searchProp}
+					// defaultOption={searchProp}
 				/>
 			</div>
 

@@ -18,7 +18,7 @@ export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 	const {item, className} = props;
 	const {name, price, amountInOnePack, id} = item;
 	const [displayed, setDisplayed] = useState(false);
-	const dispatch = useAppDispatch();
+
 	const transition = useTransition(displayed, {
 		from: {opacity: 0, x: -100},
 		enter: {opacity: 1, x: 0},
@@ -27,8 +27,7 @@ export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 
 	const onDeleteItem = (itemId: number) => {
 		setDisplayed(false);
-		dispatch(deleteFrofDB(itemId));
-		dispatch(productsActions.deleteProduct(id));
+
 	};
 	return transition((style, item) => (
 		<animated.div style={style}>

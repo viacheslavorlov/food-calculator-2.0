@@ -11,30 +11,31 @@ import {SearchList} from '../../features/searchProducts/ui/SearchList/SearchList
 import {CreateRecipeForm} from '../../features/createRecipe/ui/CreateRecipeForm';
 
 const MainPage = memo(() => {
-	const dispatch = useAppDispatch();
-	const products = useAppSelector(getAllProductsSelector);
-	const activeProducts = useAppSelector(getActiveProductsSelector);
+	// const dispatch = useAppDispatch();
+	// const products = useAppSelector(getAllProductsSelector);
+	// const activeProducts = useAppSelector(getActiveProductsSelector);
 
 	useEffect(() => {
-		dispatch(fetchProducts());
+		// dispatch(fetchProducts());
 	}, []);
-	const activeProductsIDs = activeProducts.map(prod => prod.id);
+	// const activeProductsIDs = activeProducts.map(prod => prod.id);
 
 	return (
 		<>
 			<div className={cls.MainPage}>
+				главная страница
 				<Search/>
-				<SearchList
-					products={products}
-					className={cls.SearchList}
-					idList={activeProductsIDs}
-				/>
-				{activeProducts.map(product => <ProductDetaildCard
-					key={product.id + product.name}
-					product={product}
-				/>)}
-				<CreateRecipeForm />
-				<ResultValue list={activeProducts} className={cls.result}/>
+				{/*<SearchList*/}
+				{/*	products={products}*/}
+				{/*	className={cls.SearchList}*/}
+				{/*	idList={activeProductsIDs}*/}
+				{/*/>*/}
+				{/*{activeProducts.map(product => <ProductDetaildCard*/}
+				{/*	key={product.id + product.name}*/}
+				{/*	product={product}*/}
+				{/*/>)}*/}
+				{/*<CreateRecipeForm />*/}
+				{/*<ResultValue list={activeProducts} className={cls.result}/>*/}
 			</div>
 		</>
 		

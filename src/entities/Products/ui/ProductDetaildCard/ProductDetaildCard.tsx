@@ -26,7 +26,6 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 		amountCurrent = 0,
 		timesUsed
 	} = product;
-	const dispatch = useAppDispatch();
 	const [productPrice, setProductPrice] = useState<number>(price || 0);
 	const [productCurrentAmount, setProductCurrentAmount] = useState<number>(amountCurrent || 0);
 	const [productAmountInOnePack, setProductAmountInOnePack] = useState<number>(amountInOnePack || 0);
@@ -40,16 +39,16 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductPrice(value);
 			}
-			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
-			dispatch(putProduct({
-				id,
-				metric,
-				name,
-				amountCurrent,
-				amountInOnePack,
-				price: value,
-				timesUsed
-			}));
+			// dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
+			// dispatch(putProduct({
+			// 	id,
+			// 	metric,
+			// 	name,
+			// 	amountCurrent,
+			// 	amountInOnePack,
+			// 	price: value,
+			// 	timesUsed
+			// }));
 			if (onChangeIngredient) {
 				onChangeIngredient({
 					...product,
@@ -70,7 +69,7 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductAmountInOnePack(value);
 			}
-			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
+			// dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
 					...product,
@@ -83,7 +82,7 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 	};
 
 	const onDeleteProduct = (id: number) => {
-		dispatch(productsActions.deleteFromActiveList(id));
+		// dispatch(productsActions.deleteFromActiveList(id));
 	};
 
 	const onCurrentAmountChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -95,7 +94,7 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductCurrentAmount(value);
 			}
-			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
+			// dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
 					...product,

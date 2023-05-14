@@ -15,7 +15,6 @@ interface ProductCardProps {
 }
 
 export const ProductCard = memo((props: ProductCardProps) => {
-	const dispatch = useAppDispatch();
 	const {
 		className,
 		name,
@@ -23,10 +22,9 @@ export const ProductCard = memo((props: ProductCardProps) => {
 	} = props;
 
 	const onAddProduct = useCallback((id: number) => {
-		dispatch(addViewsCount(id));
-		dispatch(productsActions.addProductToActive(id));
+		console.log(id);
 
-	}, [dispatch]);
+	}, []);
 
 	return (
 		<AppearAnimation initOnRender className={classNames(cls.ProductCard, className)}>

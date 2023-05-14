@@ -13,7 +13,7 @@
     "test:jest": "jest",
     "test": "jest --config ./jest.config.ts",
     "storybook": "storybook dev",
-    "build-storybook": "build-storybook"
+    "build-storybook": "sb build"
   },
   "author": "viacheslavorlov@gmail.com",
   "license": "ISC",
@@ -27,6 +27,7 @@
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
     "@storybook/addon-mdx-gfm": "^7.0.7",
+    "@storybook/cli": "^7.0.11",
     "@storybook/react": "^7.0.7",
     "@storybook/react-webpack5": "^7.0.7",
     "@storybook/testing-library": "^0.1.0",
@@ -88,5 +89,20 @@
     "react-router-dom": "^6.8.0",
     "react-transition-group": "^4.4.5",
     "typescript-plugin-css-modules": "^4.2.1"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.app",
+        "preset": "iPhone 7"
+      }
+    }
   }
 }

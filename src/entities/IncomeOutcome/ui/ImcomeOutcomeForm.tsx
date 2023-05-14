@@ -14,13 +14,12 @@ export const ImcomeOutcomeForm = memo((props: ImcomeOutcomeFormProps) => {
 		className
 	} = props;
 
-	const income = useSelector(getIncome);
 
 	return (
 		<div className={classNames(cls.ImcomeOutcomeForm, className)}>
 			<Text title={'Доходы, расходы'}/>
 			<ul>
-				{income.map(item => item.date)}
+				{/*{income.map(item => item.date)}*/}
 			</ul>
 		</div>
 	);
