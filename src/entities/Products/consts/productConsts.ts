@@ -1,0 +1,1 @@
+export const PRODUCT_SESSIONSTORAGE_KEY = 'active_products';

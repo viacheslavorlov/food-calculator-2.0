@@ -3,10 +3,7 @@ import {memo, useState} from 'react';
 import {IProduct} from '../../../../store/types';
 import {Text} from '../../../../shared/ui/Text/Text';
 import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
-import {useAppDispatch} from '../../../../store/hooks';
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
-import {productsActions} from '../../../../entities/Products/model/slice/productsSlice';
-import {deleteFrofDB} from '../../model/deleteFromDB/deleteFrofDB';
 import {animated, useTransition} from '@react-spring/web';
 
 interface DeleteItemCardProps {

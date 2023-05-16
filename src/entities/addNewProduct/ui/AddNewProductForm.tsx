@@ -6,7 +6,7 @@ import cls from './AddNewProductForm.module.scss';
 import {db} from '../../../db/db';
 import {Button, ButtonBackground, ButtonVariants} from '../../../shared/ui/Button/Button';
 import {IProduct, Metrics} from '../../../store/types';
-import {HStack} from '../../../shared/ui/Stack';
+import {VStack} from '../../../shared/ui/Stack';
 import {GetProductsDexieTest} from './GetProductsDexieTest/GetProductsDexieTest';
 
 interface AddNewProductFormProps {
@@ -14,10 +14,10 @@ interface AddNewProductFormProps {
 }
 
 export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
-	const [name, setName] = useState('');
-	const [metric, setMetric] = useState('');
-	const [price, setPrice] = useState(0);
-	const [amountInOnePack, setAmountInOnePack] = useState(0);
+	const [name, setName] = useState<string>('');
+	const [metric, setMetric] = useState<string>('');
+	const [price, setPrice] = useState<number>(0);
+	const [amountInOnePack, setAmountInOnePack] = useState<number>(0);
 
 	const onNameChange = (e: FormEvent<HTMLInputElement>) => {
 		setName(e.currentTarget.value);
@@ -45,31 +45,26 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 					amountCurrent: 0,
 					timesUsed: 0
 				};
-
 				const response = await db.products.add(product);
 			} else {
 				alert('Введите корректные данные!');
 			}
 		} catch (e) {
-			console.log(e);
+			alert('Продукт с таким названием уже существет: Измените название продукта');
 		}
-
 	}
 
-
 	return (
-		<div className={classNames(cls.AddNewProductForm, className)}>
+		<VStack max justify={'center'} align={'center'} gap="4" className={classNames(cls.AddNewProductForm, className)}>
 			<Text className={cls.text} title={'Добавить новый продукт'}/>
-			<HStack max justify={'between'} className={cls.wrap}>
-				<Text className={cls.text} content={'Название продукта:'}/>
-				<Input
-					className={cls.input}
-					value={name}
-					type="text"
-					onChange={onNameChange}
-					placeholder="Введите название продукта"
-				/>
-			</HStack>
+			<Text className={cls.text} content={'Название продукта:'}/>
+			<Input
+				className={cls.input}
+				value={name}
+				type="text"
+				onChange={onNameChange}
+				placeholder="Введите название продукта"
+			/>
 
 			<Text className={cls.text} content={'Единицы измерения:'}/>
 			<Input
@@ -104,6 +99,6 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 			</Button>
 
 			<GetProductsDexieTest/>
-		</div>
+		</VStack>
 	);
 });

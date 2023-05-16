@@ -2,9 +2,6 @@ import {ChangeEvent, memo, useState} from 'react';
 import cls from './ProductDetaildCard.module.scss';
 import {Text} from '../../../../shared/ui/Text/Text';
 import {Input} from '../../../../shared/ui/Input/Input';
-import {useAppDispatch} from '../../../../store/hooks';
-import {productsActions} from '../../model/slice/productsSlice';
-import {putProduct} from '../../model/services/putProduct/putProduct';
 import {calculatePriceOfProduct} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
 import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import {IProduct} from '../../../../store/types';
@@ -141,18 +138,18 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 					<Text
 						className={cls.result}
 						content={'Стоимость израсходованного продукта: ' +
-					calculatePriceOfProduct(
-						productPrice,
-						productCurrentAmount,
-						productAmountInOnePack
-					).toFixed(2) + 'р'}/>
+							calculatePriceOfProduct(
+								productPrice,
+								productCurrentAmount,
+								productAmountInOnePack
+							).toFixed(2) + 'р'}/>
 					<Button
 						className={cls.deleteBtn}
 						variant={ButtonVariants.rounded}
 						background={ButtonBackground.red}
 						onClick={() => onDeleteProduct(id)}
 					>
-					Удалить
+						Удалить
 					</Button>
 				</div>
 			</div>

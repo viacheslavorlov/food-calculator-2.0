@@ -2,7 +2,6 @@ import {Meta,StoryFn} from '@storybook/react';
 import {DeleteItemCard} from './DeleteItemCard';
 import {ThemeDecorator} from '../../../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../../widgets/themeSwitcher/teme/temeConsts';
-import {StoreDecorator} from '../../../../shared/helpers/storybookDecorators/StorybookDecorator';
 
 const item = {
 	id: 1,
@@ -20,11 +19,7 @@ export default {
 	argTypes: {
 		backgroundColor: { control: 'color' },
 	},
-	decorators: [
-		StoreDecorator({products: {
-			allProducts: new Array(5).fill(item)
-		}})
-	]
+	decorators: []
 } as Meta<typeof DeleteItemCard>;
 
 

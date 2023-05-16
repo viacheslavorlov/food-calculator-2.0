@@ -1,9 +1,7 @@
 import {classNames} from '../../../shared/helpers/classNames/classNames';
 import cls from './ImcomeOutcomeForm.module.scss';
 import {memo} from 'react';
-import {useSelector} from 'react-redux';
 import {Text} from '../../../shared/ui/Text/Text';
-import {getIncome} from '../model/selectors/incomeOutcomeSelectors';
 
 interface ImcomeOutcomeFormProps {
 	className?: string;

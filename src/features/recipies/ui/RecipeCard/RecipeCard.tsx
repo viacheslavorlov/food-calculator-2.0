@@ -19,10 +19,8 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 	} = props;
 	const [expanded, setExpanded] = useState(false);
 
-
 	const expandRecipe = () => {
 		if (!expanded) {
-
 			setExpanded(prevState => !prevState);
 		}
 	};

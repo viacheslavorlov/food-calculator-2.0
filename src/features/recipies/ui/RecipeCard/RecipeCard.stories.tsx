@@ -1,7 +1,6 @@
 import {StoryFn, Meta} from '@storybook/react';
 import {ThemeDecorator} from '../../../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../../widgets/themeSwitcher/teme/temeConsts';
-import {StoreDecorator} from '../../../../shared/helpers/storybookDecorators/StorybookDecorator';
 import {RecipeCard} from './RecipeCard';
 import {SuspenseDecorator} from '../../../../shared/helpers/storybookDecorators/SuspenseDecorator';
 
@@ -13,35 +12,6 @@ export default {
 	},
 	decorators: [
 		SuspenseDecorator,
-		StoreDecorator({
-			recipes: {
-				currentRecipe: {
-					recipeName: 'блины',
-					id:123,
-					timesUsed: 10,
-					ingredients: [
-						{
-							id:1,
-							timesUsed: 0,
-							amountCurrent: 100,
-							amountInOnePack: 1000,
-							metric: 'г',
-							name: 'Молоко',
-							price: 200
-						},
-						{
-							id:1,
-							timesUsed: 0,
-							amountCurrent: 100,
-							amountInOnePack: 1000,
-							metric: 'г',
-							name: 'Мука',
-							price: 200
-						}
-					]
-				}
-			}
-		}),
 	]
 } as Meta<typeof RecipeCard>;
 

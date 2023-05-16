@@ -10,8 +10,7 @@ export const RecipeList = memo((props: RecipeCardProps) => {
 	const {
 		className
 	} = props;
-
-
+	
 	let content: ReactNode;
 
 	// if (isLoading) {

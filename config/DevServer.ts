@@ -8,8 +8,8 @@ export interface EnvProp {
 }
 
 export const devServer = ({port}: EnvProp): DevServerConfiguration => {
-	// console.log(env)
 	return {
+		hot: true,
 		open: true,
 		port: port || 3000,
 		historyApiFallback: true,

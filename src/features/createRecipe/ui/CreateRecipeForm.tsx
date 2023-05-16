@@ -1,12 +1,9 @@
 import {classNames} from '../../../shared/helpers/classNames/classNames';
 import cls from './CreateRecipeForm.module.scss';
 import {ChangeEvent, memo, useState} from 'react';
-import {useAppSelector} from '../../../store/hooks';
-import {getActiveProductsSelector} from '../../../entities/Products/model/selectors/getActiveProductsSelector';
 import {HStack} from '../../../shared/ui/Stack';
 import {Input} from '../../../shared/ui/Input/Input';
 import {Text} from '../../../shared/ui/Text/Text';
-import {useCreateRecipeMutation} from '../model/createRecipeApi';
 import {IRecipe} from '../../../entities/recipe';
 import {Button, ButtonVariants} from '../../../shared/ui/Button/Button';
 
