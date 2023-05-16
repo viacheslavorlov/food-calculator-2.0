@@ -23,11 +23,11 @@ export const AppearAnimation = memo((props: AppearAnimationProps) => {
 		api.start({
 			from: {
 				x: -100,
-				opacity: 0
+				opacity: 0,
 			},
 			to: {
 				x: 0,
-				opacity: 1
+				opacity: 1,
 			},
 		});
 	}, []);

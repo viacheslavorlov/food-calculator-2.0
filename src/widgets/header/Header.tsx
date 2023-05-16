@@ -32,9 +32,11 @@ export const Header = memo(() => {
 			<ThemeSwitcher/>
 			<div className={cls.headerWrapper}>
 				<Text title={'Рассчет себестоимости продуктов'} className={cls.header__name}/>
-				{showMenuButton && <Button variant={ButtonVariants.rectangle} onClick={onMenuHandle} className={cls.btn}>
-					<IconSVG Icon={Menu} className={cls.icon}/>
-				</Button>}
+				{showMenuButton &&
+					<Button variant={ButtonVariants.rectangle} onClick={onMenuHandle} className={cls.btn}>
+						<Text content={'Меню'}/>
+						<IconSVG Icon={Menu} className={cls.icon}/>
+					</Button>}
 			</div>
 
 			{(isMenuOn || !showMenuButton) && (

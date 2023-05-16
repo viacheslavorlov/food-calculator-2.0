@@ -39,15 +39,24 @@
 }
 
 .btn {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
 	border-bottom-left-radius: 50%;
 }
 
 .icon {
-	height: 35px;
+	padding-left: 8px;
+	height: 30px;
+	width: 30px;
 }
 
 @media screen and (max-width: 600px) {
 	.header__navbar {
 		flex-direction: column;
+	}
+	.header__name {
+		font-size: 1.2em;
 	}
 }

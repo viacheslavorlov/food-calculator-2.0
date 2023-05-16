@@ -7,6 +7,8 @@ import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimat
 import {PRODUCT_SESSIONSTORAGE_KEY} from '../../consts/productConsts';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from '../../../../db/db';
+import {Line} from '../../../../shared/ui/Line/Line';
+import {HStack, VStack} from '../../../../shared/ui/Stack';
 
 interface ProductCardProps {
 	className?: string;
@@ -37,16 +39,18 @@ export const ProductCard = memo((props: ProductCardProps) => {
 	}, [newActiveProduct]);
 
 	return (
-		<AppearAnimation initOnRender className={classNames(cls.ProductCard, className)}>
-			<Text content={name}/>
-			<hr className={cls.line}/>
-			<Button
-				className={cls.btn}
-				variant={ButtonVariants.rounded}
-				onClick={() => onAddProduct()}
-			>
+		<AppearAnimation className={classNames(cls.ProductCard, className)} initOnRender >
+			<HStack gap={'8'} max>
+				<Text content={name}/>
+				<Line width={'30vw'}/>
+				<Button
+					className={cls.btn}
+					variant={ButtonVariants.rounded}
+					onClick={() => onAddProduct()}
+				>
 				Добавить
-			</Button>
+				</Button>
+			</HStack>
 		</AppearAnimation>
 	);
 });

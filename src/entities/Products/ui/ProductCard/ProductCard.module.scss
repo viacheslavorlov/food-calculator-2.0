@@ -1,18 +1,11 @@
 .ProductCard {
     display: flex;
     margin-top: 10px;
-    width: 80vw;
+    width: 100%;
     align-items: center;
     justify-content: center;
 }
 
 .btn {
     align-self: flex-end;
-}
-
-.line {
-    border: 1.5px solid var(--bg-color-inverted);
-    margin: 5px;
-    flex-grow: 10;
-    justify-self: baseline;
 }

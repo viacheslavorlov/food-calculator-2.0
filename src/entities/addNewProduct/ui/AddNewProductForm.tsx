@@ -55,7 +55,7 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 	}
 
 	return (
-		<VStack max justify={'center'} align={'center'} gap="4" className={classNames(cls.AddNewProductForm, className)}>
+		<VStack max justify={'center'} align={'center'} gap="4" className={className}>
 			<Text className={cls.text} title={'Добавить новый продукт'}/>
 			<Text className={cls.text} content={'Название продукта:'}/>
 			<Input

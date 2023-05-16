@@ -6,8 +6,9 @@ import {Search} from '../../features/searchProducts/ui/Search/Search';
 import {SearchList} from '../../features/searchProducts/ui/SearchList/SearchList';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from '../../db/db';
-import {IProduct} from '../../store/types';
 import {PRODUCT_SESSIONSTORAGE_KEY} from '../../entities/Products/consts/productConsts';
+import {IProduct} from '../../store/types';
+import {VStack} from '../../shared/ui/Stack';
 
 const MainPage = memo(() => {
 	const products = useLiveQuery(
@@ -17,14 +18,17 @@ const MainPage = memo(() => {
 
 	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
+	const onChangeIngredient = (newProduct: IProduct) => {
+		db.activeProducts.put(newProduct);
+	};
+
 	useEffect(() => {
 		sessionStorage.setItem(PRODUCT_SESSIONSTORAGE_KEY, '[]');
 	}, []);
 	console.log(activeProducts);
 	return (
 		<>
-			<div className={cls.MainPage}>
-				главная страница
+			<VStack max justify='center' align='center' className={cls.MainPage}>
 				<Search/>
 				<SearchList
 					products={products}
@@ -34,10 +38,11 @@ const MainPage = memo(() => {
 				{activeProducts.map(product => <ProductDetaildCard
 					key={product.id + product.name}
 					product={product}
+					onChangeIngredient={onChangeIngredient}
 				/>)}
 				{/*<CreateRecipeForm />*/}
 				<ResultValue list={activeProducts} className={cls.result}/>
-			</div>
+			</VStack>
 		</>
 		
 	);

@@ -7,6 +7,9 @@ import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Bu
 import {IProduct} from '../../../../store/types';
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
 import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
+import {db} from '../../../../db/db';
+import {HStack, VStack} from '../../../../shared/ui/Stack';
+import {Line} from '../../../../shared/ui/Line/Line';
 
 interface ProductDetaildCardProps {
 	product: IProduct;
@@ -36,16 +39,6 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductPrice(value);
 			}
-			// dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
-			// dispatch(putProduct({
-			// 	id,
-			// 	metric,
-			// 	name,
-			// 	amountCurrent,
-			// 	amountInOnePack,
-			// 	price: value,
-			// 	timesUsed
-			// }));
 			if (onChangeIngredient) {
 				onChangeIngredient({
 					...product,
@@ -66,7 +59,6 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductAmountInOnePack(value);
 			}
-			// dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
 					...product,
@@ -78,8 +70,11 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 		}
 	};
 
-	const onDeleteProduct = (id: number) => {
-		// dispatch(productsActions.deleteFromActiveList(id));
+	const onDeleteProduct = async (id: number) => {
+		await db.activeProducts
+			.where('id')
+			.equals(id)
+			.delete();
 	};
 
 	const onCurrentAmountChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -91,7 +86,6 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductCurrentAmount(value);
 			}
-			// dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
 					...product,
@@ -105,27 +99,30 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 	};
 
 	return (
-		<AppearAnimation initOnRender>
-			<div className={classNames(cls.ProductDetaildCard)}>
+		<AppearAnimation initOnRender className={cls.animationWrapper}>
+			<VStack max gap={'4'} className={classNames(cls.ProductDetaildCard)}>
 				<div className={cls.inputBlock}>
 					<Text className={cls.space} title={name}/>
 				</div>
-				<div className={cls.inputBlock}>
+				<HStack gap={'8'} max>
 					<Text className={cls.text} content="Цена: "/>
+					<Line width={'30vw'}/>
 					<Input
 						className={cls.input}
 						value={productPrice}
 						onChange={onPriceChangeHandler} name="price"/>
-				</div>
-				<div className={cls.inputBlock}>
+				</HStack>
+				<HStack gap={'8'} max>
 					<Text className={cls.text} content="В упаковке: "/>
+					<Line width={'30vw'}/>
 					<Input
 						className={cls.input}
 						onChange={onPackAmountChangeHandler}
 						value={productAmountInOnePack} name="amountInOnePack"/>
-				</div>
-				<div className={cls.inputBlock}>
+				</HStack>
+				<HStack gap={'8'} max>
 					<Text content="Израсходовано: "/>
+					<Line width={'30vw'}/>
 					<Input
 						className={cls.input}
 						placeholder={`... ${metric} израсходовано`}
@@ -133,16 +130,16 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 						onChange={onCurrentAmountChangeHandler}
 						name="amountCurrent"
 					/>
-				</div>
-				<div className={cls.inputBlock}>
-					<Text
-						className={cls.result}
-						content={'Стоимость израсходованного продукта: ' +
-							calculatePriceOfProduct(
-								productPrice,
-								productCurrentAmount,
-								productAmountInOnePack
-							).toFixed(2) + 'р'}/>
+				</HStack>
+				<HStack max className={cls.inputBlock}>
+					{/*<Text*/}
+					{/*	className={cls.result}*/}
+					{/*	content={'Стоимость израсходованного продукта: ' +*/}
+					{/*		calculatePriceOfProduct(*/}
+					{/*			productPrice,*/}
+					{/*			productCurrentAmount,*/}
+					{/*			productAmountInOnePack*/}
+					{/*		).toFixed(2) + 'р'}/>*/}
 					<Button
 						className={cls.deleteBtn}
 						variant={ButtonVariants.rounded}
@@ -151,8 +148,8 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 					>
 						Удалить
 					</Button>
-				</div>
-			</div>
+				</HStack>
+			</VStack>
 		</AppearAnimation>
 	);
 });
