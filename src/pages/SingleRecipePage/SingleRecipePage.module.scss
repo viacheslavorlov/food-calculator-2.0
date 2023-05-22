@@ -1,0 +1,12 @@
+.SingleRecipePage {
+    border: 1px solid var(--bg-color-inverted);
+    border-radius: 15px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: stretch;
+    margin: 0 auto;
+    width: 98vw;
+    transition: all 0.3s;
+}

@@ -1,7 +1,7 @@
-import {classNames} from '../../../shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './ImcomeOutcomeForm.module.scss';
 import {memo} from 'react';
-import {Text} from '../../../shared/ui/Text/Text';
+import {Text} from 'shared/ui/Text/Text';
 
 interface ImcomeOutcomeFormProps {
 	className?: string;

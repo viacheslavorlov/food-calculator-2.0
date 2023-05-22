@@ -1,10 +1,10 @@
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import {memo} from 'react';
-import {IProduct} from '../../../../store/types';
-import {wordSearch} from '../../../../shared/helpers/search/wordSearch';
-import {useAppSelector} from '../../../../store/hooks';
+import {IProduct} from 'store/types';
+import {wordSearch} from 'shared/helpers/search/wordSearch';
+import {useAppSelector} from 'store/hooks';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
-import {ProductCard} from '../../../../entities/Products';
+import {ProductCard} from 'entities/Products';
 
 interface SearchListProps {
 	className?: string;
