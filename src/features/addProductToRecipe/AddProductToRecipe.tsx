@@ -1,5 +1,4 @@
 import {classNames} from 'shared/helpers/classNames/classNames';
-import cls from './AddProductToRecipe.module.scss';
 import {memo} from 'react';
 import {IRecipe} from 'entities/recipe';
 import {useLiveQuery} from 'dexie-react-hooks';
@@ -24,7 +23,7 @@ export const AddProductToRecipe = memo((props: AddProductToRecipeProps) => {
 	};
 
 	return (
-		<div className={classNames(cls.AddProductToRecipe, className)}>
+		<div className={classNames(className)}>
 			{notUsedProducts?.map(item => <div onClick={() => addToRecipe(item)} key={item.id}>{item.name}</div>)}
 		</div>
 	);
