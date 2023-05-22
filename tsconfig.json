@@ -6,23 +6,27 @@
         "target": "ESNext",
         "jsx": "react-jsx",
         "strict": true,
-        "allowJs": true,  //компилятор обрабатывает не только ts, но и js файлы
+        "allowJs": true,
+        //компилятор обрабатывает не только ts, но и js файлы
         "moduleResolution": "node",
-        "esModuleInterop": true, // позволяет работать с пакетами, которые используют common js,
+        "esModuleInterop": true,
+        // позволяет работать с пакетами, которые используют common js,
         //  как с обычными пакетами с помощью import
-        "allowSyntheticDefaultImports": true, // симулирует дефолтный импорт пакета даже если таковой отсутствует
+        "allowSyntheticDefaultImports": true,
+        // симулирует дефолтный импорт пакета даже если таковой отсутствует
         "baseUrl": ".",
-//        "paths": {
-//            "*": ["./src/*"]
-//        },
-
+        "paths": {
+            "*": ["src/*"]
+        }
     },
     "ts-node": {
         "compilerOptions": {
             "module": "CommonJS"
         }
     },
-    "exclude": ["node_modules"],
+    "exclude": [
+        "node_modules"
+    ],
     "include": [
         "./.storybook/webpack.config.ts",
         "jest.config.ts",

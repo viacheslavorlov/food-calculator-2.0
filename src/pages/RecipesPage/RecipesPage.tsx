@@ -1,19 +1,19 @@
-import {RecipeList} from '../../features/recipies/ui/RecipeList/RecipeList';
+import {RecipeList} from 'features/recipies';
 import cls from './RecipesPage.module.scss';
-import {memo, useEffect} from 'react';
-import {useAppDispatch} from '../../store/hooks';
-import {fetchRecipes} from '../../features/recipies/model/service/fetchRecipes';
+import {memo, useMemo} from 'react';
+import {useLiveQuery} from 'dexie-react-hooks';
+import {db} from 'db/db';
 
 const RecipesPage = memo(() => {
-	const dispatch = useAppDispatch();
 
-	// useEffect(() => {
-	// 	dispatch(fetchRecipes());
-	// }, []);
+	const recipes = useLiveQuery(
+		() => db.recipes.toArray()
+	);
+
 	return (
 		<div className={cls.RecipesPage}>
 			<h1>Рецепты</h1>
-			<RecipeList/>
+			<RecipeList recipes={recipes}/>
 		</div>
 	);
 });

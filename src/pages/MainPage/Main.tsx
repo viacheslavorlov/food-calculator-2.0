@@ -1,14 +1,15 @@
 import {memo, useEffect} from 'react';
 import cls from './MainPage.module.scss';
-import ProductDetaildCard from '../../entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
-import {ResultValue} from '../../entities/Products/ui/ResultValue/ResultValue';
-import {Search} from '../../features/searchProducts/ui/Search/Search';
-import {SearchList} from '../../features/searchProducts/ui/SearchList/SearchList';
+import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
+import {ResultValue} from 'entities/Products/ui/ResultValue/ResultValue';
+import {Search} from 'features/searchProducts/ui/Search/Search';
+import {SearchList} from 'features/searchProducts/ui/SearchList/SearchList';
 import {useLiveQuery} from 'dexie-react-hooks';
-import {db} from '../../db/db';
-import {PRODUCT_SESSIONSTORAGE_KEY} from '../../entities/Products/consts/productConsts';
-import {IProduct} from '../../store/types';
-import {VStack} from '../../shared/ui/Stack';
+import {db} from 'db/db';
+import {PRODUCT_SESSIONSTORAGE_KEY} from 'entities/Products/consts/productConsts';
+import {IProduct} from 'store/types';
+import {VStack} from 'shared/ui/Stack';
+import {CreateRecipeForm} from 'features/createRecipe/ui/CreateRecipeForm';
 
 const MainPage = memo(() => {
 	const products = useLiveQuery(
@@ -40,7 +41,7 @@ const MainPage = memo(() => {
 					product={product}
 					onChangeIngredient={onChangeIngredient}
 				/>)}
-				{/*<CreateRecipeForm />*/}
+				<CreateRecipeForm />
 				<ResultValue list={activeProducts} className={cls.result}/>
 			</VStack>
 		</>

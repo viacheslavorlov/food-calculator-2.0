@@ -8,6 +8,7 @@ import {loaders} from './config/Loaders';
 export interface Paths {
     entry: string
     html: string
+	src: string
     output: string
     modules: string
 }
@@ -16,6 +17,7 @@ export default (env: EnvProp): webpack.Configuration => {
 	const paths: Paths = {
 		entry: path.resolve(__dirname, 'src', 'index.tsx'),
 		html: path.resolve(__dirname, 'public', 'index.html'),
+		src: path.resolve(__dirname, 'src'),
 		output: path.resolve(__dirname, 'dist'),
 		modules: path.resolve(__dirname, 'node_modules')
 	};
@@ -37,7 +39,7 @@ export default (env: EnvProp): webpack.Configuration => {
 		},
 		resolve: {
 			extensions: ['.ts', '.tsx', '.js'],
-			// modules: [paths.modules]
+			modules: [paths.src, paths.modules]
 		},
 		devServer: devServer(env),
 

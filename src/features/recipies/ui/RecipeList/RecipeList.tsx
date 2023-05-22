@@ -1,40 +1,28 @@
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './RecipeList.module.scss';
-import {memo, ReactNode} from 'react';
+import {memo,} from 'react';
+import {Text} from 'shared/ui/Text/Text';
+import {RecipeCard} from '../RecipeCard/RecipeCard';
+import {IRecipe} from 'entities/recipe';
 
 interface RecipeCardProps {
 	className?: string;
+	recipes?: IRecipe[];
 }
 
 export const RecipeList = memo((props: RecipeCardProps) => {
 	const {
-		className
+		className, recipes
 	} = props;
-	
-	let content: ReactNode;
 
-	// if (isLoading) {
-	// 	return (
-	// 		<div className={classNames(cls.RecipeList, className)}>
-	// 			<LoadingPage/>
-	// 		</div>);
-	// }
-	//
-	// if (!allRecipes) {
-	// 	content = <Text title={'Рецепты не найдены'}/>;
-	// } else if (!isLoading) {
-	// 	content = allRecipes.map(recipe => <RecipeCard
-	// 		key={recipe.recipeName}
-	// 		recipe={recipe}
-	// 	/>);
-	// }
-	// if (isError) {
-	// 	return <Text title={'Ошибка при загрузке рецептов'}/>;
-	// }
+
+	if (!recipes) {
+		return <Text title={'Рецепты не найдены'}/>;
+	}
 
 	return (
 		<div className={classNames(cls.RecipeList, className)}>
-			{content}
+			{recipes.map((recipe) => <RecipeCard expanded={false} key={recipe.id} recipe={recipe} />)}
 		</div>
 	);
 });
