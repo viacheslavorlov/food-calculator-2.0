@@ -1,0 +1,8 @@
+name: food-calculator-2.0
+packages:
+  - path: torybook-static
+  - path: onfig
+  - path: ist
+  - path: rc
+language: javascript
+appmap_dir: tmp/appmap

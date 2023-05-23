@@ -76,6 +76,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@appland/appmap-agent-js": "^13.9.0",
     "@react-spring/web": "^9.7.2",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/react-transition-group": "^4.4.6",
