@@ -1,12 +1,11 @@
-import {Text} from '../../../shared/ui/Text/Text';
+import {Text} from 'shared/ui/Text/Text';
 import {FormEvent, memo, useState} from 'react';
-import {classNames} from '../../../shared/helpers/classNames/classNames';
-import {Input} from '../../../shared/ui/Input/Input';
+import {Input} from 'shared/ui/Input/Input';
 import cls from './AddNewProductForm.module.scss';
-import {db} from '../../../db/db';
-import {Button, ButtonBackground, ButtonVariants} from '../../../shared/ui/Button/Button';
-import {IProduct, Metrics} from '../../../store/types';
-import {VStack} from '../../../shared/ui/Stack';
+import {db} from 'db/db';
+import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
+import {IProduct, Metrics} from 'store/types';
+import {VStack} from 'shared/ui/Stack';
 import {GetProductsDexieTest} from './GetProductsDexieTest/GetProductsDexieTest';
 
 interface AddNewProductFormProps {

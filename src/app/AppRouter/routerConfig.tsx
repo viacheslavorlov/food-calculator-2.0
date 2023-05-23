@@ -1,9 +1,14 @@
 import {AddNewItems, DeleteItems, MainPage, PageNotFound, RecipesPage} from '../../pages';
 import {ReactNode} from 'react';
+import {SingleRecipePage} from 'pages';
 
-export type Paths = '/' | '/recipes' | '/new-item' | '/delete-item' | '*';
+export type Paths = '/' | '/recipes' | '/new-item' | '/delete-item' | '/recipes/:id' | '*';
+interface IRouterConfig {
+	path: Paths;
+	element: ReactNode;
+}
 
-export const routerConfig: {path: Paths, element: ReactNode}[] = [
+export const routerConfig: IRouterConfig[] = [
 	{
 		path: '/',
 		element: <MainPage/>
@@ -11,6 +16,10 @@ export const routerConfig: {path: Paths, element: ReactNode}[] = [
 	{
 		path: '/recipes',
 		element: <RecipesPage/>
+	},
+	{
+		path: '/recipes/:id',
+		element: <SingleRecipePage/>
 	},
 	{
 		path: '/new-item',

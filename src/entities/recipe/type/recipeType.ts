@@ -1,4 +1,4 @@
-import {IProduct} from '../../../store/types';
+import {IProduct} from 'store/types';
 
 export interface IRecipe {
 	timesUsed: number;

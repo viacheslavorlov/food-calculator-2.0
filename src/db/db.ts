@@ -1,6 +1,6 @@
-import {IProduct} from '../store/types';
+import {IProduct} from 'store/types';
 import Dexie, { Table } from 'dexie';
-import {IRecipe} from '../entities/recipe';
+import {IRecipe} from 'entities/recipe';
 
 export class FoodCalculatorDexie extends Dexie {
 	// 'friends' is added by dexie when declaring the stores()
