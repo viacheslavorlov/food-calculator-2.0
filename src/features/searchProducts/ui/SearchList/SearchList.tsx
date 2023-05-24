@@ -1,9 +1,10 @@
 import {classNames} from 'shared/helpers/classNames/classNames';
-import {memo} from 'react';
+import {memo, useCallback} from 'react';
 import {IProduct} from 'store/types';
 import {wordSearch} from 'shared/helpers/search/wordSearch';
 import {useAppSelector} from 'store/hooks';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
+import {GroupAnimationCard} from 'shared/ui/GroupAnimation/GroupAnimationCard';
 import {ProductCard} from 'entities/Products';
 
 interface SearchListProps {
@@ -22,7 +23,7 @@ export const SearchList = memo((props: SearchListProps) => {
 	const searchProp = useAppSelector(searchPropSelector);
 	const searchOrder = useAppSelector(searchOrderSelector);
 
-	const content = () => {
+	const content = useCallback(() => {
 		let result = products
 			.filter(item => idList.indexOf(item.id) < 0)
 			.filter(item => wordSearch(searchValue, item.name));
@@ -47,12 +48,13 @@ export const SearchList = memo((props: SearchListProps) => {
 		default:
 			break;
 		}
-		return result.map(item => <ProductCard key={item.id} name={item.name} id={item.id}/>);
-	};
+		return result;
+	}, [idList, products, searchOrder, searchProp, searchValue]);
+	const contentList = content();
 
 	return (
 		<div className={classNames(className)}>
-			{content()}
+			<GroupAnimationCard  data={contentList} Component={ProductCard}/>
 		</div>
 	);
 });

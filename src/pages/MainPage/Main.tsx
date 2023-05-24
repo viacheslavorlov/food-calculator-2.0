@@ -1,6 +1,5 @@
 import {memo, useCallback, useEffect} from 'react';
 import cls from './MainPage.module.scss';
-import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
 import {ResultValue} from 'entities/Products/ui/ResultValue/ResultValue';
 import {Search} from 'features/searchProducts/ui/Search/Search';
 import {SearchList} from 'features/searchProducts/ui/SearchList/SearchList';
@@ -10,6 +9,7 @@ import {PRODUCT_SESSIONSTORAGE_KEY} from 'entities/Products/consts/productConsts
 import {IProduct} from 'store/types';
 import {VStack} from 'shared/ui/Stack';
 import {CreateRecipeForm} from 'features/createRecipe/ui/CreateRecipeForm';
+import {ProductList} from 'features/ProductList/ProductList';
 
 const MainPage = memo(() => {
 	const products = useLiveQuery(
@@ -19,41 +19,28 @@ const MainPage = memo(() => {
 
 	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
-	const onChangeIngredient = (newProduct: IProduct) => {
-		db.activeProducts.put(newProduct);
-	};
+
 
 	useEffect(() => {
 		sessionStorage.setItem(PRODUCT_SESSIONSTORAGE_KEY, '[]');
 	}, []);
 
-	const onDeleteProduct = useCallback(async (id: number) => {
-		await db.activeProducts
-			.where('id')
-			.equals(id)
-			.delete();
-	}, []);
+
 
 	return (
-		<>
-			<VStack max justify='center' align='center' className={cls.MainPage}>
-				<Search/>
-				<SearchList
-					products={products}
-					className={cls.SearchList}
-					idList={activeProductsIDs}
-				/>
-				{activeProducts.map((product) => (<ProductDetaildCard
-					onDeleteProduct={onDeleteProduct}
-					key={product.id + product.name}
-					product={product}
-					onChangeIngredient={onChangeIngredient}
-				/>))}
-				<CreateRecipeForm />
-				<ResultValue list={activeProducts} className={cls.result}/>
-			</VStack>
-		</>
-		
+		<VStack max justify='center' align='center' className={cls.MainPage}>
+			<Search/>
+			<SearchList
+				products={products}
+				className={cls.SearchList}
+				idList={activeProductsIDs}
+			/>
+			<ProductList
+				activeProducts={activeProducts}
+			/>
+			<CreateRecipeForm />
+			<ResultValue list={activeProducts} className={cls.result}/>
+		</VStack>
 	);
 });
 

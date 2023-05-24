@@ -1,5 +1,5 @@
 import './LoadingPage.module.scss';
-import {LoadingSpinner} from '../../shared/ui/Loader/Loader';
+import {LoadingSpinner} from 'shared/ui/Loader/Loader';
 
 export const LoadingPage = () => {
 	return (

@@ -8,6 +8,7 @@ import {memo} from 'react';
 import {useParams} from 'react-router-dom';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './SingleRecipePage.module.scss';
+import {AppearAnimation} from 'shared/ui/ApearAnimation/AppearAnimation';
 
 interface SingleRecipePageProps {
     className?: string;
@@ -31,10 +32,10 @@ const SingleRecipePage = memo((props: SingleRecipePageProps) => {
 	console.log(id, recipeByID);
 	if (recipeByID && recipeByID[0]) {
 		return (
-			<div className={classNames(cls.SingleRecipePage, className)}>
+			<AppearAnimation className={classNames(cls.SingleRecipePage, className)}>
 				<RecipeCard recipe={recipeByID[0]} expanded/>
 				<AddProductToRecipe currentRecipe={recipeByID[0]}/>
-			</div>
+			</AppearAnimation>
 		);
 	} else {
 		return (

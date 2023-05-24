@@ -1,11 +1,10 @@
 import cls from './ResultValue.module.scss';
-import {IProduct} from '../../../../store/types';
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
-import {finalPrice} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
-import {Text} from '../../../../shared/ui/Text/Text';
-import { Input } from '../../../../shared/ui/Input/Input';
+import {IProduct} from 'store/types';
+import {finalPrice} from 'shared/helpers/resultCalculationFunctions/calculationFunctions';
+import {Text} from 'shared/ui/Text/Text';
+import {Input} from 'shared/ui/Input/Input';
 import {ChangeEvent, memo, useState} from 'react';
-import {HStack, VStack} from '../../../../shared/ui/Stack';
+import {HStack, VStack} from 'shared/ui/Stack';
 
 interface ResultValueProps {
 	list: IProduct[];
@@ -20,7 +19,7 @@ export const ResultValue = memo((props: ResultValueProps) => {
 		setIncrease(e.target.value);
 	};
 	return (
-		<VStack max>
+		<VStack max className={className}>
 			<Text
 				content={`Себестоимость набора продуктов ${finalPrice(list)
 					.toFixed(2)}`}

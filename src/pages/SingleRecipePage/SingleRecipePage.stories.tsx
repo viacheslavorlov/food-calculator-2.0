@@ -11,7 +11,7 @@ export default {
 	},
 } as Meta<typeof SingleRecipePage>;
 
-const Template: StoryFn<typeof SingleRecipePage> = (args: any) => <SingleRecipePage {...args} />;
+const Template: StoryFn<typeof SingleRecipePage> = (args) => <SingleRecipePage {...args} />;
 
 export const LightSingleRecipePage = Template.bind({});
 LightSingleRecipePage.args = {};

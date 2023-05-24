@@ -1,12 +1,11 @@
 import {db} from 'db/db';
 import cls from './DeleteItemCard.module.scss';
-import {memo, useState} from 'react';
-import {IProduct} from '../../../../store/types';
-import {Text} from '../../../../shared/ui/Text/Text';
-import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
-import {animated, useTransition} from '@react-spring/web';
-import { AppearAnimation } from 'shared/ui/ApearAnimation/AppearAnimation';
+import {memo} from 'react';
+import {IProduct} from 'store/types';
+import {Text} from 'shared/ui/Text/Text';
+import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
+import {classNames} from 'shared/helpers/classNames/classNames';
+import {AppearAnimation} from 'shared/ui/ApearAnimation/AppearAnimation';
 
 interface DeleteItemCardProps {
 	item: IProduct;

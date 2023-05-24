@@ -1,14 +1,14 @@
 import {db} from 'db/db';
 import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
 import {IRecipe} from 'entities/recipe';
-import {memo, Suspense, useCallback, useMemo} from 'react';
+import {memo, Suspense, useCallback} from 'react';
 import {Link} from 'react-router-dom';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import {finalPrice} from 'shared/helpers/resultCalculationFunctions/calculationFunctions';
 import {Button, ButtonVariants} from 'shared/ui/Button/Button';
 import {List} from 'shared/ui/List/List';
 import {LoadingSpinner} from 'shared/ui/Loader/Loader';
-import {HStack, VStack} from 'shared/ui/Stack';
+import {HStack} from 'shared/ui/Stack';
 import {Text} from 'shared/ui/Text/Text';
 import {IProduct} from 'store/types';
 import cls from './RecipeCard.module.scss';
@@ -34,23 +34,22 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 				}
 			})
 		});
-	}, [recipe, db]);
+	}, [recipe]);
 
 	const onDeleteProduct = useCallback(async (id: number) => {
 		const newRecipeIngredients = recipe.ingredients.filter(ingr => ingr.id !== id);
 		const newRecipe = {...recipe, ingredients: newRecipeIngredients};
 		await db.recipes
 			.put(newRecipe as IRecipe);
-	}, [db, recipe]);
+	}, [recipe]);
 
 	let expandedIngredients;
 	if (recipe.ingredients) {
 		expandedIngredients = recipe.ingredients.map((ingredient) => (
 			<ProductDetaildCard
-				onDeleteProduct={onDeleteProduct}
+				functions={{onDeleteProduct, onChangeIngredient}}
 				key={ingredient.id}
-				product={ingredient}
-				onChangeIngredient={onChangeIngredient}
+				item={ingredient}
 			/>
 		));
 	}
