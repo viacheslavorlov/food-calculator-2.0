@@ -1,3 +1,4 @@
+import {db} from 'db/db';
 import cls from './DeleteItemCard.module.scss';
 import {memo, useState} from 'react';
 import {IProduct} from '../../../../store/types';
@@ -5,6 +6,7 @@ import {Text} from '../../../../shared/ui/Text/Text';
 import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
 import {classNames} from '../../../../shared/helpers/classNames/classNames';
 import {animated, useTransition} from '@react-spring/web';
+import { AppearAnimation } from 'shared/ui/ApearAnimation/AppearAnimation';
 
 interface DeleteItemCardProps {
 	item: IProduct;
@@ -14,20 +16,12 @@ interface DeleteItemCardProps {
 export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 	const {item, className} = props;
 	const {name, price, amountInOnePack, id} = item;
-	const [displayed, setDisplayed] = useState(false);
-
-	const transition = useTransition(displayed, {
-		from: {opacity: 0, x: -100},
-		enter: {opacity: 1, x: 0},
-		leave: {opacity: 1, x: 100},
-	});
 
 	const onDeleteItem = (itemId: number) => {
-		setDisplayed(false);
-
+		db.products.bulkDelete([itemId]);
 	};
-	return transition((style, item) => (
-		<animated.div style={style}>
+	return (
+		<AppearAnimation initOnRender>
 			<div className={classNames(cls.DeleteItemCard, className)}>
 				<Text
 					className={cls.text}
@@ -44,6 +38,6 @@ export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 					Удалить
 				</Button>
 			</div>
-		</animated.div>
-	));
+		</AppearAnimation>
+	);
 });

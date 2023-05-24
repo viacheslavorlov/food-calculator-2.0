@@ -1,4 +1,4 @@
-import {memo, useEffect} from 'react';
+import {memo, useCallback, useEffect} from 'react';
 import cls from './MainPage.module.scss';
 import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
 import {ResultValue} from 'entities/Products/ui/ResultValue/ResultValue';
@@ -26,7 +26,14 @@ const MainPage = memo(() => {
 	useEffect(() => {
 		sessionStorage.setItem(PRODUCT_SESSIONSTORAGE_KEY, '[]');
 	}, []);
-	console.log(activeProducts);
+
+	const onDeleteProduct = useCallback(async (id: number) => {
+		await db.activeProducts
+			.where('id')
+			.equals(id)
+			.delete();
+	}, []);
+
 	return (
 		<>
 			<VStack max justify='center' align='center' className={cls.MainPage}>
@@ -36,11 +43,12 @@ const MainPage = memo(() => {
 					className={cls.SearchList}
 					idList={activeProductsIDs}
 				/>
-				{activeProducts.map(product => <ProductDetaildCard
+				{activeProducts.map((product) => (<ProductDetaildCard
+					onDeleteProduct={onDeleteProduct}
 					key={product.id + product.name}
 					product={product}
 					onChangeIngredient={onChangeIngredient}
-				/>)}
+				/>))}
 				<CreateRecipeForm />
 				<ResultValue list={activeProducts} className={cls.result}/>
 			</VStack>

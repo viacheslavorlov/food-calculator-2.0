@@ -1,4 +1,4 @@
-import {IProduct} from '../../../store/types';
+import {IProduct} from 'store/types';
 
 export const calculatePriceOfProduct = (price: number, amount: number, pack: number): number => {
 	return (price * amount / pack);

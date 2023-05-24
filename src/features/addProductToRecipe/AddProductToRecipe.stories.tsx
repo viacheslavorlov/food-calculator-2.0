@@ -1,7 +1,6 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
-import {ThemeDecorator} from 'shared/config/themeDecorator/themeDecorator';
-import {Theme} from 'app/providers/TemeProvider';
-import {StoreDecorator} from 'shared/config/StoreDecorator/StoreDecorator';
+import {Meta, StoryFn} from '@storybook/react';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher/teme/temeConsts';
 import {AddProductToRecipe} from './AddProductToRecipe';
 
 export default {
@@ -10,9 +9,9 @@ export default {
 	argTypes: {
 		background: {control: 'background'},
 	},
-} as ComponentMeta<typeof AddProductToRecipe>;
+} as Meta<typeof AddProductToRecipe>;
 
-const Template: ComponentStory<typeof AddProductToRecipe> = (args) => <AddProductToRecipe {...args} />;
+const Template: StoryFn<typeof AddProductToRecipe> = (args) => <AddProductToRecipe {...args} />;
 
 export const LightAddProductToRecipe = Template.bind({});
 LightAddProductToRecipe.args = {};
@@ -20,4 +19,4 @@ LightAddProductToRecipe.decorators = [];
 
 export const DarkAddProductToRecipe = Template.bind({});
 DarkAddProductToRecipe.args = {};
-DarkAddProductToRecipe.decorators = [ThemeDecorator(Theme.DARK)];
+DarkAddProductToRecipe.decorators = [ThemeDecorator(ThemeConsts.dark)];

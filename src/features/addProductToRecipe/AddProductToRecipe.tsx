@@ -1,8 +1,8 @@
-import {classNames} from 'shared/helpers/classNames/classNames';
-import {memo} from 'react';
-import {IRecipe} from 'entities/recipe';
-import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from 'db/db';
+import {useLiveQuery} from 'dexie-react-hooks';
+import {IRecipe} from 'entities/recipe';
+import {memo} from 'react';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import {IProduct} from 'store/types';
 
 interface AddProductToRecipeProps {
@@ -14,9 +14,10 @@ export const AddProductToRecipe = memo((props: AddProductToRecipeProps) => {
 	const {
 		className, currentRecipe
 	} = props;
-	const {ingredients, id} = currentRecipe;
+	const {ingredients} = currentRecipe;
+	const ingredientsIds = ingredients.map(ingredient => ingredient.id);
 	const allProducts = useLiveQuery(() => db.products.toArray());
-	const notUsedProducts = allProducts?.filter(ing => !ingredients.some(elem => elem.name === ing.name));
+	const notUsedProducts = allProducts?.filter(item => !ingredientsIds.includes(item.id));
 
 	const addToRecipe = async (product: IProduct) => {
 		db.recipes.update(currentRecipe, {ingredients: [...currentRecipe.ingredients, product]});

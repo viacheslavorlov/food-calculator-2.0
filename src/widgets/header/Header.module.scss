@@ -52,6 +52,28 @@
 	width: 30px;
 }
 
+.link {
+	flex-basis: 20%;
+
+}
+
+@media screen and (max-width: 1000px) {
+	.link {
+		flex-basis: 40%;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.link {
+		flex-basis: 15%;
+		justify-content: space-between;
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+}
+
 @media screen and (max-width: 600px) {
 	.header__navbar {
 		flex-direction: column;

@@ -3,7 +3,7 @@ import {DeleteItemsAsync} from './DeleteItemPage/ui/DeleteItemsAsync';
 import {MainPageAsync} from './MainPage/MainPageAsync';
 import {RecipesPageAsync} from './RecipesPage/RecipesPageAsync';
 import {PageNotFoundAsync} from './PageNotFound/PageNotFoundAsync';
-import {SingleRecipePageAsync} from 'pages/SingleRecipePage/SingleRecipePageAsync';
+import {SingleRecipePageAsync} from './SingleRecipePage/SingleRecipePageAsync';
 export {LoadingPage} from './LoadingPage/LoadingPage';
 
 

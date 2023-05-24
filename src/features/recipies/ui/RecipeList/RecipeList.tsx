@@ -1,9 +1,9 @@
-import {classNames} from 'shared/helpers/classNames/classNames';
-import cls from './RecipeList.module.scss';
+import {IRecipe} from 'entities/recipe';
 import {memo,} from 'react';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import {Text} from 'shared/ui/Text/Text';
 import {RecipeCard} from '../RecipeCard/RecipeCard';
-import {IRecipe} from 'entities/recipe';
+import cls from './RecipeList.module.scss';
 
 interface RecipeCardProps {
 	className?: string;
@@ -22,7 +22,7 @@ export const RecipeList = memo((props: RecipeCardProps) => {
 
 	return (
 		<div className={classNames(cls.RecipeList, className)}>
-			{recipes.map((recipe) => <RecipeCard expanded={false} key={recipe.id} recipe={recipe} />)}
+			{recipes.map((recipe) => <RecipeCard  expanded={false} key={recipe.id} recipe={recipe} />)}
 		</div>
 	);
 });
