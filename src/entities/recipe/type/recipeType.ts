@@ -1,7 +1,7 @@
 import {IProduct} from 'store/types';
 
 export interface IRecipe {
-	timesUsed: number;
+	timesUsed?: number;
 	id: number;
 	recipeName: string;
 	ingredients: IProduct[];

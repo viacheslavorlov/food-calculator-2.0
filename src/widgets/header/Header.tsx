@@ -1,12 +1,12 @@
-import cls from './Header.module.scss';
-import ThemeSwitcher from '../themeSwitcher/ui/ThemeSwitcher/ThemeSwitcher';
-import {Text} from '../../shared/ui/Text/Text';
 import {memo, useLayoutEffect, useState} from 'react';
-import {Link} from '../../shared/ui/Link/Link';
+import Menu from 'shared/assets/menu.svg';
+import {Button, ButtonVariants} from 'shared/ui/Button/Button';
+import {IconSVG} from 'shared/ui/Icon/Icon';
+import {Link} from 'shared/ui/Link/Link';
+import {Text} from 'shared/ui/Text/Text';
+import ThemeSwitcher from '../themeSwitcher/ui/ThemeSwitcher/ThemeSwitcher';
+import cls from './Header.module.scss';
 import {links} from './links/links';
-import {Button, ButtonVariants} from '../../shared/ui/Button/Button';
-import Menu from '../../shared/assets/menu.svg';
-import {IconSVG} from '../../shared/ui/Icon/Icon';
 
 
 export const Header = memo(() => {
@@ -46,7 +46,6 @@ export const Header = memo(() => {
 					))}
 				</nav>
 			)}
-
 		</div>
 	);
 });

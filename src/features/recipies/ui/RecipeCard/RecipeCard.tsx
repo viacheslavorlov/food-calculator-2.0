@@ -1,22 +1,22 @@
-import {classNames} from 'shared/helpers/classNames/classNames';
-import cls from './RecipeCard.module.scss';
-import {memo, Suspense, useCallback, useMemo, useState} from 'react';
-import {Text} from 'shared/ui/Text/Text';
-import {List} from 'shared/ui/List/List';
-import {IProduct} from 'store/types';
-import {Button, ButtonVariants} from 'shared/ui/Button/Button';
-import {IRecipe} from 'entities/recipe';
-import {LoadingSpinner} from 'shared/ui/Loader/Loader';
-import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
-import {finalPrice} from 'shared/helpers/resultCalculationFunctions/calculationFunctions';
 import {db} from 'db/db';
-import {Link, useNavigate} from 'react-router-dom';
-import {useLiveQuery} from 'dexie-react-hooks';
+import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
+import {IRecipe} from 'entities/recipe';
+import {memo, Suspense, useCallback, useMemo} from 'react';
+import {Link} from 'react-router-dom';
+import {classNames} from 'shared/helpers/classNames/classNames';
+import {finalPrice} from 'shared/helpers/resultCalculationFunctions/calculationFunctions';
+import {Button, ButtonVariants} from 'shared/ui/Button/Button';
+import {List} from 'shared/ui/List/List';
+import {LoadingSpinner} from 'shared/ui/Loader/Loader';
+import {HStack, VStack} from 'shared/ui/Stack';
+import {Text} from 'shared/ui/Text/Text';
+import {IProduct} from 'store/types';
+import cls from './RecipeCard.module.scss';
 
 interface RecipeCardProps {
-	className?: string;
-	recipe?: IRecipe;
-	expanded: boolean;
+    className?: string;
+    recipe: IRecipe;
+    expanded: boolean;
 }
 
 export const RecipeCard = memo((props: RecipeCardProps) => {
@@ -24,22 +24,30 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 		className, recipe, expanded = false
 	} = props;
 
-	const memoizedRecipe = useMemo(() => recipe, [recipe]);
-
 	const onChangeIngredient = useCallback(async (product: IProduct) => {
-		await db.recipes.update(memoizedRecipe?.id || 0, {ingredients: memoizedRecipe?.ingredients.map(ing => {
-			if (ing.id !== product.id) {
-				return ing;
-			} else {
-				return product;
-			}
-		})});
-	}, [memoizedRecipe]);
+		await db.recipes.update(recipe.id, {
+			ingredients: recipe.ingredients.map(ing => {
+				if (ing.id !== product.id) {
+					return ing;
+				} else {
+					return product;
+				}
+			})
+		});
+	}, [recipe, db]);
+
+	const onDeleteProduct = useCallback(async (id: number) => {
+		const newRecipeIngredients = recipe.ingredients.filter(ingr => ingr.id !== id);
+		const newRecipe = {...recipe, ingredients: newRecipeIngredients};
+		await db.recipes
+			.put(newRecipe as IRecipe);
+	}, [db, recipe]);
 
 	let expandedIngredients;
-	if (memoizedRecipe?.ingredients) {
-		expandedIngredients = memoizedRecipe.ingredients.map((ingredient) => (
+	if (recipe.ingredients) {
+		expandedIngredients = recipe.ingredients.map((ingredient) => (
 			<ProductDetaildCard
+				onDeleteProduct={onDeleteProduct}
 				key={ingredient.id}
 				product={ingredient}
 				onChangeIngredient={onChangeIngredient}
@@ -50,19 +58,19 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 	return (
 		<div className={classNames(cls.RecipeCard, className)}>
 			<Suspense fallback={<LoadingSpinner/>}>
-				<div className={cls.cardHeader}>
-					<Text title={memoizedRecipe?.recipeName}/>
-					<Text content={finalPrice(memoizedRecipe?.ingredients).toFixed(2) || ''}/>
-					<Link to={expanded ? '/recipes' : `/recipes/${memoizedRecipe?.id}`}>
+				<HStack max justify="center" align="center" className={cls.cardHeader}>
+					<Text title={recipe.recipeName}/>
+					<Text content={`Стоимость ${finalPrice(recipe.ingredients).toFixed(2)}` || ''}/>
+					<Link to={expanded ? '/recipes' : `/recipes/${recipe.id}`}>
 						<Button
 							variant={ButtonVariants.rounded}>{expanded ? 'Назад' : 'Открыть'}
 						</Button>
 					</Link>
-				</div>
+				</HStack>
 				{
 					expanded
 						? expandedIngredients
-						: <List<IProduct> content={memoizedRecipe?.ingredients || []}/>
+						: <List<IProduct> content={recipe.ingredients || []}/>
 				}
 				<hr className={cls.separator}/>
 			</Suspense>

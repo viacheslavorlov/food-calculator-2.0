@@ -1,22 +1,21 @@
 import {ChangeEvent, memo, useState} from 'react';
+import {classNames} from 'shared/helpers/classNames/classNames';
+import {AppearAnimation} from 'shared/ui/ApearAnimation/AppearAnimation';
+import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
+import {Input} from 'shared/ui/Input/Input';
+import {Line} from 'shared/ui/Line/Line';
+import {HStack, VStack} from 'shared/ui/Stack';
+import {Text} from 'shared/ui/Text/Text';
+import {IProduct} from 'store/types';
 import cls from './ProductDetaildCard.module.scss';
-import {Text} from '../../../../shared/ui/Text/Text';
-import {Input} from '../../../../shared/ui/Input/Input';
-import {calculatePriceOfProduct} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
-import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
-import {IProduct} from '../../../../store/types';
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
-import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
-import {db} from '../../../../db/db';
-import {HStack, VStack} from '../../../../shared/ui/Stack';
-import {Line} from '../../../../shared/ui/Line/Line';
 
 interface ProductDetaildCardProps {
-	product: IProduct;
-	onChangeIngredient?: (product: IProduct) => void;
+    product: IProduct;
+    onChangeIngredient?: (product: IProduct) => void;
+    onDeleteProduct: (id: number) => void;
 }
 
-const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCardProps) => {
+const ProductDetaildCard = memo(({onDeleteProduct, product, onChangeIngredient}: ProductDetaildCardProps) => {
 	const {
 		id,
 		metric,
@@ -70,12 +69,6 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 		}
 	};
 
-	const onDeleteProduct = async (id: number) => {
-		await db.activeProducts
-			.where('id')
-			.equals(id)
-			.delete();
-	};
 
 	const onCurrentAmountChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
@@ -146,7 +139,7 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 						background={ButtonBackground.red}
 						onClick={() => onDeleteProduct(id)}
 					>
-						Удалить
+                        Удалить
 					</Button>
 				</HStack>
 			</VStack>

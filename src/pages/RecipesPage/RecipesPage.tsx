@@ -1,6 +1,6 @@
 import {RecipeList} from 'features/recipies';
 import cls from './RecipesPage.module.scss';
-import {memo, useMemo} from 'react';
+import {memo} from 'react';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from 'db/db';
 

@@ -1,15 +1,16 @@
-import {classNames} from 'shared/helpers/classNames/classNames';
-import cls from './SingleRecipePage.module.scss';
-import {memo} from 'react';
-import {useParams} from 'react-router-dom';
-import {useLiveQuery} from 'dexie-react-hooks';
+import exp from 'constants';
 import {db} from 'db/db';
-import {RecipeCard} from 'features/recipies';
+import {useLiveQuery} from 'dexie-react-hooks';
 import {IRecipe} from 'entities/recipe';
 import {AddProductToRecipe} from 'features/addProductToRecipe/AddProductToRecipe';
+import {RecipeCard} from 'features/recipies';
+import {memo} from 'react';
+import {useParams} from 'react-router-dom';
+import {classNames} from 'shared/helpers/classNames/classNames';
+import cls from './SingleRecipePage.module.scss';
 
 interface SingleRecipePageProps {
-	className?: string;
+    className?: string;
 }
 
 const SingleRecipePage = memo((props: SingleRecipePageProps) => {
@@ -25,6 +26,7 @@ const SingleRecipePage = memo((props: SingleRecipePageProps) => {
 			.toArray(),
 		[id]
 	);
+	console.log(id);
 
 	console.log(id, recipeByID);
 	if (recipeByID && recipeByID[0]) {
@@ -37,7 +39,7 @@ const SingleRecipePage = memo((props: SingleRecipePageProps) => {
 	} else {
 		return (
 			<div className={classNames(cls.SingleRecipePage, className)}>
-				Загрузка...
+                Загрузка...
 			</div>
 		);
 	}
