@@ -18,6 +18,5 @@ export const parameters = {
 		StyleDecorator,
 		MemoryRouterDecorator,
 		RouterDecorator,
-		ThemeDecorator(ThemeConsts.light),
 	]
 };

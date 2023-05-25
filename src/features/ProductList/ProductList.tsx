@@ -1,9 +1,10 @@
 import {memo, useCallback} from 'react';
 import {IProduct} from 'store/types';
 import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
-import {GroupAnimationCard} from 'shared/ui/GroupAnimation/GroupAnimationCard';
 import {VStack} from 'shared/ui/Stack';
 import {db} from 'db/db';
+import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import cls from './ProductList.module.scss';
 
 interface ProductListProps {
 	className?: string;
@@ -25,24 +26,19 @@ export const ProductList = memo((props: ProductListProps) => {
 		db.activeProducts.put(newProduct);
 	}, []);
 
+	const content = activeProducts.map((product) => (
+		<ProductDetaildCard
+			className={cls.card}
+			key={product.id + product.name}
+			onDeleteProduct={onDeleteProduct}
+			item={product}
+			onChangeIngredient={onChangeIngredient}/>
+	));
+	const ids = activeProducts.map(el => el.id);
+
 	return (
 		<VStack max justify={'center'} align={'center'} gap={'4'} className={className}>
-			<GroupAnimationCard
-				functions={{onDeleteProduct, onChangeIngredient}}
-				data={activeProducts}
-				Component={ProductDetaildCard}/>
-			{/*{*/}
-			{/*	activeProducts.map((product) => (*/}
-			{/*		// <AppearAnimation*/}
-			{/*		// 	key={product.id + product.name}>*/}
-			{/*		<ProductDetaildCard*/}
-			{/*			key={product.id + product.name}*/}
-			{/*			onDeleteProduct={onDeleteProduct}*/}
-			{/*			product={product}*/}
-			{/*			onChangeIngredient={onChangeIngredient}/>*/}
-			{/*		// </AppearAnimation>*/}
-			{/*	))*/}
-			{/*}*/}
+			<GroupTransition data={content} keys={ids}/>
 		</VStack>
 	);
 });

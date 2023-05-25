@@ -10,13 +10,12 @@ import cls from './ProductDetaildCard.module.scss';
 
 interface ProductDetaildCardProps {
 	item: IProduct;
-	functions: {
-		onDeleteProduct: (id: number) => void,
-		onChangeIngredient: (item: IProduct) => void
-	}
+	onDeleteProduct: (id: number) => void,
+	onChangeIngredient: (item: IProduct) => void
+	className?: string
 }
 
-const ProductDetaildCard = memo(({item, functions}: ProductDetaildCardProps) => {
+const ProductDetaildCard = memo(({item, onDeleteProduct, onChangeIngredient}: ProductDetaildCardProps) => {
 	const {
 		id,
 		metric,
@@ -27,13 +26,9 @@ const ProductDetaildCard = memo(({item, functions}: ProductDetaildCardProps) => 
 		timesUsed
 	} = item;
 
-	const {onDeleteProduct, onChangeIngredient} = functions;
-
 	const [productPrice, setProductPrice] = useState<number>(price || 0);
 	const [productCurrentAmount, setProductCurrentAmount] = useState<number>(amountCurrent || 0);
 	const [productAmountInOnePack, setProductAmountInOnePack] = useState<number>(amountInOnePack || 0);
-
-
 
 	const onPriceChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
@@ -97,7 +92,7 @@ const ProductDetaildCard = memo(({item, functions}: ProductDetaildCardProps) => 
 	}, [onChangeIngredient, item, productAmountInOnePack, productPrice]);
 
 	return (
-		<VStack max gap={'4'} className={classNames(cls.ProductDetaildCard)}>
+		<VStack max gap={'4'} justify={'center'} align={'center'} className={classNames(cls.ProductDetaildCard)}>
 			<div className={cls.inputBlock}>
 				<Text className={cls.space} title={name}/>
 			</div>

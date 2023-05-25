@@ -2,7 +2,7 @@ import {
 	DetailedHTMLProps, HTMLAttributes, ReactNode,
 } from 'react';
 import cls from './FLex.module.scss';
-import {classNames} from '../../../helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 
 
 export type FlexJustify = 'start' | 'center' | 'end' | 'between';

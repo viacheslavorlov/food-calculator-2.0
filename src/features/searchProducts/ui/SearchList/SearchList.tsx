@@ -4,8 +4,9 @@ import {IProduct} from 'store/types';
 import {wordSearch} from 'shared/helpers/search/wordSearch';
 import {useAppSelector} from 'store/hooks';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
-import {GroupAnimationCard} from 'shared/ui/GroupAnimation/GroupAnimationCard';
 import {ProductCard} from 'entities/Products';
+import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {VStack} from 'shared/ui/Stack';
 
 interface SearchListProps {
 	className?: string;
@@ -50,11 +51,10 @@ export const SearchList = memo((props: SearchListProps) => {
 		}
 		return result;
 	}, [idList, products, searchOrder, searchProp, searchValue]);
-	const contentList = content();
+	const ids = content().map(item => item.id);
+	const contentList = content().map((item) => <ProductCard key={item.id} item={item}/>);
 
 	return (
-		<div className={classNames(className)}>
-			<GroupAnimationCard  data={contentList} Component={ProductCard}/>
-		</div>
+		<GroupTransition data={contentList} keys={ids} />
 	);
 });

@@ -4,6 +4,7 @@ import {classNames} from 'shared/helpers/classNames/classNames';
 import {Text} from 'shared/ui/Text/Text';
 import {RecipeCard} from '../RecipeCard/RecipeCard';
 import cls from './RecipeList.module.scss';
+import {AppearAnimation} from 'shared/ui/ApearAnimation/AppearAnimation';
 
 interface RecipeCardProps {
 	className?: string;
@@ -22,7 +23,11 @@ export const RecipeList = memo((props: RecipeCardProps) => {
 
 	return (
 		<div className={classNames(cls.RecipeList, className)}>
-			{recipes.map((recipe) => <RecipeCard  expanded={false} key={recipe.id} recipe={recipe} />)}
+			{recipes.map((recipe) => (
+				<AppearAnimation key={recipe.id}>
+					<RecipeCard  expanded={false} recipe={recipe} />
+				</AppearAnimation>
+			))}
 		</div>
 	);
 });

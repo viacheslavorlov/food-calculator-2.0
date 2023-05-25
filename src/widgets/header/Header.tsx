@@ -7,6 +7,7 @@ import {Text} from 'shared/ui/Text/Text';
 import ThemeSwitcher from '../themeSwitcher/ui/ThemeSwitcher/ThemeSwitcher';
 import cls from './Header.module.scss';
 import {links} from './links/links';
+import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
 
 
 export const Header = memo(() => {

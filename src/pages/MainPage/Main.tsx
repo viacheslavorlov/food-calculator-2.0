@@ -19,8 +19,6 @@ const MainPage = memo(() => {
 
 	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
-
-
 	useEffect(() => {
 		sessionStorage.setItem(PRODUCT_SESSIONSTORAGE_KEY, '[]');
 	}, []);

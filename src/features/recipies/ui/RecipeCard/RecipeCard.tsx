@@ -12,6 +12,7 @@ import {HStack} from 'shared/ui/Stack';
 import {Text} from 'shared/ui/Text/Text';
 import {IProduct} from 'store/types';
 import cls from './RecipeCard.module.scss';
+import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
 
 interface RecipeCardProps {
     className?: string;
@@ -47,7 +48,8 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 	if (recipe.ingredients) {
 		expandedIngredients = recipe.ingredients.map((ingredient) => (
 			<ProductDetaildCard
-				functions={{onDeleteProduct, onChangeIngredient}}
+				onDeleteProduct={onDeleteProduct}
+				onChangeIngredient={onChangeIngredient}
 				key={ingredient.id}
 				item={ingredient}
 			/>
@@ -66,11 +68,11 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 						</Button>
 					</Link>
 				</HStack>
-				{
-					expanded
-						? expandedIngredients
-						: <List<IProduct> content={recipe.ingredients || []}/>
-				}
+
+
+				{expanded
+					? <GroupTransition keys={recipe.ingredients.map(el => el.id)} data={expandedIngredients}/>
+					: <List<IProduct> content={recipe.ingredients || []}/>}
 				<hr className={cls.separator}/>
 			</Suspense>
 		</div>
