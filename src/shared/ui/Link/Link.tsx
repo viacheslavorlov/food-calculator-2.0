@@ -1,7 +1,7 @@
 import React, {memo, ReactNode} from 'react';
 import {NavLink} from 'react-router-dom';
 import {classNames} from '../../helpers/classNames/classNames';
-import {AppearAnimation} from '../ApearAnimation/AppearAnimation';
+import {AppearAnimation} from '../animations/ApearAnimation/AppearAnimation';
 import {IconSVG} from '../Icon/Icon';
 import {Text} from '../Text/Text';
 import cls from './Link.module.scss';

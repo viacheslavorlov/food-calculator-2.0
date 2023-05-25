@@ -7,24 +7,32 @@ import {wordSearch} from 'shared/helpers/search/wordSearch';
 import {searchValueSelector} from 'features/searchProducts';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from 'db/db';
-import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
+import {Text} from 'shared/ui/Text/Text';
 
 const DeleteItems = memo(() => {
 	const products = useLiveQuery(
 		() => db.products.toArray()
 	);
 	const searchValue = useAppSelector(searchValueSelector);
-
-	const cards = products?.filter(item => wordSearch(searchValue, item.name))
-		.map(item => <DeleteItemCard key={item.id} item={item}/>);
-	const cardsKeys = products!.map((item) => item.id);
-
+	let cards, cardsKeys;
+	if (products) {
+		cards = products.filter(item => wordSearch(searchValue, item.name))
+			.map(item => <DeleteItemCard key={item.id} item={item}/>);
+		cardsKeys = products.map((item) => item.id);
+		return (
+			<div className={cls.DeleteItems}>
+				<Search/>
+				<GroupTransition data={cards} keys={cardsKeys}/>
+			</div>
+		);
+	}
 	return (
 		<div className={cls.DeleteItems}>
-			<Search/>
-			<GroupTransition data={cards} keys={cardsKeys}/>
+			<Text title={'Продукты не найддены'}/>
 		</div>
 	);
+
 });
 
 export default DeleteItems;

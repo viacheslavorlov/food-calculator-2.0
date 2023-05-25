@@ -12,7 +12,7 @@ import {HStack} from 'shared/ui/Stack';
 import {Text} from 'shared/ui/Text/Text';
 import {IProduct} from 'store/types';
 import cls from './RecipeCard.module.scss';
-import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 
 interface RecipeCardProps {
     className?: string;

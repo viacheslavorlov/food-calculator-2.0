@@ -7,6 +7,7 @@ import {Text} from 'shared/ui/Text/Text';
 import {ThemeSwitcher} from 'widgets/themeSwitcher';
 import cls from './Header.module.scss';
 import {links} from '../links/links';
+import {AsyncAnimation} from 'shared/ui/animations/AsyncAnimation/AsyncAnimation';
 
 
 export const Header = memo(() => {
@@ -42,7 +43,9 @@ export const Header = memo(() => {
 			{(isMenuOn || !showMenuButton) && (
 				<nav className={cls.header__navbar}>
 					{links.map(item => (
-						<Link onClick={onMenuHandle} key={item.to} Icon={item.Icon} to={item.to} title={item.title}/>
+						<AsyncAnimation key={item.to}>
+							<Link onClick={onMenuHandle}  Icon={item.Icon} to={item.to} title={item.title}/>
+						</AsyncAnimation>
 					))}
 				</nav>
 			)}

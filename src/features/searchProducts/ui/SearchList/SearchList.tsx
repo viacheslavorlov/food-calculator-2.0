@@ -5,7 +5,7 @@ import {wordSearch} from 'shared/helpers/search/wordSearch';
 import {useAppSelector} from 'store/hooks';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
 import {ProductCard} from 'entities/Products';
-import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 import {VStack} from 'shared/ui/Stack';
 
 interface SearchListProps {

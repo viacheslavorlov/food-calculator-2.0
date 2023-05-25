@@ -4,7 +4,7 @@ import {classNames} from 'shared/helpers/classNames/classNames';
 import {Text} from 'shared/ui/Text/Text';
 import {RecipeCard} from '../RecipeCard/RecipeCard';
 import cls from './RecipeList.module.scss';
-import {AppearAnimation} from 'shared/ui/ApearAnimation/AppearAnimation';
+import {AppearAnimation} from 'shared/ui/animations/ApearAnimation/AppearAnimation';
 
 interface RecipeCardProps {
 	className?: string;
