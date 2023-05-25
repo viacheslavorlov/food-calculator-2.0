@@ -15,7 +15,7 @@ interface ProductDetaildCardProps {
 	className?: string
 }
 
-const ProductDetaildCard = memo(({item, onDeleteProduct, onChangeIngredient}: ProductDetaildCardProps) => {
+export const ProductDetaildCard = memo(({item, onDeleteProduct, onChangeIngredient}: ProductDetaildCardProps) => {
 	const {
 		id,
 		metric,
@@ -136,5 +136,3 @@ const ProductDetaildCard = memo(({item, onDeleteProduct, onChangeIngredient}: Pr
 		</VStack>
 	);
 });
-
-export default ProductDetaildCard;

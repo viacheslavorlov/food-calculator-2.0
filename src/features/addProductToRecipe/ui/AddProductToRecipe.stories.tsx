@@ -1,6 +1,6 @@
 import {Meta, StoryFn} from '@storybook/react';
 import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from 'widgets/themeSwitcher/teme/temeConsts';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {AddProductToRecipe} from './AddProductToRecipe';
 
 export default {

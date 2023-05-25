@@ -1,15 +1,12 @@
-import {memo, useCallback, useEffect} from 'react';
+import {memo, useEffect} from 'react';
 import cls from './MainPage.module.scss';
-import {ResultValue} from 'entities/Products/ui/ResultValue/ResultValue';
-import {Search} from 'features/searchProducts/ui/Search/Search';
-import {SearchList} from 'features/searchProducts/ui/SearchList/SearchList';
+import {PRODUCT_SESSIONSTORAGE_KEY, ResultValue} from 'entities/Products';
+import {Search, SearchList} from 'features/searchProducts';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from 'db/db';
-import {PRODUCT_SESSIONSTORAGE_KEY} from 'entities/Products/consts/productConsts';
-import {IProduct} from 'store/types';
 import {VStack} from 'shared/ui/Stack';
-import {CreateRecipeForm} from 'features/createRecipe/ui/CreateRecipeForm';
-import {ProductList} from 'features/ProductList/ProductList';
+import {CreateRecipeForm} from 'features/createRecipe';
+import {ProductList} from 'features/ProductList';
 
 const MainPage = memo(() => {
 	const products = useLiveQuery(

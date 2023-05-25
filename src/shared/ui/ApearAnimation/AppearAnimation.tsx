@@ -4,14 +4,13 @@ import {memo, ReactNode} from 'react';
 interface AppearAnimationProps {
 	className?: string;
     children: ReactNode;
-	initOnRender?: boolean;
 	initOnClick?: boolean;
 	data?: any[];
 }
 
 export const AppearAnimation = memo((props: AppearAnimationProps) => {
 	const {
-		className, children, initOnRender
+		className, children
 	} = props;
 
 	const springs = useSpring({

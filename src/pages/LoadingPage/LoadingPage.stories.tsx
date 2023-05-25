@@ -1,7 +1,7 @@
 import {Meta, StoryFn} from '@storybook/react';
 import {LoadingPage} from './LoadingPage';
 import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from 'widgets/themeSwitcher/teme/temeConsts';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {SuspenseDecorator} from 'shared/helpers/storybookDecorators/SuspenseDecorator';
 
 export default {

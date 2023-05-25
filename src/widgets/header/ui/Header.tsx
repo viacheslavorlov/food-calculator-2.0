@@ -4,10 +4,9 @@ import {Button, ButtonVariants} from 'shared/ui/Button/Button';
 import {IconSVG} from 'shared/ui/Icon/Icon';
 import {Link} from 'shared/ui/Link/Link';
 import {Text} from 'shared/ui/Text/Text';
-import ThemeSwitcher from '../themeSwitcher/ui/ThemeSwitcher/ThemeSwitcher';
+import {ThemeSwitcher} from 'widgets/themeSwitcher';
 import cls from './Header.module.scss';
-import {links} from './links/links';
-import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {links} from '../links/links';
 
 
 export const Header = memo(() => {

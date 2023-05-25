@@ -1,5 +1,5 @@
 import {FC, Suspense} from 'react';
-import {Header} from '../../widgets/header/Header';
+import {Header} from '../../widgets/header/ui/Header';
 import '../style/index.scss';
 import {useTheme} from '../../widgets/themeSwitcher/teme/useTheme';
 import './app.module.scss';

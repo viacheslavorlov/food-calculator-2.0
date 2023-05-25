@@ -1,5 +1,5 @@
 import {db} from 'db/db';
-import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
+import {ProductDetaildCard} from 'entities/Products';
 import {IRecipe} from 'entities/recipe';
 import {memo, Suspense, useCallback} from 'react';
 import {Link} from 'react-router-dom';

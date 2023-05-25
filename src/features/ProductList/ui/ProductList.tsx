@@ -1,6 +1,6 @@
 import {memo, useCallback} from 'react';
 import {IProduct} from 'store/types';
-import ProductDetaildCard from 'entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
+import {ProductDetaildCard} from 'entities/Products';
 import {VStack} from 'shared/ui/Stack';
 import {db} from 'db/db';
 import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';

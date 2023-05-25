@@ -1,1 +1,1 @@
-export {} from './ui/DeleteItemCard/DeleteItemCard';
+export {DeleteItemCard} from './ui/DeleteItemCard/DeleteItemCard';

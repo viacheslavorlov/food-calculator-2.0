@@ -2,8 +2,8 @@ import {store} from 'app/store/store';
 import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
-import {BrowserRouter, HashRouter} from 'react-router-dom';
-import {ThemeProvider} from 'widgets/themeSwitcher/teme/themeProvider';
+import {HashRouter} from 'react-router-dom';
+import {ThemeProvider} from 'widgets/themeSwitcher';
 import App from './app/App/App';
 
 const root = ReactDOM.createRoot(

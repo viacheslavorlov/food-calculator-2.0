@@ -25,7 +25,7 @@ export const Link = memo((props: LinkPrors) => {
 	} = props;
 
 	return (
-		<AppearAnimation initOnRender>
+		<AppearAnimation className={className}>
 			<NavLink
 				onClick={onClick}
 				className={

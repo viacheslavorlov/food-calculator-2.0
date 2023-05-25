@@ -20,7 +20,8 @@
     "plugins": [
         "react",
         "@typescript-eslint",
-        "react-hooks"
+        "react-hooks",
+        "fsd-architecture-checker"
     ],
     "rules": {
         "indent": [
@@ -44,7 +45,16 @@
         "inebreak-style": "off",
         "@typescript-eslint/ban-ts-comment": "off",
         "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "error"
+        "react-hooks/exhaustive-deps": "error",
+        "fsd-architecture-checker/import-path-checker": "error",
+        "fsd-architecture-checker/public-api-import": [
+            "error",
+            {
+                "testFilesPatterns": [
+                    "**/*.test.*", "**/*.story.*", "**/StoreDecorator.tsx"
+                ]
+            }
+        ]
     },
     "settings": {
         "react": {
