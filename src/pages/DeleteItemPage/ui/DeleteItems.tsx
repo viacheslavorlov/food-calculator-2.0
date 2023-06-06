@@ -17,12 +17,14 @@ const DeleteItems = memo(() => {
 
 	const cards = products?.filter(item => wordSearch(searchValue, item.name))
 		.map(item => <DeleteItemCard key={item.id} item={item}/>);
-	const cardsKeys = products!.map((item) => item.id);
+	const cardsKeys = products?.map((item) => item.id);
 
 	return (
 		<div className={cls.DeleteItems}>
 			<Search/>
-			<GroupTransition data={cards} keys={cardsKeys}/>
+			{
+				products && <GroupTransition data={cards} keys={cardsKeys || []}/>
+			}
 		</div>
 	);
 });

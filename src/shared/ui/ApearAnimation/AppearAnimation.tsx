@@ -14,9 +14,10 @@ export const AppearAnimation = memo((props: AppearAnimationProps) => {
 	} = props;
 
 	const springs = useSpring({
+		delay: 200,
 		from: {x: -100, opacity: 0},
 		to: {x: 0, opacity: 1},
-		config: config.wobbly
+		config: config.wobbly,
 	});
 
 
