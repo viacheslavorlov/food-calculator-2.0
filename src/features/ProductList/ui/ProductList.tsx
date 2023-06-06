@@ -3,7 +3,7 @@ import {IProduct} from 'store/types';
 import {ProductDetaildCard} from 'entities/Products';
 import {VStack} from 'shared/ui/Stack';
 import {db} from 'db/db';
-import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 import cls from './ProductList.module.scss';
 
 interface ProductListProps {

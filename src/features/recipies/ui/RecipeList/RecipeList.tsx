@@ -4,7 +4,7 @@ import {classNames} from 'shared/helpers/classNames/classNames';
 import {Text} from 'shared/ui/Text/Text';
 import {RecipeCard} from '../RecipeCard/RecipeCard';
 import cls from './RecipeList.module.scss';
-import {GroupTransition} from 'shared/ui/GroupTransition/GroupTransition';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 
 interface RecipeCardProps {
 	className?: string;

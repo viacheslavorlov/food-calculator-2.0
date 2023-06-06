@@ -7,7 +7,7 @@ import {Text} from 'shared/ui/Text/Text';
 import {ThemeSwitcher} from 'widgets/themeSwitcher';
 import cls from './Header.module.scss';
 import {links} from '../links/links';
-import {AppearAnimation} from 'shared/ui/ApearAnimation/AppearAnimation';
+import {AppearAnimation} from 'shared/ui/animations/ApearAnimation/AppearAnimation';
 
 
 export const Header = memo(() => {
