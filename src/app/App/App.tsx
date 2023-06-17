@@ -1,11 +1,11 @@
 import {FC, Suspense} from 'react';
-import {Header} from '../../widgets/header/ui/Header';
+import {Header} from 'widgets/header';
 import '../style/index.scss';
-import {useTheme} from '../../widgets/themeSwitcher/teme/useTheme';
+import {useTheme} from 'widgets/themeSwitcher';
 import './app.module.scss';
-import {classNames} from '../../shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import {AppRouter} from '../AppRouter/AppRouter';
-import {LoadingPage} from '../../pages';
+import {LoadingPage} from 'pages';
 
 const App: FC = () => {
 	const {theme} = useTheme();
