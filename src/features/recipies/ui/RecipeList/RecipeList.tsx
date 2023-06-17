@@ -4,7 +4,7 @@ import {classNames} from 'shared/helpers/classNames/classNames';
 import {Text} from 'shared/ui/Text/Text';
 import {RecipeCard} from '../RecipeCard/RecipeCard';
 import cls from './RecipeList.module.scss';
-import {AppearAnimation} from 'shared/ui/animations/ApearAnimation/AppearAnimation';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 
 interface RecipeCardProps {
 	className?: string;
@@ -21,13 +21,13 @@ export const RecipeList = memo((props: RecipeCardProps) => {
 		return <Text title={'Рецепты не найдены'}/>;
 	}
 
+
 	return (
 		<div className={classNames(cls.RecipeList, className)}>
-			{recipes.map((recipe) => (
-				<AppearAnimation key={recipe.id}>
-					<RecipeCard  expanded={false} recipe={recipe} />
-				</AppearAnimation>
-			))}
+			<GroupTransition
+				data={recipes.map((recipe) => <RecipeCard key={recipe.id} expanded={false} recipe={recipe}/>)}
+				keys={recipes.map((recipe) => recipe.id)}
+			/>
 		</div>
 	);
 });

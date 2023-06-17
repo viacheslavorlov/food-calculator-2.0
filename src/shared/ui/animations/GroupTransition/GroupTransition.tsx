@@ -1,23 +1,18 @@
 import {memo} from 'react';
 import {animated, useTransition} from '@react-spring/web';
-import {HStack, VStack} from 'shared/ui/Stack';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './GroupTransition.module.scss';
-import {FlexAlign, FlexDirection, FlexGap, FlexJustify} from 'shared/ui/Stack/Flex/Flex';
 
 interface GroupTransitionProps {
 	className?: string;
 	data: any;
 	keys: Array<number | string>;
-	justify?: FlexJustify;
-	align?: FlexAlign;
-	gap?: FlexGap;
-	direction?: FlexDirection;
+	trail?: number
 }
 
 export const GroupTransition = memo((props: GroupTransitionProps) => {
 	const {
-		className, data, keys, gap = '8', justify = 'center', direction = 'column', align = 'center'
+		className, data, keys, trail = 150
 	} = props;
 	const transitions = useTransition(data, {
 		keys,
@@ -34,23 +29,13 @@ export const GroupTransition = memo((props: GroupTransitionProps) => {
 			opacity: 0,
 			x: 200,
 			height: 0
-		}
+		},
+		trail
 	});
 
-	return direction === 'column' ?
-		<VStack max justify={justify} align={align} gap={gap}>
-			{transitions((style, item) => (
-				<animated.div style={style} className={classNames(className, cls.fullWidth)}>
-					{item}
-				</animated.div>
-			))}
-		</VStack>
-		:
-		<HStack max justify={justify} align={align} gap={gap}>
-			{transitions((style, item) => (
-				<animated.div style={style} /*className={classNames(className, cls.fullWidth)}*/>
-					{item}
-				</animated.div>
-			))}
-		</HStack>;
+	return transitions((style, item) => (
+		<animated.div style={style} className={classNames(className, cls.fullWidth)}>
+			{item}
+		</animated.div>
+	));
 });
