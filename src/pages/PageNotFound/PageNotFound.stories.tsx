@@ -11,7 +11,7 @@ export default {
 	},
 } as ComponentMeta<typeof PageNotFound>;
 
-const Template: ComponentStory<typeof PageNotFound> = (args) => <PageNotFound />;
+const Template: ComponentStory<typeof PageNotFound> = () => <PageNotFound />;
 
 export const PageNotFoundDark = Template.bind({});
 PageNotFoundDark.args = {};

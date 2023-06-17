@@ -24,7 +24,6 @@ export const DarkGroupTransition = Template.bind({});
 DarkGroupTransition.args = {
 	data: ['Первая строка', 'Вторая строка', 'Третья строка'],
 	keys: [1, 2, 3],
-	justify: 'start',
 	align: 'start'
 };
 DarkGroupTransition.decorators = [ThemeDecorator(ThemeConsts.dark)];
