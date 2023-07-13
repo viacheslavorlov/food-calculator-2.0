@@ -7,3 +7,4 @@
 7. ----unit tests, e2e tests, visual tests
 8. \+ add reactive functional to recipe list
 9. \+ add eslint plugin for hooks, add my eslint plugins
+10. удалять удаленный продукт из активныйх продуктов

@@ -1,6 +1,6 @@
-import {memo} from 'react';
-import {useLiveQuery} from 'dexie-react-hooks';
-import {db} from 'db/db';
+import { memo } from 'react';
+import { useLiveQuery } from 'dexie-react-hooks';
+import { db } from 'db/db';
 
 interface GetProductsDexieTestProps {
 	className?: string;
