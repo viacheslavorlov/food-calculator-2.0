@@ -1,4 +1,4 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryFn} from '@storybook/react';
 import {ThemeDecorator} from '../../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';
 import {CreateRecipeForm} from './CreateRecipeForm';
@@ -9,13 +9,14 @@ export default {
 	argTypes: {
 		background: {control: 'background'},
 	},
-} as ComponentMeta<typeof CreateRecipeForm>;
+	decorators: []
+} as Meta<typeof CreateRecipeForm>;
 
-const Template: ComponentStory<typeof CreateRecipeForm> = (args) => <CreateRecipeForm {...args} />;
+const Template: StoryFn<typeof CreateRecipeForm> = (args) => <CreateRecipeForm {...args} />;
 
 export const LightCreateRecipeForm = Template.bind({});
 LightCreateRecipeForm.args = {};
-LightCreateRecipeForm.decorators = [];
+LightCreateRecipeForm.decorators = [ThemeDecorator(ThemeConsts.light)];
 
 export const DarkCreateRecipeForm = Template.bind({});
 DarkCreateRecipeForm.args = {};

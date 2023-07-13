@@ -1,29 +1,32 @@
 import cls from './DeleteItems.module.scss';
-import {useAppDispatch, useAppSelector} from '../../../store/hooks';
-import {getAllProductsSelector} from '../../../entities/Products/model/selectors/getAllProductsSelector';
-import {DeleteItemCard} from '../../../features/DeleteItems/ui/DeleteItemCard/DeleteItemCard';
-import {fetchProducts} from '../../../entities/Products/model/services/fetchProducts/fetchProducts';
-import {memo, useEffect} from 'react';
-import {Search} from '../../../features/searchProducts/ui/Search/Search';
-import {wordSearch} from '../../../shared/helpers/search/wordSearch';
-import {searchValueSelector} from '../../../features/searchProducts/model/selectors/searchSelectors';
+import {useAppSelector} from 'store/hooks';
+import {DeleteItemCard} from 'features/DeleteItems';
+import {memo} from 'react';
+import {Search, searchValueSelector} from 'features/searchProducts';
+import {wordSearch} from 'shared/helpers/search/wordSearch';
+import {useLiveQuery} from 'dexie-react-hooks';
+import {db} from 'db/db';
+import {Text} from 'shared/ui/Text/Text';
+import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 
 const DeleteItems = memo(() => {
-	const products = useAppSelector(getAllProductsSelector);
+	const products = useLiveQuery(
+		() => db.products.toArray()
+	);
 	const searchValue = useAppSelector(searchValueSelector);
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		if (!products.length) {
-			dispatch(fetchProducts());
-		}
-	}, []);
+
+	const cards = products?.filter(item => wordSearch(searchValue, item.name))
+		.map(item => <DeleteItemCard key={item.id} item={item}/>);
+	const cardsKeys = products?.map((item) => item.id);
 
 	return (
 		<div className={cls.DeleteItems}>
 			<Search/>
-			{products
-				.filter(item => wordSearch(searchValue, item.name))
-				.map(item => <DeleteItemCard key={item.id} item={item}/>)}
+			{
+				products ? <GroupTransition data={cards} keys={cardsKeys || []}/>
+					:
+					<Text title={'Продукты не найддены'}/>
+			}
 		</div>
 	);
 });

@@ -1,4 +1,4 @@
-import {ComponentMeta, ComponentStory} from '@storybook/react';
+import {Meta, StoryFn} from '@storybook/react';
 import MainPage from './Main';
 import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
 import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
@@ -10,52 +10,15 @@ export default {
 	argTypes: {
 		backgroundColor: {control: 'color'},
 	},
-	decorators: [StoreDecorator({
-		products:
-			{
-				allProducts: [
-					{
-						id: 1,
-						metric: 'г',
-						timesUsed: 10,
-						name: 'Молоко',
-						amountCurrent: 100,
-						price: 80,
-						amountInOnePack: 900
-					},
-					{
-						id: 2,
-						metric: 'г',
-						timesUsed: 10,
-						name: 'Сахар',
-						amountCurrent: 100,
-						price: 80,
-						amountInOnePack: 900
-					}
-				],
-				activeProducts: [
-					{
-						id: 3,
-						metric: 'г',
-						timesUsed: 10,
-						name: 'Мука',
-						amountCurrent: 100,
-						price: 80,
-						amountInOnePack: 900
-					}
-				]
-			}
-
-	})]
-} as ComponentMeta<typeof MainPage>;
+} as Meta<typeof MainPage>;
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Template: ComponentStory<typeof MainPage> = (args) => <MainPage/>;
+const Template: StoryFn<typeof MainPage> = () => <MainPage/>;
 
 export const LoaderDark = Template.bind({});
 LoaderDark.args = {};
-LoaderDark.decorators = [ThemeDecorator(ThemeConsts.dark)];
+LoaderDark.decorators = [ThemeDecorator(ThemeConsts.dark), StoreDecorator({searchProducts: {}})];
 
 export const LoaderLight = Template.bind({});
 LoaderLight.args = {};
-LoaderLight.decorators = [ThemeDecorator(ThemeConsts.light)];
+LoaderLight.decorators = [ThemeDecorator(ThemeConsts.light), StoreDecorator({})];

@@ -1,14 +1,13 @@
-import {classNames} from '../../../shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './CreateRecipeForm.module.scss';
 import {ChangeEvent, memo, useState} from 'react';
-import {useAppSelector} from '../../../store/hooks';
-import {getActiveProductsSelector} from '../../../entities/Products/model/selectors/getActiveProductsSelector';
-import {HStack} from '../../../shared/ui/Stack';
-import {Input} from '../../../shared/ui/Input/Input';
-import {Text} from '../../../shared/ui/Text/Text';
-import {useCreateRecipeMutation} from '../model/createRecipeApi';
-import {IRecipe} from '../../../entities/recipe';
-import {Button, ButtonVariants} from '../../../shared/ui/Button/Button';
+import {HStack} from 'shared/ui/Stack';
+import {Input} from 'shared/ui/Input/Input';
+import {Text} from 'shared/ui/Text/Text';
+import {IRecipe} from 'entities/recipe';
+import {Button, ButtonVariants} from 'shared/ui/Button/Button';
+import {db} from 'db/db';
+import {useLiveQuery} from 'dexie-react-hooks';
 
 interface CreateRecipeFormProps {
 	className?: string;
@@ -19,16 +18,24 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		className
 	} = props;
 	const [recipeName, setRecipeName] = useState('');
-	const activeProducts = useAppSelector(getActiveProductsSelector);
-	const [createRecipe] = useCreateRecipeMutation();
+	const ingredients =  useLiveQuery(async () => db.activeProducts.toArray());
+
 	const onInputHandler = () => (e: ChangeEvent<HTMLInputElement>) => {
 		setRecipeName(e.target.value);
 	};
 	const newRecipe: IRecipe = {
 		id: Date.now(),
-		ingredients: activeProducts,
+		ingredients: ingredients || [],
 		recipeName,
 		timesUsed: 0
+	};
+
+	const createRecipe = async () => {
+		try {
+			await db.recipes.add(newRecipe);
+		} catch (e) {
+			alert('Рецепт не был добавлен');
+		}
 	};
 
 	const onCreateRecipe = () => {
@@ -37,7 +44,7 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 			.some(ingredient => ingredient.amountCurrent === 0);
 
 		if (!unUsedItems) {
-			createRecipe(newRecipe);
+			createRecipe();
 			setRecipeName('');
 		} else {
 			alert('не все включенные в рецепт ингредиенты используются:' +

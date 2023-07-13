@@ -1,0 +1,12 @@
+name: food-calculator-2.0
+packages:
+  - path: storybook-static
+  - path: config
+  - path: dist
+  - path: src
+language: typescript
+appmap_dir: tmp/appmap
+test_recording:
+  test_commands:
+    - command: npx storybook dev
+      env: {}

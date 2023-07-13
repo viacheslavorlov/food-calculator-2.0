@@ -7,7 +7,8 @@
         "eslint:recommended",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:react/jsx-runtime"
+        "plugin:react/jsx-runtime",
+        "plugin:react-hooks/recommended"
     ],
     "overrides": [
     ],
@@ -18,7 +19,9 @@
     },
     "plugins": [
         "react",
-        "@typescript-eslint"
+        "@typescript-eslint",
+        "react-hooks",
+        "fsd-architecture-checker"
     ],
     "rules": {
         "indent": [
@@ -40,7 +43,18 @@
         "react/react-in-jsx-scope": "off",
         "react/display-name": "off",
         "inebreak-style": "off",
-        "@typescript-eslint/ban-ts-comment": "off"
+        "@typescript-eslint/ban-ts-comment": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "error",
+        "fsd-architecture-checker/import-path-checker": "error",
+        "fsd-architecture-checker/public-api-import": [
+            "error",
+            {
+                "testFilesPatterns": [
+                    "**/*.test.*", "**/*.story.*", "**/StoreDecorator.tsx"
+                ]
+            }
+        ]
     },
     "settings": {
         "react": {

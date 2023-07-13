@@ -1,45 +1,53 @@
 import cls from './ProductCard.module.scss';
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
 import {memo, useCallback} from 'react';
-import {Text} from '../../../../shared/ui/Text/Text';
-import {Button, ButtonVariants} from '../../../../shared/ui/Button/Button';
-import {useAppDispatch} from '../../../../store/hooks';
-import {productsActions} from '../../model/slice/productsSlice';
-import {addViewsCount} from '../../model/services/addViewsCount/addViewsCount';
-import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
+import {Text} from 'shared/ui/Text/Text';
+import {Button, ButtonVariants} from 'shared/ui/Button/Button';
+import {useLiveQuery} from 'dexie-react-hooks';
+import {db} from 'db/db';
+import {Line} from 'shared/ui/Line/Line';
+import {HStack} from 'shared/ui/Stack';
+import {IProduct} from 'store/types';
 
 interface ProductCardProps {
 	className?: string;
-	name: string;
-	id: number;
+	item: IProduct;
 }
 
 export const ProductCard = memo((props: ProductCardProps) => {
-	const dispatch = useAppDispatch();
 	const {
 		className,
-		name,
-		id
+		item
 	} = props;
+	// const activeProducts = useLiveQuery(() => db.activeProducts.toArray()) || [];
+	const newActiveProduct = useLiveQuery(
+		() => db.products
+			.where('id')
+			.equals(item.id)
+			.toArray()
+	);
 
-	const onAddProduct = useCallback((id: number) => {
-		dispatch(addViewsCount(id));
-		dispatch(productsActions.addProductToActive(id));
-
-	}, [dispatch]);
+	const onAddProduct = useCallback(() => {
+		if (newActiveProduct?.length) {
+			db.activeProducts.bulkAdd(newActiveProduct)
+				.then(() => console.log('добавлен продукт в активный лист', newActiveProduct[0]))
+				.catch(() => console.log('Продукт не добавлен!'));
+		}
+	}, [newActiveProduct]);
 
 	return (
-		<AppearAnimation initOnRender className={classNames(cls.ProductCard, className)}>
-			<Text content={name}/>
-			<hr className={cls.line}/>
+		// <AppearAnimation className={classNames(cls.ProductCard, className)} initOnRender >
+		<HStack gap={'8'} max>
+			<Text content={item.name}/>
+			<Line width={'30vw'}/>
 			<Button
 				className={cls.btn}
 				variant={ButtonVariants.rounded}
-				onClick={() => onAddProduct(id)}
+				onClick={() => onAddProduct()}
 			>
 				Добавить
 			</Button>
-		</AppearAnimation>
+		</HStack>
+		// </AppearAnimation>
 	);
 });
 

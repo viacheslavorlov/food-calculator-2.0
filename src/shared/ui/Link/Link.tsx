@@ -1,9 +1,9 @@
 import React, {memo, ReactNode} from 'react';
 import {NavLink} from 'react-router-dom';
 import {classNames} from '../../helpers/classNames/classNames';
-import cls from './Link.module.scss';
-import {Text} from '../Text/Text';
 import {IconSVG} from '../Icon/Icon';
+import {Text} from '../Text/Text';
+import cls from './Link.module.scss';
 
 interface LinkPrors {
 	className?: string;
@@ -23,14 +23,16 @@ export const Link = memo((props: LinkPrors) => {
 		onClick
 	} = props;
 
+	const activeClass = (isActive: boolean) => isActive
+		? classNames(cls.header__navbar_link, className, 'active')
+		: classNames(cls.header__navbar_link, className, 'inactive');
+
 	return (
 		<NavLink
 			onClick={onClick}
-			className={
-				({isActive}) => isActive ? classNames(cls.header__navbar_link, 'active')
-					: classNames(cls.header__navbar_link, 'inactive')
-			}
-			to={to}>
+			className={({isActive}) => activeClass(isActive)}
+			to={to}
+		>
 			<Text className={cls.header__navbar_text} content={title}/>
 			<IconSVG className={cls.icon} Icon={Icon}/>
 		</NavLink>

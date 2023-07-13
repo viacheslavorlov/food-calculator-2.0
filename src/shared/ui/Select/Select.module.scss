@@ -1,7 +1,18 @@
 .Select {
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
-    padding: 0 10px;
     border-radius: 15px;
     font-size: var(--font-s);
+}
+
+.Select:active {
+    background-color: var(--green-color);
+}
+
+.Select::after {
+    background-color: var(--green-color);
+}
+
+.Select::before {
+    background-color: var(--green-color);
 }

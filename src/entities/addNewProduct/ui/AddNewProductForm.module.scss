@@ -1,19 +1,18 @@
-.AddNewProductForm {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 75vw;
 
-    .text {
-        text-align: center;
-    }
-
-    .button {
-        margin: 27px;
-        width: 90%;
-        background-color: var(--green-color);
-        color: var(--white-color);
-    }
+.text {
+    text-align: center;
 }
+
+.button {
+    margin-top: 4px;
+    width: 100%;
+    background-color: var(--green-color);
+    color: var(--white-color);
+}
+
+.input {
+    max-width: 100%;
+    width: 100%;
+}
+
 

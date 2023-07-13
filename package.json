@@ -13,7 +13,7 @@
     "test:jest": "jest",
     "test": "jest --config ./jest.config.ts",
     "storybook": "storybook dev",
-    "build-storybook": "build-storybook"
+    "build-storybook": "sb build"
   },
   "author": "viacheslavorlov@gmail.com",
   "license": "ISC",
@@ -27,6 +27,7 @@
     "@storybook/addon-interactions": "^7.0.7",
     "@storybook/addon-links": "^7.0.7",
     "@storybook/addon-mdx-gfm": "^7.0.7",
+    "@storybook/cli": "^7.0.11",
     "@storybook/react": "^7.0.7",
     "@storybook/react-webpack5": "^7.0.7",
     "@storybook/testing-library": "^0.1.0",
@@ -48,7 +49,9 @@
     "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
+    "eslint-plugin-fsd-architecture-checker": "^0.0.12",
     "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.11",
     "html-webpack-plugin": "^5.5.0",
     "jest": "^29.4.3",
@@ -75,6 +78,7 @@
     "webpack-dev-server": "^4.11.1"
   },
   "dependencies": {
+    "@appland/appmap-agent-js": "^13.9.0",
     "@react-spring/web": "^9.7.2",
     "@reduxjs/toolkit": "^1.9.2",
     "@types/react-transition-group": "^4.4.6",
@@ -88,5 +92,20 @@
     "react-router-dom": "^6.8.0",
     "react-transition-group": "^4.4.5",
     "typescript-plugin-css-modules": "^4.2.1"
+  },
+  "loki": {
+    "configurations": {
+      "chrome.laptop": {
+        "target": "chrome.app",
+        "width": 1366,
+        "height": 768,
+        "deviceScaleFactor": 1,
+        "mobile": false
+      },
+      "chrome.iphone7": {
+        "target": "chrome.app",
+        "preset": "iPhone 7"
+      }
+    }
   }
 }

@@ -5,7 +5,7 @@ export const loaders = (): webpack.RuleSetRule[] => {
 	const typeScriptLoader = {
 		test: /\.tsx?$/,
 		use: 'ts-loader',
-		exclude: /node_modules/
+		exclude: [/node_modules/, /stories/]
 
 	};
 	const svgLoader = {

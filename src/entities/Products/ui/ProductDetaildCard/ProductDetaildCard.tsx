@@ -1,22 +1,21 @@
-import {ChangeEvent, memo, useState} from 'react';
+import {ChangeEvent, memo, useCallback, useState} from 'react';
+import {classNames} from 'shared/helpers/classNames/classNames';
+import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
+import {Input} from 'shared/ui/Input/Input';
+import {Line} from 'shared/ui/Line/Line';
+import {HStack, VStack} from 'shared/ui/Stack';
+import {Text} from 'shared/ui/Text/Text';
+import {IProduct} from 'store/types';
 import cls from './ProductDetaildCard.module.scss';
-import {Text} from '../../../../shared/ui/Text/Text';
-import {Input} from '../../../../shared/ui/Input/Input';
-import {useAppDispatch} from '../../../../store/hooks';
-import {productsActions} from '../../model/slice/productsSlice';
-import {putProduct} from '../../model/services/putProduct/putProduct';
-import {calculatePriceOfProduct} from '../../../../shared/helpers/resultCalculationFunctions/calculationFunctions';
-import {Button, ButtonBackground, ButtonVariants} from '../../../../shared/ui/Button/Button';
-import {IProduct} from '../../../../store/types';
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
-import {AppearAnimation} from '../../../../shared/ui/ApearAnimation/AppearAnimation';
 
 interface ProductDetaildCardProps {
-	product: IProduct;
-	onChangeIngredient?: (product: IProduct) => void;
+	item: IProduct;
+	onDeleteProduct: (id: number) => void,
+	onChangeIngredient: (item: IProduct) => void
+	className?: string
 }
 
-const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCardProps) => {
+export const ProductDetaildCard = memo(({item, onDeleteProduct, onChangeIngredient}: ProductDetaildCardProps) => {
 	const {
 		id,
 		metric,
@@ -25,13 +24,13 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 		amountInOnePack,
 		amountCurrent = 0,
 		timesUsed
-	} = product;
-	const dispatch = useAppDispatch();
+	} = item;
+
 	const [productPrice, setProductPrice] = useState<number>(price || 0);
 	const [productCurrentAmount, setProductCurrentAmount] = useState<number>(amountCurrent || 0);
 	const [productAmountInOnePack, setProductAmountInOnePack] = useState<number>(amountInOnePack || 0);
 
-	const onPriceChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	const onPriceChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
 		if (!Number.isNaN(value)) {
 			if (value === 0) {
@@ -40,28 +39,18 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductPrice(value);
 			}
-			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
-			dispatch(putProduct({
-				id,
-				metric,
-				name,
-				amountCurrent,
-				amountInOnePack,
-				price: value,
-				timesUsed
-			}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
-					...product,
+					...item,
 					[e.target.name]: value,
 					amountCurrent: productCurrentAmount,
 					amountInOnePack: productAmountInOnePack,
 				});
 			}
 		}
-	};
+	}, [onChangeIngredient, item, productAmountInOnePack, productCurrentAmount]);
 
-	const onPackAmountChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	const onPackAmountChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
 		if (!Number.isNaN(value)) {
 			if (value === 0) {
@@ -70,23 +59,19 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductAmountInOnePack(value);
 			}
-			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
-					...product,
+					...item,
 					[e.target.name]: value,
 					amountCurrent: productCurrentAmount,
 					price: productPrice
 				});
 			}
 		}
-	};
+	}, [onChangeIngredient, item, productCurrentAmount, productPrice]);
 
-	const onDeleteProduct = (id: number) => {
-		dispatch(productsActions.deleteFromActiveList(id));
-	};
 
-	const onCurrentAmountChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+	const onCurrentAmountChangeHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
 		const value = Number(e.target.value);
 		if (!Number.isNaN(value)) {
 			if (value === 0) {
@@ -95,70 +80,59 @@ const ProductDetaildCard = memo(({product, onChangeIngredient}: ProductDetaildCa
 			if (value > 0) {
 				setProductCurrentAmount(value);
 			}
-			dispatch(productsActions.changeProductData({name: e.target.name, value, id}));
 			if (onChangeIngredient) {
 				onChangeIngredient({
-					...product,
+					...item,
 					amountCurrent: value,
 					amountInOnePack: productAmountInOnePack,
 					price: productPrice
 				});
 			}
 		}
-
-	};
+	}, [onChangeIngredient, item, productAmountInOnePack, productPrice]);
 
 	return (
-		<AppearAnimation initOnRender>
-			<div className={classNames(cls.ProductDetaildCard)}>
-				<div className={cls.inputBlock}>
-					<Text className={cls.space} title={name}/>
-				</div>
-				<div className={cls.inputBlock}>
-					<Text className={cls.text} content="Цена: "/>
-					<Input
-						className={cls.input}
-						value={productPrice}
-						onChange={onPriceChangeHandler} name="price"/>
-				</div>
-				<div className={cls.inputBlock}>
-					<Text className={cls.text} content="В упаковке: "/>
-					<Input
-						className={cls.input}
-						onChange={onPackAmountChangeHandler}
-						value={productAmountInOnePack} name="amountInOnePack"/>
-				</div>
-				<div className={cls.inputBlock}>
-					<Text content="Израсходовано: "/>
-					<Input
-						className={cls.input}
-						placeholder={`... ${metric} израсходовано`}
-						value={productCurrentAmount || ''}
-						onChange={onCurrentAmountChangeHandler}
-						name="amountCurrent"
-					/>
-				</div>
-				<div className={cls.inputBlock}>
-					<Text
-						className={cls.result}
-						content={'Стоимость израсходованного продукта: ' +
-					calculatePriceOfProduct(
-						productPrice,
-						productCurrentAmount,
-						productAmountInOnePack
-					).toFixed(2) + 'р'}/>
-					<Button
-						className={cls.deleteBtn}
-						variant={ButtonVariants.rounded}
-						background={ButtonBackground.red}
-						onClick={() => onDeleteProduct(id)}
-					>
-					Удалить
-					</Button>
-				</div>
+		<VStack max gap={'4'} justify={'center'} align={'center'} className={classNames(cls.ProductDetaildCard)}>
+			<div className={cls.inputBlock}>
+				<Text className={cls.space} title={name}/>
 			</div>
-		</AppearAnimation>
+			<HStack gap={'8'} max>
+				<Text className={cls.text} content="Цена: "/>
+				<Line width={'30vw'}/>
+				<Input
+					className={cls.input}
+					value={productPrice}
+					onChange={onPriceChangeHandler} name="price"/>
+			</HStack>
+			<HStack gap={'8'} max>
+				<Text className={cls.text} content="В упаковке: "/>
+				<Line width={'30vw'}/>
+				<Input
+					className={cls.input}
+					onChange={onPackAmountChangeHandler}
+					value={productAmountInOnePack} name="amountInOnePack"/>
+			</HStack>
+			<HStack gap={'8'} max>
+				<Text content="Израсходовано: "/>
+				<Line width={'30vw'}/>
+				<Input
+					className={cls.input}
+					placeholder={`... ${metric} израсходовано`}
+					value={productCurrentAmount || ''}
+					onChange={onCurrentAmountChangeHandler}
+					name="amountCurrent"
+				/>
+			</HStack>
+			<HStack max className={cls.inputBlock}>
+				<Button
+					className={cls.deleteBtn}
+					variant={ButtonVariants.rounded}
+					background={ButtonBackground.red}
+					onClick={() => onDeleteProduct(id)}
+				>
+					Удалить
+				</Button>
+			</HStack>
+		</VStack>
 	);
 });
-
-export default ProductDetaildCard;

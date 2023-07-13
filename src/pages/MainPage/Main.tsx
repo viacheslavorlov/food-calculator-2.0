@@ -1,43 +1,41 @@
 import {memo, useEffect} from 'react';
-import {useAppDispatch, useAppSelector} from '../../store/hooks';
-import {fetchProducts} from '../../entities/Products/model/services/fetchProducts/fetchProducts';
-import {getAllProductsSelector} from '../../entities/Products/model/selectors/getAllProductsSelector';
 import cls from './MainPage.module.scss';
-import {getActiveProductsSelector} from '../../entities/Products/model/selectors/getActiveProductsSelector';
-import ProductDetaildCard from '../../entities/Products/ui/ProductDetaildCard/ProductDetaildCard';
-import {ResultValue} from '../../entities/Products/ui/ResultValue/ResultValue';
-import {Search} from '../../features/searchProducts/ui/Search/Search';
-import {SearchList} from '../../features/searchProducts/ui/SearchList/SearchList';
-import {CreateRecipeForm} from '../../features/createRecipe/ui/CreateRecipeForm';
+import {PRODUCT_SESSIONSTORAGE_KEY, ResultValue} from 'entities/Products';
+import {Search, SearchList} from 'features/searchProducts';
+import {useLiveQuery} from 'dexie-react-hooks';
+import {db} from 'db/db';
+import {VStack} from 'shared/ui/Stack';
+import {CreateRecipeForm} from 'features/createRecipe';
+import {ProductList} from 'features/ProductList';
 
 const MainPage = memo(() => {
-	const dispatch = useAppDispatch();
-	const products = useAppSelector(getAllProductsSelector);
-	const activeProducts = useAppSelector(getActiveProductsSelector);
+	const products = useLiveQuery(
+		() => db.products.toArray()
+	) || [];
+	const activeProducts = useLiveQuery(() => db.activeProducts.toArray()) || [];
 
-	useEffect(() => {
-		dispatch(fetchProducts());
-	}, []);
 	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
+	useEffect(() => {
+		sessionStorage.setItem(PRODUCT_SESSIONSTORAGE_KEY, '[]');
+	}, []);
+
+
+
 	return (
-		<>
-			<div className={cls.MainPage}>
-				<Search/>
-				<SearchList
-					products={products}
-					className={cls.SearchList}
-					idList={activeProductsIDs}
-				/>
-				{activeProducts.map(product => <ProductDetaildCard
-					key={product.id + product.name}
-					product={product}
-				/>)}
-				<CreateRecipeForm />
-				<ResultValue list={activeProducts} className={cls.result}/>
-			</div>
-		</>
-		
+		<VStack max justify='center' align='center' className={cls.MainPage}>
+			<Search/>
+			<SearchList
+				products={products}
+				className={cls.SearchList}
+				idList={activeProductsIDs}
+			/>
+			<ProductList
+				activeProducts={activeProducts}
+			/>
+			<CreateRecipeForm />
+			<ResultValue list={activeProducts} className={cls.result}/>
+		</VStack>
 	);
 });
 

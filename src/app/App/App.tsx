@@ -1,17 +1,20 @@
-import {FC} from 'react';
-import {Header} from '../../widgets/header/Header';
+import {FC, Suspense} from 'react';
+import {Header} from 'widgets/header';
 import '../style/index.scss';
-import {useTheme} from '../../widgets/themeSwitcher/teme/useTheme';
+import {useTheme} from 'widgets/themeSwitcher';
 import './app.module.scss';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import {AppRouter} from '../AppRouter/AppRouter';
-import {classNames} from '../../shared/helpers/classNames/classNames';
+import {LoadingPage} from 'pages';
 
 const App: FC = () => {
 	const {theme} = useTheme();
 	return (
 		<div className={classNames('app', theme)}>
 			<Header/>
-			<AppRouter/>
+			<Suspense fallback={<LoadingPage/>}>
+				<AppRouter/>
+			</Suspense>
 		</div>
 	);
 };

@@ -1,5 +1,5 @@
 .Search {
-    padding: 0 10%;
+    width: 100%;
     display: flex;
     gap: 5px;
     flex-direction: column;
@@ -13,5 +13,5 @@
 
 .strInput {
     width: 100%;
-    align-self: stretch;
+    max-width: 100%;
 }

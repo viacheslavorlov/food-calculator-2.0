@@ -1,79 +1,69 @@
-import {Text} from '../../../shared/ui/Text/Text';
-import {FormEvent, memo, useCallback} from 'react';
-import {classNames} from '../../../shared/helpers/classNames/classNames';
-import {Input} from '../../../shared/ui/Input/Input';
+import {Text} from 'shared/ui/Text/Text';
+import {FormEvent, memo, useState} from 'react';
+import {Input} from 'shared/ui/Input/Input';
 import cls from './AddNewProductForm.module.scss';
-import {Button, ButtonBackground, ButtonVariants} from '../../../shared/ui/Button/Button';
-import {newProductNameSelector} from '../model/selectors/newProductNameSelector';
-import {newProductPriceSelector} from '../model/selectors/newProductPriceSelector';
-import {newProductMetricSelector} from '../model/selectors/newProductMetricSelector';
-import {newProductActions} from '../model/slice/newProductSlice';
-import {useAppDispatch, useAppSelector} from '../../../store/hooks';
-import {IProduct, Metrics} from '../../../store/types';
-import {
-	newProductPackAmountSelector
-} from '../model/selectors/newProductPackAmountSelector';
-import {addProductToDB} from '../model/services/addProductToDB';
-import {HStack} from '../../../shared/ui/Stack';
+import {db} from 'db/db';
+import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
+import {IProduct, Metrics} from 'store/types';
+import {VStack} from 'shared/ui/Stack';
+import {GetProductsDexieTest} from './GetProductsDexieTest/GetProductsDexieTest';
 
 interface AddNewProductFormProps {
 	className?: string;
 }
 
 export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
-	const name = useAppSelector(newProductNameSelector);
-	const price = useAppSelector(newProductPriceSelector);
-	const metric = useAppSelector(newProductMetricSelector);
-	const packAmount = useAppSelector(newProductPackAmountSelector);
-	const dispatch = useAppDispatch();
+	const [name, setName] = useState<string>('');
+	const [metric, setMetric] = useState<string>('');
+	const [price, setPrice] = useState<number>(0);
+	const [amountInOnePack, setAmountInOnePack] = useState<number>(0);
 
+	const onNameChange = (e: FormEvent<HTMLInputElement>) => {
+		setName(e.currentTarget.value);
+	};
+	const onPriceChange = (e: FormEvent<HTMLInputElement>) => {
+		setPrice(parseInt(e.currentTarget.value));
+	};
+	const onMetricChange = (e: FormEvent<HTMLInputElement>) => {
+		setMetric(e.currentTarget.value as Metrics);
+	};
 
-	const onNameChange =  useCallback((e: FormEvent<HTMLInputElement>) => {
-		dispatch(newProductActions.setProductName(e.currentTarget.value));
-	}, [dispatch]);
-	const onPriceChange =  useCallback((e: FormEvent<HTMLInputElement>) => {
-		dispatch(newProductActions.setProductPrice(parseInt(e.currentTarget.value)));
-	}, [dispatch]);
-	const onMetricChange = useCallback((e: FormEvent<HTMLInputElement>) => {
-		dispatch(newProductActions.setProductMetric(e.currentTarget.value as Metrics));
-	}, [dispatch]);
+	const onPackAmountChange = (e: FormEvent<HTMLInputElement>) => {
+		setAmountInOnePack(parseInt(e.currentTarget.value));
+	};
 
-	const onPackAmountChange = useCallback((e: FormEvent<HTMLInputElement>) => {
-		dispatch(newProductActions.setProductAmountInOnePack(parseInt(e.currentTarget.value)));
-	}, [dispatch]);
-
-	const onAddNewProduct = useCallback(() => {
-		if(name !== '' && price !== null) {
-			const product: IProduct = {
-				name,
-				id: Date.now(),
-				price,
-				metric,
-				amountInOnePack: packAmount,
-				amountCurrent: 0,
-				timesUsed: 0
-			};
-			dispatch(addProductToDB(product));
-			dispatch(newProductActions.setDefaultValues());
-		} else {
-			alert('Введите корректные данные!');
+	async function onAddNewProduct() {
+		try {
+			if (name && price && metric && amountInOnePack) {
+				const product: IProduct = {
+					name,
+					id: Date.now(),
+					price,
+					metric,
+					amountInOnePack,
+					amountCurrent: 0,
+					timesUsed: 0
+				};
+				const response = await db.products.add(product);
+			} else {
+				alert('Введите корректные данные!');
+			}
+		} catch (e) {
+			alert('Продукт с таким названием уже существет: Измените название продукта');
 		}
-	}, [name, price, metric, packAmount, dispatch]);
-
+	}
 
 	return (
-		<div className={classNames(cls.AddNewProductForm, className)}>
+		<VStack max justify={'center'} align={'center'} gap="4" className={className}>
 			<Text className={cls.text} title={'Добавить новый продукт'}/>
-			<HStack max justify={'between'} className={cls.wrap}>
-				<Text className={cls.text} content={'Название продукта:'}/>
-				<Input
-					className={cls.input}
-					value={name}
-					type="text"
-					onChange={onNameChange}
-					placeholder="Введите название продукта"
-				/>
-			</HStack>
+			<Text className={cls.text} content={'Название продукта:'}/>
+			<Input
+				className={cls.input}
+				value={name}
+				type="text"
+				onChange={onNameChange}
+				placeholder="Введите название продукта"
+			/>
 
 			<Text className={cls.text} content={'Единицы измерения:'}/>
 			<Input
@@ -94,7 +84,7 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 			<Text className={cls.text} content={'Количество в одной упаковке:'}/>
 			<Input
 				className={cls.input}
-				value={packAmount || ''}
+				value={amountInOnePack || ''}
 				onChange={onPackAmountChange}
 				type="number"
 				placeholder="Введите rоличество в упаковке"
@@ -106,6 +96,8 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				background={ButtonBackground.green}>
 				Сохранить
 			</Button>
-		</div>
+
+			<GetProductsDexieTest/>
+		</VStack>
 	);
 });

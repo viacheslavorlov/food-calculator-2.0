@@ -8,6 +8,7 @@ import {searchActions} from '../../model/slice/searchProductSlice';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
 import {Select, SelectOption} from '../../../../shared/ui/Select/Select';
 import {SearchOrder, SearchProp} from '../../model/type/SearchProductsSchema';
+import {HStack, VStack} from '../../../../shared/ui/Stack';
 
 interface SearchProps {
 	className?: string;
@@ -26,13 +27,13 @@ const searchPropOptions: SelectOption<SearchProp>[] = [
 ];
 
 export const Search = memo((props: SearchProps) => {
-	const searchValue = useAppSelector(searchValueSelector);
-	const searchOrder = useAppSelector(searchOrderSelector);
-	const searchProp = useAppSelector(searchPropSelector);
-	const dispatch = useAppDispatch();
 	const {
 		className
 	} = props;
+	const dispatch = useAppDispatch();
+	const searchOrder = useAppSelector(searchOrderSelector);
+	const searchValue = useAppSelector(searchValueSelector);
+	const searchProp = useAppSelector(searchPropSelector);
 
 	const onChangeHandle = (e: ChangeEvent<HTMLInputElement>) => {
 		dispatch(searchActions.setSearchValue(e.target.value));
@@ -46,8 +47,9 @@ export const Search = memo((props: SearchProps) => {
 	};
 
 	return (
-		<div className={classNames(cls.Search, className)}>
-			<div className={cls.SearchItem}>
+		<VStack max className={classNames(cls.Search, className)}>
+			<HStack max className={cls.SearchItem}>
+				<Text content={'Название: '} />
 				<Input
 					className={cls.strInput}
 					type="text"
@@ -55,24 +57,23 @@ export const Search = memo((props: SearchProps) => {
 					value={searchValue}
 					onChange={onChangeHandle}
 				/>
-			</div>
-			<div className={cls.SearchItem}>
-				<Text content={'По '}/>
+			</HStack>
+			<HStack max className={cls.SearchItem}>
+				<Text content={'По: '}/>
 				<Select
 					onChange={onOrderChange}
 					optionsVariants={searchOrderOptions}
 					defaultOption={searchOrder}
 				/>
-			</div>
-			<div className={cls.SearchItem}>
-				<Text content={'По '}/>
+			</HStack>
+			<HStack max className={cls.SearchItem}>
+				<Text content={'По: '}/>
 				<Select
 					onChange={onSearchPropChange}
 					optionsVariants={searchPropOptions}
 					defaultOption={searchProp}
 				/>
-			</div>
-
-		</div>
+			</HStack>
+		</VStack>
 	);
 });

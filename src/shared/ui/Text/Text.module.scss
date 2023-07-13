@@ -4,9 +4,19 @@
 
 .title {
     font-weight: bold;
-    font-size: var(--font-m);
+    font-size: var(--font-l);
 }
 
 .content {
-    font-size: var(--font-s);
+    font-size: var(--font-m);
+}
+
+@media screen and (max-width: 600px) {
+    .title {
+        font-size: var(--font-m);
+    }
+
+    .content {
+        font-size: var(--font-s);
+    }
 }
