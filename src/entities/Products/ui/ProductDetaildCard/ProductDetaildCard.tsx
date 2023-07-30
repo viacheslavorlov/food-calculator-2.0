@@ -23,7 +23,6 @@ export const ProductDetaildCard = memo(({item, onDeleteProduct, onChangeIngredie
 		price,
 		amountInOnePack,
 		amountCurrent = 0,
-		timesUsed
 	} = item;
 
 	const [productPrice, setProductPrice] = useState<number>(price || 0);

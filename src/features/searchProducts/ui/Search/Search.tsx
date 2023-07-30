@@ -1,14 +1,14 @@
-import {classNames} from '../../../../shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './Search.module.scss';
 import {ChangeEvent, memo} from 'react';
-import {Input} from '../../../../shared/ui/Input/Input';
-import {useAppDispatch, useAppSelector} from '../../../../store/hooks';
-import {Text} from '../../../../shared/ui/Text/Text';
+import {Input} from 'shared/ui/Input/Input';
+import {useAppDispatch, useAppSelector} from 'store/hooks';
+import {Text} from 'shared/ui/Text/Text';
 import {searchActions} from '../../model/slice/searchProductSlice';
 import {searchOrderSelector, searchPropSelector, searchValueSelector} from '../../model/selectors/searchSelectors';
-import {Select, SelectOption} from '../../../../shared/ui/Select/Select';
+import {Select, SelectOption} from 'shared/ui/Select/Select';
 import {SearchOrder, SearchProp} from '../../model/type/SearchProductsSchema';
-import {HStack, VStack} from '../../../../shared/ui/Stack';
+import {HStack, VStack} from 'shared/ui/Stack';
 
 interface SearchProps {
 	className?: string;
@@ -21,7 +21,7 @@ const searchOrderOptions: SelectOption<SearchOrder>[] = [
 
 
 const searchPropOptions: SelectOption<SearchProp>[] = [
-	{name: 'нет', value: 'none'},
+	{name: 'по названию', value: 'name'},
 	{name: 'частоте использования', value: 'views'},
 	{name: 'цене', value: 'price'},
 ];

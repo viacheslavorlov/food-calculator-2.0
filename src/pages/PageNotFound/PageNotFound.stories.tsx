@@ -1,7 +1,7 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import PageNotFound from './PageNotFound';
-import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 
 export default {
 	title: 'Pages/PageNotFound',

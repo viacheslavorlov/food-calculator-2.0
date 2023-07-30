@@ -1,8 +1,6 @@
-import {AppDispatch} from '../../app/store/store';
-// import {IncomeOutcomeSchema} from '../../entities/IncomeOutcome/model/type/IncomeOutcomeTypes';
-import {SearchProductsSchema} from '../../features/searchProducts/model/type/SearchProductsSchema';
-// import {rtkApi} from '../../shared/helpers/api/rtkApi';
-// import {RecipeSchema} from '../../entities/recipe';
+import {AppDispatch} from 'app/reduxStore/store';
+import {SearchProductsSchema} from 'features/searchProducts';
+
 
 export enum Metrics {
 	gramm = 'г',
@@ -20,20 +18,13 @@ export interface NewProductSliceSchema {
 
 export interface IProduct {
 	name: string;
-	price: number | undefined;
+	price: number;
 	amountInOnePack: number | undefined;
 	metric: string;
 	amountCurrent: number;
 	id: number;
 	timesUsed: number
 }
-
-// export interface ProductsSliceInterface {
-// 	isLoading: boolean;
-// 	error: string | undefined;
-// 	allProducts: IProduct[];
-// 	activeProducts: IProduct[];
-// }
 
 export interface StateSchema {
 	searchProducts: SearchProductsSchema;

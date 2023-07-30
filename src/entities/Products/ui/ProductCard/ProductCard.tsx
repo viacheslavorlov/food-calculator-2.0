@@ -18,7 +18,6 @@ export const ProductCard = memo((props: ProductCardProps) => {
 		className,
 		item
 	} = props;
-	// const activeProducts = useLiveQuery(() => db.activeProducts.toArray()) || [];
 	const newActiveProduct = useLiveQuery(
 		() => db.products
 			.where('id')
@@ -26,17 +25,19 @@ export const ProductCard = memo((props: ProductCardProps) => {
 			.toArray()
 	);
 
-	const onAddProduct = useCallback(() => {
+	const onAddProduct = useCallback(async () => {
 		if (newActiveProduct?.length) {
-			db.activeProducts.bulkAdd(newActiveProduct)
-				.then(() => console.log('добавлен продукт в активный лист', newActiveProduct[0]))
+			const newProduct = newActiveProduct[0];
+			newProduct.timesUsed += 1;
+			await db.products.put(newProduct);
+			await db.activeProducts.add(newProduct)
+				.then(() => console.log('добавлен продукт в активный лист', newProduct))
 				.catch(() => console.log('Продукт не добавлен!'));
 		}
 	}, [newActiveProduct]);
 
 	return (
-		// <AppearAnimation className={classNames(cls.ProductCard, className)} initOnRender >
-		<HStack gap={'8'} max>
+		<HStack gap={'8'} max className={className}>
 			<Text content={item.name}/>
 			<Line width={'30vw'}/>
 			<Button
@@ -47,7 +48,6 @@ export const ProductCard = memo((props: ProductCardProps) => {
 				Добавить
 			</Button>
 		</HStack>
-		// </AppearAnimation>
 	);
 });
 

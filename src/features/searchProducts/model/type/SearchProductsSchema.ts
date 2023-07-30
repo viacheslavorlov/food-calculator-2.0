@@ -1,5 +1,5 @@
 export type SearchOrder = 'asc' | 'desc';
-export type SearchProp = 'none' | 'views' | 'price';
+export type SearchProp = 'name' | 'views' | 'price';
 
 export interface SearchProductsSchema {
 	searchValue: string;

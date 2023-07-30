@@ -1,4 +1,4 @@
-import {store} from 'app/store/store';
+import {store} from 'app/reduxStore/store';
 import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';

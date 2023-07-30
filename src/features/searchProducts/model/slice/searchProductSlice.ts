@@ -4,7 +4,7 @@ import {SearchOrder, SearchProductsSchema, SearchProp} from '../type/SearchProdu
 const initialState: SearchProductsSchema = {
 	searchValue: '',
 	searchOrder: 'asc',
-	searchProp: 'none'
+	searchProp: 'name'
 };
 
 const searchProductSlice = createSlice({

@@ -1,7 +1,7 @@
 import {Meta, StoryFn} from '@storybook/react';
 import RecipesPage from './RecipesPage';
-import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 // import {StoreDecorator} from '../../shared/helpers/storybookDecorators/StorybookDecorator';
 
 export default {

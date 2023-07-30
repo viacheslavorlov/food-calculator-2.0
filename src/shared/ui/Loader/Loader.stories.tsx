@@ -1,6 +1,6 @@
 import {LoadingSpinner} from './Loader';
 import {ThemeDecorator} from '../../helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {SuspenseDecorator} from '../../helpers/storybookDecorators/SuspenseDecorator';
 import {Meta, StoryFn} from '@storybook/react';
 

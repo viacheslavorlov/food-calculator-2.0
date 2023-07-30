@@ -1,7 +1,7 @@
 import {Meta,StoryFn} from '@storybook/react';
 import {DeleteItemCard} from './DeleteItemCard';
-import {ThemeDecorator} from '../../../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 
 const item = {
 	id: 1,

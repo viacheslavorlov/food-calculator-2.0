@@ -1,7 +1,6 @@
-import {IRecipe, RecipeSchema} from '../../../../entities/recipe';
+import {IRecipe, RecipeSchema} from 'entities/recipe';
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IProduct} from '../../../../store/types';
-// import {fetchRecipes} from '../service/fetchRecipes';
+import {IProduct} from 'store/types';
 
 const initialState: RecipeSchema = {
 
@@ -30,25 +29,7 @@ const recipeSlice = createSlice({
 				});
 			}
 		}
-	},
-	// extraReducers: builder => {
-	// 	builder
-	// 		.addCase(fetchRecipes.pending, (state) => {
-	// 			state.isLoading = true;
-	// 		})
-	// 		.addCase(fetchRecipes.fulfilled, (state, action) => {
-	// 			state.isLoading = false;
-	// 			if (action.payload) {
-	// 				state.recipes = action.payload;
-	// 			}
-	// 		})
-	// 		.addCase(fetchRecipes.rejected, (state, action) => {
-	// 			state.isLoading = false;
-	// 			if (action.payload) {
-	// 				state.error = action.payload;
-	// 			}
-	// 		});
-	// }
+	}
 });
 export const {
 	reducer: recipeReducer,

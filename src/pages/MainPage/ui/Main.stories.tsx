@@ -1,8 +1,8 @@
 import {Meta, StoryFn} from '@storybook/react';
 import MainPage from './Main';
-import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
-import {StoreDecorator} from '../../shared/helpers/storybookDecorators/StorybookDecorator';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
+import {StoreDecorator} from 'shared/helpers/storybookDecorators/StorybookDecorator';
 
 export default {
 	title: 'Pages/MainPage',

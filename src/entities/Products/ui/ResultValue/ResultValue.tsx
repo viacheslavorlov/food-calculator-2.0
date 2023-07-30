@@ -5,10 +5,11 @@ import {Text} from 'shared/ui/Text/Text';
 import {Input} from 'shared/ui/Input/Input';
 import {ChangeEvent, memo, useState} from 'react';
 import {HStack, VStack} from 'shared/ui/Stack';
+import {classNames} from 'shared/helpers/classNames/classNames';
 
 interface ResultValueProps {
 	list: IProduct[];
-	className: string;
+	className?: string;
 }
 
 export const ResultValue = memo((props: ResultValueProps) => {
@@ -19,13 +20,13 @@ export const ResultValue = memo((props: ResultValueProps) => {
 		setIncrease(e.target.value);
 	};
 	return (
-		<VStack max className={className}>
+		<VStack max className={classNames(className, cls.resultWrapper)}>
 			<Text
 				content={`Себестоимость набора продуктов ${finalPrice(list)
 					.toFixed(2)}`}
 			/>
 			<Text content={'Себестоимость набора продуктов c наценкой '}/>
-			<HStack max justify={'start'} className={cls.resultWrapper}>
+			<HStack max justify={'start'}>
 				<Input type={'string'} className={cls.input} value={increase} onChange={onIncrease} />
 				<Text title={'%: '} className={cls.percent}/>
 				<Text title={`${(finalPrice(list) + finalPrice(list) * Number(increase) / 100)

@@ -1,0 +1,14 @@
+.AddProductsToRecipe {
+    width: 100%;
+    padding: 0 10%;
+    flex-wrap: wrap;
+}
+
+.card {
+    margin: 5px;
+    background-color: var(--bg-color-inverted);
+    color: var(--text-color-inverted);
+    border-radius: var(--border-radius);
+    padding: 10px;
+    cursor: pointer;
+}

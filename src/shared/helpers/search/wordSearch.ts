@@ -1,19 +1,43 @@
-import {SearchOrder, SearchProp} from '../../../features/searchProducts/model/type/SearchProductsSchema';
-import {IProduct} from '../../../store/types';
+import {SearchOrder, SearchProp} from 'features/searchProducts';
+import {IProduct} from 'store/types';
 
 export const wordSearch = (str: string, source: string) => {
 	return source.toLowerCase().includes(str.toLowerCase());
 };
 
 export const orderSearchFn = (order: SearchOrder, searchProp: SearchProp, arr: IProduct[]) => {
-	if (order === 'asc') {
-		switch (searchProp) {
-		case 'none':
-			return arr;
-		case 'price':
-			return arr.sort((a, b) => (a.price || 0) - (b.price || 0));
-		case 'views':
-			return arr.sort();
+	switch (searchProp) {
+	case 'name':
+		// eslint-disable-next-line no-case-declarations
+		const result = arr.sort((a, b) => {
+			if (a.name > b.name) {
+				return 1;
+			}
+			if (a.name < b.name) {
+				return -1;
+			}
+			return 0;
+		});
+		if (order === 'asc') {
+			return result;
+		} else {
+			return result.reverse();
 		}
+	case 'views':
+		if (order === 'desc') {
+			return arr.sort((a, b) => b.timesUsed - a.timesUsed);
+		} else {
+			return arr.sort((a, b) => a.timesUsed - b.timesUsed);
+		}
+
+	case 'price':
+		if (order === 'desc') {
+			return arr.sort((a, b) => b.price - a.price);
+		} else {
+			return arr.sort((a, b) => a.price - b.price);
+		}
+	default:
+		return arr;
 	}
+
 };

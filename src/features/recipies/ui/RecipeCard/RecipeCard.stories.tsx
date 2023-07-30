@@ -1,8 +1,8 @@
 import {StoryFn, Meta} from '@storybook/react';
-import {ThemeDecorator} from '../../../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {RecipeCard} from './RecipeCard';
-import {SuspenseDecorator} from '../../../../shared/helpers/storybookDecorators/SuspenseDecorator';
+import {SuspenseDecorator} from 'shared/helpers/storybookDecorators/SuspenseDecorator';
 
 export default {
 	title: 'entities/RecipeCard',

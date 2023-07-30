@@ -11,7 +11,7 @@
     transition: all 0.3s;
 }
 
-.cls.result {
+.result {
     display: flex;
     border: var(--green-color);
 }
@@ -22,4 +22,9 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+}
+
+.clearBtn {
+    align-self: flex-start;
+    margin: 10px;
 }

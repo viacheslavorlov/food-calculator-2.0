@@ -5,7 +5,6 @@ import {IProduct} from 'store/types';
 import {Text} from 'shared/ui/Text/Text';
 import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
 import {classNames} from 'shared/helpers/classNames/classNames';
-import {AppearAnimation} from 'shared/ui/animations/ApearAnimation/AppearAnimation';
 import {HStack} from 'shared/ui/Stack';
 
 interface DeleteItemCardProps {
@@ -18,7 +17,7 @@ export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 	const {name, price, amountInOnePack, id} = item;
 
 	const onDeleteItem = (itemId: number) => {
-		db.products.bulkDelete([itemId]);
+		db.products.delete(itemId);
 	};
 	return (
 		<HStack max gap={'4'} className={classNames(cls.DeleteItemCard, className)}>

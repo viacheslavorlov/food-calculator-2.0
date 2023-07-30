@@ -3,9 +3,7 @@
   "version": "2.0.0",
   "description": "new food-price-calculator",
   "scripts": {
-    "dev": "concurrently \"webpack serve --env port=3333 mode=development\" \"json-server --watch db/db.json --routes routes.json\"",
     "start": "webpack serve --env port=3333 mode=development",
-    "server": "json-server --watch db/db.json",
     "production": "webpack --env mode=production",
     "development": "webpack --env mode=development",
     "lint:fix": "npx eslint . --fix",

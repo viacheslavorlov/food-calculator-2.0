@@ -1,6 +1,6 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {ThemeDecorator} from '../../helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {Line} from './Line';
 
 export default {

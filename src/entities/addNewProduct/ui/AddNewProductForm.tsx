@@ -6,7 +6,6 @@ import {db} from 'db/db';
 import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
 import {IProduct, Metrics} from 'store/types';
 import {VStack} from 'shared/ui/Stack';
-import {GetProductsDexieTest} from './GetProductsDexieTest/GetProductsDexieTest';
 
 interface AddNewProductFormProps {
 	className?: string;
@@ -45,6 +44,10 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 					timesUsed: 0
 				};
 				const response = await db.products.add(product);
+				setName('');
+				setMetric('');
+				setAmountInOnePack(0);
+				setPrice(0);
 			} else {
 				alert('Введите корректные данные!');
 			}
@@ -96,8 +99,6 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				background={ButtonBackground.green}>
 				Сохранить
 			</Button>
-
-			<GetProductsDexieTest/>
 		</VStack>
 	);
 });

@@ -1,5 +1,5 @@
 import {ReactNode} from 'react';
-import {StateSchema} from '../../../store/types';
+import {StateSchema} from 'store/types';
 import {Provider} from 'react-redux';
 import {store} from '../store';
 

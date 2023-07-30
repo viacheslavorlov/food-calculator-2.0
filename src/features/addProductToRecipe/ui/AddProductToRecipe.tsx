@@ -4,6 +4,8 @@ import {IRecipe} from 'entities/recipe';
 import {memo} from 'react';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import {IProduct} from 'store/types';
+import cls from './AddProductsToRecipe.module.scss';
+import {HStack} from 'shared/ui/Stack';
 
 interface AddProductToRecipeProps {
 	className?: string;
@@ -24,8 +26,16 @@ export const AddProductToRecipe = memo((props: AddProductToRecipeProps) => {
 	};
 
 	return (
-		<div className={classNames(className)}>
-			{notUsedProducts?.map(item => <div onClick={() => addToRecipe(item)} key={item.id}>{item.name}</div>)}
-		</div>
+		<HStack className={classNames(className, cls.AddProductsToRecipe)}>
+			{notUsedProducts?.map(item => (
+				<div
+					className={cls.card}
+					onClick={() => addToRecipe(item)}
+					key={item.id}
+				>
+					{item.name}
+				</div>
+			))}
+		</HStack>
 	);
 });

@@ -25,9 +25,7 @@ const SingleRecipePage = memo((props: SingleRecipePageProps) => {
 			.toArray(),
 		[id]
 	);
-	console.log(id);
 
-	console.log(id, recipeByID);
 	if (recipeByID && recipeByID[0]) {
 		return (
 			<>

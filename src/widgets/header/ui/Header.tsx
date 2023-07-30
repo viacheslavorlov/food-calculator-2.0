@@ -18,7 +18,7 @@ export const Header = memo(() => {
 	};
 	useLayoutEffect(() => {
 		function onResize() {
-			if (window.innerWidth <= 600) {
+			if (window.innerWidth <= 500) {
 				setShowMenuButton(true);
 			} else {
 				setShowMenuButton(false);
@@ -28,7 +28,6 @@ export const Header = memo(() => {
 		window.addEventListener('resize', onResize);
 		return () => window.removeEventListener('resize', onResize);
 	}, []);
-	const keys = links.map(link => link.title);
 
 	return (
 		<div className={cls.header}>
@@ -46,7 +45,13 @@ export const Header = memo(() => {
 				<nav className={cls.header__navbar}>
 					{links.map(item => (
 						<AppearAnimation key={item.to}>
-							<Link onClick={onMenuHandle} Icon={item.Icon} to={item.to} title={item.title}/>
+							<Link
+								className={cls.header__navbar_link}
+								onClick={onMenuHandle}
+								Icon={item.Icon}
+								to={item.to}
+								title={item.title}
+							/>
 						</AppearAnimation>
 					))}
 				</nav>

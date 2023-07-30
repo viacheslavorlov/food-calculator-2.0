@@ -1,6 +1,6 @@
 import {Meta, StoryObj} from '@storybook/react';
-import {ThemeDecorator} from '../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {IncomeOutcomePage} from './IncomeOutcomePage';
 
 

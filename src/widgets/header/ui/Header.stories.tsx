@@ -1,8 +1,8 @@
 import {ComponentMeta, ComponentStory} from '@storybook/react';
 import {Header} from './Header';
-import {ThemeDecorator} from '../../../shared/helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../themeSwitcher/teme/temeConsts';
-import {StoreDecorator} from '../../../shared/helpers/storybookDecorators/StorybookDecorator';
+import {ThemeDecorator} from 'shared/helpers/testHelpers/StoryBookDecorators';
+import {ThemeConsts} from 'widgets/themeSwitcher';
+import {StoreDecorator} from 'shared/helpers/storybookDecorators/StorybookDecorator';
 
 export default {
 	title: 'Widgets/Header',

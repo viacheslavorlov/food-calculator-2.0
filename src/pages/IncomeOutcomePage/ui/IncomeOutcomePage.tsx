@@ -1,7 +1,7 @@
-import { classNames} from '../../shared/helpers/classNames/classNames';
+import { classNames} from 'shared/helpers/classNames/classNames';
 import cls from './IncomeOutcomePage.module.scss';
 import {memo, useEffect} from 'react';
-import {ImcomeOutcomeForm} from '../../entities/IncomeOutcome/ui/ImcomeOutcomeForm';
+import {ImcomeOutcomeForm} from 'entities/IncomeOutcome';
 // import {useAppDispatch} from '../../store/hooks';
 // import {fetchIncome} from '../../entities/IncomeOutcome/model/services/fetchIncome';
 
