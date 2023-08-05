@@ -18,6 +18,7 @@ export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 
 	const onDeleteItem = (itemId: number) => {
 		db.products.delete(itemId);
+		db.activeProducts.delete(itemId);
 	};
 	return (
 		<HStack max gap={'4'} className={classNames(cls.DeleteItemCard, className)}>
@@ -33,7 +34,7 @@ export const DeleteItemCard = memo((props: DeleteItemCardProps) => {
 				background={ButtonBackground.red}
 				onClick={() => onDeleteItem(id)}
 			>
-					Удалить
+				Удалить
 			</Button>
 		</HStack>
 	);

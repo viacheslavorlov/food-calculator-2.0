@@ -2,7 +2,7 @@ import {db} from 'db/db';
 import {ProductDetaildCard, ResultValue} from 'entities/Products';
 import {IRecipe} from 'entities/recipe';
 import {memo, Suspense, useCallback} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
 import {List} from 'shared/ui/List/List';
@@ -25,6 +25,8 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 		className, recipe, expanded = false
 	} = props;
 
+	const navigate = useNavigate();
+
 	const onChangeIngredient = useCallback(async (product: IProduct) => {
 		await db.recipes.update(recipe.id, {
 			ingredients: recipe.ingredients.map(ing => {
@@ -43,6 +45,11 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 		await db.recipes
 			.put(newRecipe as IRecipe);
 	}, [recipe]);
+
+	const onDeleteRecipe = (id: number) => {
+		db.recipes.delete(id);
+		navigate(-1);
+	};
 
 	let expandedIngredients;
 	if (recipe.ingredients) {
@@ -63,12 +70,15 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 				<AStack gap={'8'} max justify="center" align="center" className={cls.cardHeader}>
 					<ResultValue list={recipe.ingredients}/>
 					<HStack gap={'4'}>
-						<Button
-							variant={ButtonVariants.rounded}
-							background={ButtonBackground.red}
-						>
-							Удалить рецепт
-						</Button>
+						{
+							expanded && <Button
+								onClick={() => onDeleteRecipe(recipe.id)}
+								variant={ButtonVariants.rounded}
+								background={ButtonBackground.red}
+							>
+								Удалить
+							</Button>
+						}
 						<Link to={expanded ? '/recipes' : `/recipes/${recipe.id}`}>
 							<Button
 								className={cls.backButton}

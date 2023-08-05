@@ -17,10 +17,9 @@ export const RecipeList = memo((props: RecipeCardProps) => {
 	} = props;
 
 
-	if (!recipes) {
+	if (!recipes?.length) {
 		return <Text title={'Рецепты не найдены'}/>;
 	}
-
 
 	return (
 		<div className={classNames(cls.RecipeList, className)}>

@@ -1,7 +1,7 @@
 import {db} from 'db/db';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {IRecipe} from 'entities/recipe';
-import {memo} from 'react';
+import {memo, useState} from 'react';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import {IProduct} from 'store/types';
 import cls from './AddProductsToRecipe.module.scss';
@@ -16,6 +16,7 @@ export const AddProductToRecipe = memo((props: AddProductToRecipeProps) => {
 	const {
 		className, currentRecipe
 	} = props;
+	const [isModal, setIsModal] = useState<boolean>(false);
 	const {ingredients} = currentRecipe;
 	const ingredientsIds = ingredients.map(ingredient => ingredient.id);
 	const allProducts = useLiveQuery(() => db.products.toArray());
