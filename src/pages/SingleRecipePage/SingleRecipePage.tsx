@@ -6,7 +6,7 @@ import {RecipeCard} from 'features/recipies';
 import {memo} from 'react';
 import {useParams} from 'react-router-dom';
 import {classNames} from 'shared/helpers/classNames/classNames';
-import cls from './SingleRecipePage.module.scss';
+import {Page} from 'shared/ui/Page/Page';
 
 interface SingleRecipePageProps {
     className?: string;
@@ -28,16 +28,16 @@ const SingleRecipePage = memo((props: SingleRecipePageProps) => {
 
 	if (recipeByID && recipeByID[0]) {
 		return (
-			<>
+			<Page>
 				<RecipeCard recipe={recipeByID[0]} expanded/>
 				<AddProductToRecipe currentRecipe={recipeByID[0]}/>
-			</>
+			</Page>
 		);
 	} else {
 		return (
-			<div className={classNames(cls.SingleRecipePage, className)}>
+			<Page className={classNames(className)}>
                 Загрузка...
-			</div>
+			</Page>
 		);
 	}
 });

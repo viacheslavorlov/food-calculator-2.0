@@ -21,14 +21,15 @@
 }
 
 .header__navbar_link {
-	box-shadow: var(--text-color-inverted) 10px 10px;
-	width: 100%;
+	width: 220px;
 	border-radius: .5em;
 	font-weight: bold;
 	font-size: 1em;
-	flex-basis: 20%;
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	border: 2px solid var(--border-color);
+	box-shadow: var(--box-shadow-black)
 }
 
 .headerWrapper {
@@ -56,9 +57,9 @@
 	.header__navbar div {
 		flex-basis: 40%;
 		padding: 0 10px;
-		width: 50%;
+		width: 100%;
 		display: flex;
-		justify-content: space-evenly;
+		justify-content: center;
 		align-content: center;
 	}
 

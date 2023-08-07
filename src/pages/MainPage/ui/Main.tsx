@@ -1,13 +1,14 @@
 import {memo} from 'react';
 import cls from './MainPage.module.scss';
 import {ResultValue} from 'entities/Products';
-import {Search, SearchList} from 'features/searchProducts';
+import {SearchList} from 'features/searchProducts';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from 'db/db';
-import {VStack} from 'shared/ui/Stack';
 import {CreateRecipeForm} from 'features/createRecipe';
 import {ProductList} from 'features/ProductList';
 import {ClearActiveProducts} from 'features/clearActiveProducts';
+import {Page} from 'shared/ui/Page/Page';
+import {SearchWidget} from 'widgets/SearchWiget';
 
 const MainPage = memo(() => {
 	const products = useLiveQuery(
@@ -18,8 +19,8 @@ const MainPage = memo(() => {
 	const activeProductsIDs = activeProducts.map(prod => prod.id);
 
 	return (
-		<VStack max justify="center" align="center" className={cls.MainPage}>
-			<Search/>
+		<Page>
+			<SearchWidget/>
 			<SearchList
 				products={products}
 				className={cls.SearchList}
@@ -31,7 +32,7 @@ const MainPage = memo(() => {
 			/>
 			<CreateRecipeForm/>
 			<ResultValue list={activeProducts} className={cls.result}/>
-		</VStack>
+		</Page>
 	);
 });
 

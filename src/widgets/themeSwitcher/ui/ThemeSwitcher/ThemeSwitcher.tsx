@@ -10,7 +10,7 @@ export const ThemeSwitcher = memo(() => {
 	const fill = theme === 'light' ? '#ffae69' : '';
 	const day = theme === 'light';
 	return (
-		<div>
+		<>
 			<button
 				className={classNames(cls.themeButton)}
 				onClick={toggleTheme}>
@@ -18,6 +18,6 @@ export const ThemeSwitcher = memo(() => {
 					{day ? <Night fill={fill}/> : <Day fill={fill}/>}
 				</div>
 			</button>
-		</div>
+		</>
 	);
 });

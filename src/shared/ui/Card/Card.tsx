@@ -1,7 +1,7 @@
 import cls from './Card.module.scss';
 import {memo, ReactNode} from 'react';
 import {classNames} from 'shared/helpers/classNames/classNames';
-import {VStack} from 'shared/ui/Stack';
+import {VStack} from '../Stack';
 
 interface CardProps {
 	className?: string;

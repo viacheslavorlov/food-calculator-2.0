@@ -6,16 +6,18 @@
     border-top-right-radius: 100%;
     background-color: var(--bg-active-link-color);
     color: var(--link-active-text);
-    height: 55px;
-    width: 55px;
+    height: 35px;
+    width: 35px;
     display: flex;
-    align-items: flex-start;
+    align-items: flex-end;
     justify-content: flex-start;
-    flex-direction: column-reverse;
+    z-index: 20;
 
     svg {
-        height: 40px;
-        width: 40px;
+        bottom: 1px;
+        left: 1px;
+        height: 25px;
+        width: 25px;
     }
 
     svg:hover {

@@ -1,10 +1,11 @@
-import './LoadingPage.module.scss';
+import cls from'./LoadingPage.module.scss';
 import {LoadingSpinner} from 'shared/ui/Loader/Loader';
+import {Page} from 'shared/ui/Page/Page';
 
 export const LoadingPage = () => {
 	return (
-		<div className="loading-page">
+		<Page className={cls.loadingPage}>
 			<LoadingSpinner/>
-		</div>
+		</Page>
 	);
 };

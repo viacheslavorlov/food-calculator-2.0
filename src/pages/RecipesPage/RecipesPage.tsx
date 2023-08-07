@@ -1,9 +1,8 @@
 import {RecipeList} from 'features/recipies';
-import cls from './RecipesPage.module.scss';
 import {memo} from 'react';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {db} from 'db/db';
-import {VStack} from 'shared/ui/Stack';
+import {Page} from 'shared/ui/Page/Page';
 
 const RecipesPage = memo(() => {
 
@@ -12,10 +11,10 @@ const RecipesPage = memo(() => {
 	);
 
 	return (
-		<VStack max gap={'8'} justify={'center'} align={'center'}>
+		<Page>
 			<h1>Рецепты</h1>
-			<RecipeList className={cls.RecipesPage} recipes={recipes}/>
-		</VStack>
+			<RecipeList recipes={recipes}/>
+		</Page>
 	);
 });
 
