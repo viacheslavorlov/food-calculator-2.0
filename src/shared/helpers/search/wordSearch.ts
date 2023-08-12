@@ -10,10 +10,10 @@ export const orderSearchFn = (order: SearchOrder, searchProp: SearchProp, arr: I
 	case 'name':
 		// eslint-disable-next-line no-case-declarations
 		const result = arr.sort((a, b) => {
-			if (a.name > b.name) {
+			if (a.name.toLowerCase() > b.name.toLowerCase()) {
 				return 1;
 			}
-			if (a.name < b.name) {
+			if (a.name.toLowerCase() < b.name.toLowerCase()) {
 				return -1;
 			}
 			return 0;

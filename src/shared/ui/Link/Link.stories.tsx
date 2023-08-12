@@ -1,8 +1,7 @@
 import { ComponentStory, Meta} from '@storybook/react';
-
 import { Link } from './Link';
 import {ThemeDecorator} from '../../helpers/testHelpers/StoryBookDecorators';
-import {ThemeConsts} from '../../../widgets/themeSwitcher/teme/temeConsts';
+import {ThemeConsts} from 'widgets/themeSwitcher';
 import {StoreDecorator} from '../../helpers/storybookDecorators/StorybookDecorator';
 
 export default {

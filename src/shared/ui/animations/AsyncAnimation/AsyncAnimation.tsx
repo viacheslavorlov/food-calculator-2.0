@@ -26,12 +26,12 @@ export const AsyncAnimation = memo((props: AsyncAnimationProps) => {
 
 
 	return (
-		<div>
+		<>
 			{transition((style) => (
 				<animated.div style={style} className={className}>
 					{children}
 				</animated.div>
 			))}
-		</div>
+		</>
 	);
 });

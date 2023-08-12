@@ -15,6 +15,7 @@
   },
   "author": "viacheslavorlov@gmail.com",
   "license": "ISC",
+  
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
@@ -47,7 +48,7 @@
     "concurrently": "^7.6.0",
     "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
-    "eslint-plugin-fsd-architecture-checker": "^0.0.12",
+    "eslint-plugin-fsd-architecture-checker": "^0.0.21",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-storybook": "^0.6.11",

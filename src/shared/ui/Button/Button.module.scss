@@ -3,6 +3,7 @@
     font-size: var(--font-s);
     padding: 6px;
     border: 1px solid var(--black-color);
+    transition: all .2s;
 }
 
 .Button:active {
@@ -16,6 +17,7 @@
 
 .Button:hover {
     opacity: 0.8;
+    transform: scale(1.03);
 }
 
 .round {

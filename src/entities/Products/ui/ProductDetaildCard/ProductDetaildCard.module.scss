@@ -4,11 +4,11 @@
     flex-direction: column;
     margin-top: 10px;
     padding: 5px;
-    width: 90vw;
     align-items: center;
     transition: all 0.3s;
     border: solid 1px var(--border-color);
     border-radius: 6px;
+    box-shadow: var(--box-shadow-black);
 }
 
 .animationWrapper {

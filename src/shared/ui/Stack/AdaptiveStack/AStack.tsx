@@ -1,5 +1,5 @@
 import {FlexProps} from '../Flex/Flex';
-import {HStack, VStack} from 'shared/ui/Stack';
+import {HStack, VStack} from '..';
 import {useLayoutEffect, useState} from 'react';
 
 type AStackProps = Omit<FlexProps, 'direction'>

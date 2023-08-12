@@ -1,11 +1,11 @@
-import {AddNewProductForm} from '../../../../entities/addNewProduct/ui/AddNewProductForm';
-import cls from './AddNewItems.module.scss';
+import {AddNewProductForm} from 'entities/addNewProduct';
+import {Page} from 'shared/ui/Page/Page';
 
 const AddNewItems = () => {
 	return (
-		<div className={cls.AddNewItems}>
+		<Page>
 			<AddNewProductForm />
-		</div>
+		</Page>
 	);
 };
 

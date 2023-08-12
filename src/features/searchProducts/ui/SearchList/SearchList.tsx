@@ -27,7 +27,7 @@ export const SearchList = memo((props: SearchListProps) => {
 	const searchOrder = useAppSelector(searchOrderSelector);
 
 	const productsForSearch = products
-		.filter(product => !idList.includes(product.id) && product.name.includes(searchValue));
+		.filter(product => !idList.includes(product.id) && product.name.toLowerCase().includes(searchValue.toLowerCase()));
 
 	const content = useCallback(() => orderSearchFn(searchOrder, searchProp, productsForSearch), [productsForSearch, searchOrder, searchProp]);
 	const ids = content().map(item => item.id);
