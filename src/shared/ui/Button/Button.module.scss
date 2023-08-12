@@ -6,8 +6,12 @@
 }
 
 .Button:active {
-    transform: rotate(10deg);
+    transform: scale(1.05);
     transition: all 0.3s;
+}
+
+.Button:focus {
+
 }
 
 .Button:hover {

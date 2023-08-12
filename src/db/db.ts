@@ -12,10 +12,10 @@ export class FoodCalculatorDexie extends Dexie {
 
 	constructor() {
 		super('foodPriceCalculator');
-		this.version(1).stores({
+		this.version(4).stores({
 			products: '&id, &name, price, metric, amountInOnePack, currentAmount, timesUsed', // Primary key and indexed props
 			activeProducts: '&id, &name, price, metric, amountInOnePack, currentAmount, timesUsed',
-			recipes: '&id, &name, ingredients, timesUsed',
+			recipes: '&id, recipeName, ingredients, timesUsed',
 		});
 	}
 }

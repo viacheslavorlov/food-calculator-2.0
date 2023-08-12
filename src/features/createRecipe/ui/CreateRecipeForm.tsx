@@ -8,6 +8,7 @@ import {Button, ButtonVariants} from 'shared/ui/Button/Button';
 import {db} from 'db/db';
 import {useLiveQuery} from 'dexie-react-hooks';
 import {AStack} from 'shared/ui/Stack/AdaptiveStack/AStack';
+import {Modal} from 'shared/ui/Modal/ui/Modal';
 
 interface CreateRecipeFormProps {
 	className?: string;
@@ -18,7 +19,12 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		className
 	} = props;
 	const [recipeName, setRecipeName] = useState('');
-	const ingredients =  useLiveQuery(async () => db.activeProducts.toArray());
+	const [isModal, setIsModal] = useState(false);
+	const [message, setMessage] = useState('');
+	const ingredients = useLiveQuery(async () => db.activeProducts.toArray());
+
+	const recipes = useLiveQuery(() => db.recipes.toArray());
+	const recipeExistsAlready = recipes?.some(recipe => recipe.recipeName === recipeName);
 
 	const onInputHandler = () => (e: ChangeEvent<HTMLInputElement>) => {
 		setRecipeName(e.target.value);
@@ -30,11 +36,13 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		timesUsed: 0
 	};
 
+
+
 	const createRecipe = async () => {
 		try {
 			await db.recipes.add(newRecipe);
 		} catch (e) {
-			alert('Рецепт не был добавлен');
+			setMessage('Рецепт не был добавлен');
 		}
 	};
 
@@ -43,10 +51,14 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 			.ingredients
 			.some(ingredient => ingredient.amountCurrent === 0);
 
-		if (!unUsedItems) {
+		if (!unUsedItems && recipeName && !recipeExistsAlready) {
+			setMessage('Рецепт добавлен');
 			createRecipe();
+			setIsModal(true);
 			setRecipeName('');
 		} else {
+			setMessage('Рецепт не был добавлен');
+			setIsModal(true);
 			alert('не все включенные в рецепт ингредиенты используются:' +
 				' укажите количество каждого используемого продукта и удалите ненужные');
 		}
@@ -54,6 +66,8 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 
 	return (
 		<AStack max gap={'8'} className={classNames(cls.CreateRecipeForm, className)}>
+			{isModal && message === 'Рецепт добавлен' && <Modal autoClose autoCloseTimer={2000} visible={isModal}>{message}</Modal>}
+			{isModal && message === 'Рецепт не был добавлен' && <Modal visible={isModal}>{message}</Modal>}
 			<Text content={'Сохранить рецепт: '}/>
 			<Input placeholder={'Название рецепта'} value={recipeName} onChange={onInputHandler()}/>
 			<Button variant={ButtonVariants.rounded} onClick={onCreateRecipe}>
