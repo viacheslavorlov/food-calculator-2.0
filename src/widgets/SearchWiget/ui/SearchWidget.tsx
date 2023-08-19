@@ -17,7 +17,7 @@ export const SearchWidget = memo((props: SearchWigetProps) => {
 	const {className} = props;
 	const dispatch = useAppDispatch();
 	const [isSearchVisible, setIsSearchVisible] = useState<boolean>(
-		JSON.parse(localStorage.getItem(SEARCH_VISIBILITY_LOCAL_STORAGE_KEY) || '') || false
+		JSON.parse(localStorage.getItem(SEARCH_VISIBILITY_LOCAL_STORAGE_KEY) || 'false')
 	);
 	const onVisibilityChange = useCallback(() => {
 		setIsSearchVisible(prevState => !prevState);
