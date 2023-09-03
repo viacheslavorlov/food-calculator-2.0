@@ -1,12 +1,14 @@
 import {AddNewProductForm} from 'entities/addNewProduct';
 import {Page} from 'shared/ui/Page/Page';
+import {memo} from 'react';
 
-const AddNewItems = () => {
+const AddNewItems = memo(() => {
+
 	return (
 		<Page>
-			<AddNewProductForm />
+			<AddNewProductForm/>
 		</Page>
 	);
-};
+});
 
 export default AddNewItems;

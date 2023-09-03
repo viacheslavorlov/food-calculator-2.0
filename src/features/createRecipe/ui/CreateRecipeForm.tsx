@@ -37,7 +37,6 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 	};
 
 
-
 	const createRecipe = async () => {
 		try {
 			await db.recipes.add(newRecipe);
@@ -57,17 +56,17 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 			setIsModal(true);
 			setRecipeName('');
 		} else {
-			setMessage('Рецепт не был добавлен');
+			setMessage(
+				'Рецепт не был добавлен!' +
+				' Не все включенные в рецепт ингредиенты используются: укажите количество каждого используемого продукта и удалите ненужные'
+			);
 			setIsModal(true);
-			alert('не все включенные в рецепт ингредиенты используются:' +
-				' укажите количество каждого используемого продукта и удалите ненужные');
 		}
 	};
 
 	return (
 		<AStack max gap={'8'} className={classNames(cls.CreateRecipeForm, className)}>
-			{isModal && message === 'Рецепт добавлен' && <Modal autoClose autoCloseTimer={2000} visible={isModal}>{message}</Modal>}
-			{isModal && message === 'Рецепт не был добавлен' && <Modal visible={isModal}>{message}</Modal>}
+			{isModal && <Modal autoCloseTimer={2000} autoClose visible={isModal}>{message}</Modal>}
 			<Text content={'Сохранить рецепт: '}/>
 			<Input placeholder={'Название рецепта'} value={recipeName} onChange={onInputHandler()}/>
 			<Button variant={ButtonVariants.rounded} onClick={onCreateRecipe}>

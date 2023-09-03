@@ -1,11 +1,12 @@
 import {Text} from 'shared/ui/Text/Text';
-import {FormEvent, memo, useState} from 'react';
+import {FormEvent, memo, useEffect, useState} from 'react';
 import {Input} from 'shared/ui/Input/Input';
 import cls from './AddNewProductForm.module.scss';
 import {db} from 'db/db';
 import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
 import {IProduct, Metrics} from 'store/types';
 import {VStack} from 'shared/ui/Stack';
+import {Modal} from 'shared/ui/Modal/ui/Modal';
 
 interface AddNewProductFormProps {
 	className?: string;
@@ -16,6 +17,9 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 	const [metric, setMetric] = useState<string>('');
 	const [price, setPrice] = useState<number>(0);
 	const [amountInOnePack, setAmountInOnePack] = useState<number>(0);
+	const [isModal, setIsModal] = useState(false);
+	const [modalMessage, setModalMessage] = useState('');
+	const [modalTimer, setModalTimer] = useState(1000);
 
 	const onNameChange = (e: FormEvent<HTMLInputElement>) => {
 		setName(e.currentTarget.value);
@@ -43,18 +47,35 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 					amountCurrent: 0,
 					timesUsed: 0
 				};
-				const response = await db.products.add(product);
-				setName('');
-				setMetric('');
-				setAmountInOnePack(0);
-				setPrice(0);
+				await db.products.add(product)
+					.then(() => {
+						setName('');
+						setMetric('');
+						setAmountInOnePack(0);
+						setPrice(0);
+						setIsModal(true);
+						setModalMessage('Продукт добавлен!');
+					});
 			} else {
-				alert('Введите корректные данные!');
+				setIsModal(true);
+				setModalTimer(5000);
+				setModalMessage('Введите корректные данные!');
 			}
 		} catch (e) {
-			alert('Продукт с таким названием уже существет: Измените название продукта');
+			setIsModal(true);
+			setModalTimer(5000);
+			setModalMessage('Продукт с таким названием уже существет: Измените название продукта');
 		}
 	}
+
+	useEffect(() => {
+		if (isModal) {
+			const clearModal = setTimeout(() => {
+				setIsModal(false);
+			}, modalTimer);
+			return () => clearTimeout(clearModal);
+		}
+	}, [isModal, modalTimer]);
 
 	return (
 		<VStack max justify={'center'} align={'center'} gap="4" className={className}>
@@ -90,7 +111,7 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				value={amountInOnePack || ''}
 				onChange={onPackAmountChange}
 				type="number"
-				placeholder="Введите rоличество в упаковке"
+				placeholder="Введите количество в упаковке"
 			/>
 			<Button
 				className={cls.button}
@@ -99,6 +120,9 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				background={ButtonBackground.green}>
 				Сохранить
 			</Button>
+			{isModal && <Modal visible={isModal} autoClose={true} autoCloseTimer={modalTimer}>
+				{modalMessage}
+			</Modal>}
 		</VStack>
 	);
 });

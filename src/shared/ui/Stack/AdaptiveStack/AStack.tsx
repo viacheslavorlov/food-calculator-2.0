@@ -9,10 +9,12 @@ export const AStack = (props: AStackProps) => {
 	const [horizontal, setHorizontal] = useState(width > 500);
 	const {children} = props;
 	useLayoutEffect(() => {
-		window.addEventListener('resize', () => {
+		const setWindowSize = () => {
 			setWidth(window.innerWidth);
 			setHorizontal(width > 500);
-		});
+		};
+		window.addEventListener('resize', setWindowSize);
+		return () => window.removeEventListener('resize', setWindowSize);
 	}, [width]);
 	if (horizontal) {
 		return (
