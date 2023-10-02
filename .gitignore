@@ -18,6 +18,8 @@ coverage
 bower_components
 .lock-wscript
 build/Release
+tmp
+/storybook-static
 node_modules/
 jspm_packages/
 web_modules/
@@ -57,4 +59,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
-tmp
+
