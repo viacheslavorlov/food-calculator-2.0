@@ -19,4 +19,20 @@ describe('classNames function testing', function () {
 	test('tree params with undefined', async () => {
 		await expect(classNames('one', undefined, 'tree')).toBe('one tree');
 	});
+
+	test('tree params with object', async () => {
+		await expect(classNames('one', {two: true, four: false}, 'tree')).toBe('one two tree');
+	});
+
+	test('tree params with empty object', async () => {
+		await expect(classNames('one', {}, 'tree')).toBe('one tree');
+	});
+
+	test('tree params with array', async () => {
+		await expect(classNames('one', {two: true, four: false}, [])).toBe('one two');
+	});
+
+	test('tree params with object and array', async () => {
+		await expect(classNames('one', {two: true, four: false}, ['tree', 'five'])).toBe('one two tree five');
+	});
 });

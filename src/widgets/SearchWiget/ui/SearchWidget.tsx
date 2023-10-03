@@ -1,6 +1,7 @@
 import {HStack, VStack} from 'shared/ui/Stack';
 import {Line} from 'shared/ui/Line/Line';
 import {Button, ButtonVariants} from 'shared/ui/Button/Button';
+import {Text} from 'shared/ui/Text/Text';
 import {Search, searchActions} from 'features/searchProducts';
 import {memo, useCallback, useState} from 'react';
 import cls from './SearcWidget.module.scss';
@@ -30,7 +31,7 @@ export const SearchWidget = memo((props: SearchWigetProps) => {
 	return (
 		<VStack max gap={'8'} className={className}>
 			<HStack max>
-				<h2>Поиск продуктов</h2>
+				<Text title={'Поиск продуктов'}></Text>
 				<Line width={'50%'}/>
 				<Button
 					onClick={onVisibilityChange} className={cls.button}

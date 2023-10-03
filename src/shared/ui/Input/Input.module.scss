@@ -16,6 +16,9 @@
 
 .Input::placeholder {
     color: var(--bg-color);
+    opacity: 0.4;
+    font-weight: 400;
+    font-style: italic;
 }
 
 .Input::-webkit-outer-spin-button,
@@ -25,7 +28,7 @@
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
 }
 
-.Input:hover, .Input:focus, .Input:active {
+.Input[type='number']:hover, .Input:focus, .Input:active {
     appearance: textfield;
 }
 

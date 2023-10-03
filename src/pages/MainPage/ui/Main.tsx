@@ -27,11 +27,9 @@ const MainPage = memo(() => {
 				idList={activeProductsIDs}
 			/>
 			<ClearActiveProducts className={cls.clearBtn}/>
-			<ProductList
-				activeProducts={activeProducts}
-			/>
-			<CreateRecipeForm/>
+			<ProductList activeProducts={activeProducts}/>
 			<ResultValue list={activeProducts} className={cls.result}/>
+			<CreateRecipeForm/>
 		</Page>
 	);
 });

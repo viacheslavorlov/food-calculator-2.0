@@ -1,6 +1,6 @@
 import {classNames} from '../../helpers/classNames/classNames';
 import cls from './Input.module.scss';
-import {InputHTMLAttributes, forwardRef, Ref} from 'react';
+import {InputHTMLAttributes, forwardRef, Ref, ChangeEvent} from 'react';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 	className?: string;
@@ -16,6 +16,8 @@ export const Input = forwardRef((props: InputProps, ref: Ref<HTMLInputElement>) 
 		type = 'text',
 		...additionalArgs
 	} = props;
+
+
 
 	return (
 		<input

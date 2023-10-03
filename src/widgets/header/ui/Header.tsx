@@ -33,10 +33,9 @@ export const Header = memo(() => {
 		<div className={cls.header}>
 			<ThemeSwitcher/>
 			<div className={cls.headerWrapper}>
-				<Text title={'Расчет себестоимости продуктов'} className={cls.header__name}/>
+				<h1 className={cls.header__name}>Расчет себестоимости продуктов </h1>
 				{showMenuButton &&
 					<Button variant={ButtonVariants.rectangle} onClick={onMenuHandle} className={cls.btn}>
-						{/*<Text content={'Меню'}/>*/}
 						<IconSVG Icon={Menu} className={cls.icon}/>
 					</Button>}
 			</div>
