@@ -3,15 +3,19 @@
     max-width: 200px;
     padding: 10px;
     border-radius: 15px;
-    font-size: var(--font-s);
+    font-size: var(--font-m);
     transition: all 0.3s;
     margin-bottom: 10px;
     box-shadow: var(--box-shadow-black);
     border: 2px solid transparent;
     background-color: var(--bg-color-inverted);
-    color: var(--text-color-inverted);
+    color: var(--input-color);
+    font-weight: 600;
     appearance: textfield;
-    appearance: textfield;
+}
+
+.Input::placeholder {
+    color: var(--bg-color);
 }
 
 .Input::-webkit-outer-spin-button,
@@ -22,7 +26,6 @@
 }
 
 .Input:hover, .Input:focus, .Input:active {
-    appearance: textfield;
     appearance: textfield;
 }
 

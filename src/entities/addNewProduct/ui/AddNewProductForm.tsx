@@ -1,5 +1,5 @@
 import {Text} from 'shared/ui/Text/Text';
-import {FormEvent, memo, useEffect, useState} from 'react';
+import {FormEvent, memo, useEffect, useRef, useState} from 'react';
 import {Input} from 'shared/ui/Input/Input';
 import cls from './AddNewProductForm.module.scss';
 import {db} from 'db/db';
@@ -13,46 +13,45 @@ interface AddNewProductFormProps {
 }
 
 export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
-	const [name, setName] = useState<string>('');
-	const [metric, setMetric] = useState<string>('');
-	const [price, setPrice] = useState<number>(0);
-	const [amountInOnePack, setAmountInOnePack] = useState<number>(0);
+	// const [name, setName] = useState<string>('');
+	// const [metric, setMetric] = useState<string>('');
+	// const [price, setPrice] = useState<number>(0);
+	// const [amountInOnePack, setAmountInOnePack] = useState<number>(0);
+	const nameRef = useRef<HTMLInputElement | null>(null);
+	const metricRef = useRef<HTMLInputElement |null>(null);
+	const priceRef = useRef<HTMLInputElement | null>(null);
+	const amountInOnePackRef = useRef<HTMLInputElement | null>(null);
 	const [isModal, setIsModal] = useState(false);
 	const [modalMessage, setModalMessage] = useState('');
 	const [modalTimer, setModalTimer] = useState(1000);
 
-	const onNameChange = (e: FormEvent<HTMLInputElement>) => {
-		setName(e.currentTarget.value);
-	};
-	const onPriceChange = (e: FormEvent<HTMLInputElement>) => {
-		setPrice(parseInt(e.currentTarget.value));
-	};
-	const onMetricChange = (e: FormEvent<HTMLInputElement>) => {
-		setMetric(e.currentTarget.value as Metrics);
-	};
-
-	const onPackAmountChange = (e: FormEvent<HTMLInputElement>) => {
-		setAmountInOnePack(parseInt(e.currentTarget.value));
-	};
+	// const onNameChange = (e: FormEvent<HTMLInputElement>) => {
+	// 	setName(e.currentTarget.value);
+	// };
+	// const onPriceChange = (e: FormEvent<HTMLInputElement>) => {
+	// 	setPrice(parseInt(e.currentTarget.value));
+	// };
+	// const onMetricChange = (e: FormEvent<HTMLInputElement>) => {
+	// 	setMetric(e.currentTarget.value as Metrics);
+	// };
 
 	async function onAddNewProduct() {
 		try {
-			if (name && price && metric && amountInOnePack) {
+			if (nameRef.current?.value
+				&& priceRef.current?.value
+				&& metricRef.current?.value
+				&& amountInOnePackRef.current?.value) {
 				const product: IProduct = {
-					name,
+					name: nameRef.current?.value,
 					id: Date.now(),
-					price,
-					metric,
-					amountInOnePack,
+					price: Number(priceRef.current?.value),
+					metric: metricRef.current?.value,
+					amountInOnePack: Number(amountInOnePackRef.current.value),
 					amountCurrent: 0,
 					timesUsed: 0
 				};
 				await db.products.add(product)
 					.then(() => {
-						setName('');
-						setMetric('');
-						setAmountInOnePack(0);
-						setPrice(0);
 						setIsModal(true);
 						setModalMessage('Продукт добавлен!');
 					});
@@ -83,33 +82,37 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 			<Text className={cls.text} content={'Название продукта:'}/>
 			<Input
 				className={cls.input}
-				value={name}
+				ref={nameRef}
+				// value={name}
 				type="text"
-				onChange={onNameChange}
+				// onChange={onNameChange}
 				placeholder="Введите название продукта"
 			/>
 
 			<Text className={cls.text} content={'Единицы измерения:'}/>
 			<Input
 				className={cls.input}
-				value={metric}
+				ref={metricRef}
+				// value={metric}
 				type="text"
-				onChange={onMetricChange}
+				// onChange={onMetricChange}
 				placeholder="Введите единицы измерения продукта"
 			/>
 			<Text className={cls.text} content={'Цена за упаковку:'}/>
 			<Input
 				className={cls.input}
-				value={price || ''}
-				onInput={onPriceChange}
+				ref={priceRef}
+				// value={price || ''}
+				// onInput={onPriceChange}
 				type="number"
 				placeholder="Введите цену за упаковку"
 			/>
 			<Text className={cls.text} content={'Количество в одной упаковке:'}/>
 			<Input
 				className={cls.input}
-				value={amountInOnePack || ''}
-				onChange={onPackAmountChange}
+				ref={amountInOnePackRef}
+				// value={amountInOnePack || ''}
+				// onChange={onPackAmountChange}
 				type="number"
 				placeholder="Введите количество в упаковке"
 			/>

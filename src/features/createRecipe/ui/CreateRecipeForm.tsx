@@ -36,7 +36,6 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		timesUsed: 0
 	};
 
-
 	const createRecipe = async () => {
 		try {
 			await db.recipes.add(newRecipe);

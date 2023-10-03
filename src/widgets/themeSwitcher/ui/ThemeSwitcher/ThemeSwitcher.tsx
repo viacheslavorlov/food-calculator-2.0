@@ -7,7 +7,6 @@ import {memo} from 'react';
 
 export const ThemeSwitcher = memo(() => {
 	const {toggleTheme, theme = 'light'} = useTheme();
-	const fill = theme === 'light' ? '#ffae69' : '';
 	const day = theme === 'light';
 	return (
 		<>
@@ -15,7 +14,7 @@ export const ThemeSwitcher = memo(() => {
 				className={classNames(cls.themeButton)}
 				onClick={toggleTheme}>
 				<div className={cls[theme]}>
-					{day ? <Night fill={fill}/> : <Day fill={fill}/>}
+					{day ? <Night className={cls.icon}/> : <Day className={cls.icon}/>}
 				</div>
 			</button>
 		</>
