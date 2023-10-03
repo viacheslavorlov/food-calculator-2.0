@@ -34,7 +34,13 @@ export const Select = <T extends string>(props: SelectProps<T>) => {
 			className={classNames(cls.Select, className)}
 			onChange={onChangeHandler}
 		>
-			{optionsVariants.map(option => <option key={option.name} value={option.value}>{option.name}</option>)}
+			{optionsVariants.map(option => <option
+				key={option.name}
+				className={cls.option}
+				value={option.value}
+			>
+				{option.name}
+			</option>)}
 		</select>
 	);
 };

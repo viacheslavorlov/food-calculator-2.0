@@ -1,21 +1,46 @@
 .Input {
     min-width: 90px;
     max-width: 200px;
-    padding: 0 10px;
+    padding: 10px;
     border-radius: 15px;
     font-size: var(--font-s);
+    transition: all 0.3s;
+    margin-bottom: 10px;
+    box-shadow: var(--box-shadow-black);
+    border: 2px solid transparent;
+    background-color: var(--bg-color-inverted);
+    color: var(--text-color-inverted);
+    appearance: textfield;
+    appearance: textfield;
+}
+
+.Input::-webkit-outer-spin-button,
+.Input::-webkit-inner-spin-button {
+    display: none;
+    appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+.Input:hover, .Input:focus, .Input:active {
+    appearance: textfield;
+    appearance: textfield;
 }
 
 .Input:focus {
     background-color: var(--green-color);
     color: var(--white-color);
-}
-.Input:hover {
-    border: 2px solid var(--green-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
-@media screen and (device-width: 400px) {
+.Input:hover {
+    border: 2px solid var(--green-color);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 400px) {
     .Input {
         min-width: 50px;
+        max-width: 150px;
+        margin-bottom: 5px;
     }
 }

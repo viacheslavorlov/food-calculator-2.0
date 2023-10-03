@@ -120,7 +120,7 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				background={ButtonBackground.green}>
 				Сохранить
 			</Button>
-			{isModal && <Modal visible={isModal} autoClose={true} autoCloseTimer={modalTimer}>
+			{isModal && <Modal closeModal={setIsModal} visible={isModal} autoClose={true} autoCloseTimer={modalTimer}>
 				{modalMessage}
 			</Modal>}
 		</VStack>

@@ -10,42 +10,38 @@ interface ModalProps {
 	visible?: boolean;
 	autoClose?: boolean;
 	autoCloseTimer?: number;
-	closeModal?: (bool: boolean) => void
+	closeModal: (bool: boolean) => void;
 }
 
 export const Modal = (props: ModalProps) => {
 	const {
-		className, children, visible, autoClose, autoCloseTimer
+		className,
+		children,
+		autoClose,
+		autoCloseTimer,
+		closeModal
 	} = props;
-	const [isVisible, setIsVisible] = useState<boolean>(visible || false);
-
-	const onCloseModal = () => {
-		setIsVisible(false);
-	};
-
+	
 	useEffect(() => {
 		if (autoClose && autoCloseTimer) {
 			const autoCloseModal = setTimeout(() => {
-				onCloseModal();
+				closeModal(false);
 			}, autoCloseTimer);
 			return clearTimeout(autoCloseModal);
 		}
-	}, [autoClose, autoCloseTimer]);
-	if (isVisible) {
-		return (
-			<Overlay onClick={onCloseModal}>
-				<div className={classNames(cls.Modal, className)}>
-					<Button
-						className={cls.closeBtn}
-						variant={ButtonVariants.round}
-						onClick={onCloseModal}
-						background={ButtonBackground.red}
-					>
-						X
-					</Button>
-					{children}
-				</div>
-			</Overlay>);
-	}
-	return null;
+	}, [autoClose, autoCloseTimer, closeModal]);
+	return (
+		<Overlay onClick={()=> closeModal(false)}>
+			<div className={classNames(cls.Modal, className)}>
+				<Button
+					className={cls.closeBtn}
+					variant={ButtonVariants.round}
+					onClick={() => closeModal(false)}
+					background={ButtonBackground.red}
+				>
+					X
+				</Button>
+				{children}
+			</div>
+		</Overlay>);
 };

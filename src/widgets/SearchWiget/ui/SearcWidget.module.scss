@@ -1,9 +1,18 @@
 .button {
-    border-radius: 50%;
-    transform: rotate(90deg);
+    height: 40px;
+    width: 40px;
 }
 
 .button:hover {
     opacity: 0.8;
-    transform: rotate(90deg);
+}
+
+.buttonIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.icon {
+    fill: var(--bg-color);
+    stroke: var(--bg-color-inverted);
 }

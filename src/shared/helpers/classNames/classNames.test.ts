@@ -7,10 +7,16 @@ describe('classNames function testing', function () {
 	test('two param', async () => {
 		await expect(classNames('two', 'tree')).toBe('two tree');
 	});
-	test('two param', async () => {
+	test('tree param', async () => {
 		await expect(classNames('one', 'two', 'tree')).toBe('one two tree');
 	});
 	test('no param', async () => {
 		await expect(classNames()).toBe('');
+	});
+	test('tree params with null', async () => {
+		await expect(classNames('one', null, 'tree')).toBe('one tree');
+	});
+	test('tree params with undefined', async () => {
+		await expect(classNames('one', undefined, 'tree')).toBe('one tree');
 	});
 });

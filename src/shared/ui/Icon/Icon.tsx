@@ -5,17 +5,19 @@ import React, {memo} from 'react';
 interface IconPrors {
 	className?: string;
 	Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
+	height?: number;
+	width?: number;
 }
 
 export const IconSVG = memo((props: IconPrors) => {
 	const {
 		className,
-		Icon
+		Icon,
+		height = 40,
+		width = 40
 	} = props;
 
 	return (
-		<div className={classNames(cls.Icon, className)}>
-			<Icon className={cls.picture}/>
-		</div>
+		<Icon width={width} height={height} className={classNames(cls.Icon, className, cls.picture)}/>
 	);
 });

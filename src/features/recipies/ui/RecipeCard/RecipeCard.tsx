@@ -2,7 +2,7 @@ import {db} from 'db/db';
 import {ProductDetaildCard, ResultValue} from 'entities/Products';
 import {IRecipe} from 'entities/recipe';
 import {memo, Suspense, useCallback} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {classNames} from 'shared/helpers/classNames/classNames';
 import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
 import {List} from 'shared/ui/List/List';
@@ -13,6 +13,7 @@ import cls from './RecipeCard.module.scss';
 import {GroupTransition} from 'shared/ui/animations/GroupTransition/GroupTransition';
 import {AStack} from 'shared/ui/Stack/AdaptiveStack/AStack';
 import {HStack, VStack} from 'shared/ui/Stack';
+import {Link} from 'shared/ui/Link/Link';
 
 interface RecipeCardProps {
 	className?: string;
@@ -79,7 +80,7 @@ export const RecipeCard = memo((props: RecipeCardProps) => {
 								Удалить
 							</Button>
 						}
-						<Link to={expanded ? '/recipes' : `/recipes/${recipe.id}`}>
+						<Link className={cls.linkTransparent} to={expanded ? '/recipes' : `/recipes/${recipe.id}`}>
 							<Button
 								className={cls.backButton}
 								variant={ButtonVariants.rounded}>{expanded ? 'Назад' : 'Открыть'}

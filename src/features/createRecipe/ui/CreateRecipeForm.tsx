@@ -1,6 +1,6 @@
 import {classNames} from 'shared/helpers/classNames/classNames';
 import cls from './CreateRecipeForm.module.scss';
-import {ChangeEvent, memo, useState} from 'react';
+import {ChangeEvent, memo, useCallback, useState} from 'react';
 import {Input} from 'shared/ui/Input/Input';
 import {Text} from 'shared/ui/Text/Text';
 import {IRecipe} from 'entities/recipe';
@@ -26,9 +26,9 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 	const recipes = useLiveQuery(() => db.recipes.toArray());
 	const recipeExistsAlready = recipes?.some(recipe => recipe.recipeName === recipeName);
 
-	const onInputHandler = () => (e: ChangeEvent<HTMLInputElement>) => {
+	const onInputHandler = useCallback(() => (e: ChangeEvent<HTMLInputElement>) => {
 		setRecipeName(e.target.value);
-	};
+	}, []);
 	const newRecipe: IRecipe = {
 		id: Date.now(),
 		ingredients: ingredients || [],
@@ -40,12 +40,20 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 	const createRecipe = async () => {
 		try {
 			await db.recipes.add(newRecipe);
+			setMessage('Рецепт добавлен!');
+			setIsModal(true);
 		} catch (e) {
 			setMessage('Рецепт не был добавлен');
+			setIsModal(true);
 		}
 	};
 
 	const onCreateRecipe = () => {
+		if (!ingredients || !ingredients.length) {
+			setMessage('Не выбрано ни одного продукта для рецепта');
+			setIsModal(true);
+			return;
+		}
 		const unUsedItems = newRecipe
 			.ingredients
 			.some(ingredient => ingredient.amountCurrent === 0);
@@ -53,8 +61,15 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		if (!unUsedItems && recipeName && !recipeExistsAlready) {
 			setMessage('Рецепт добавлен');
 			createRecipe();
-			setIsModal(true);
 			setRecipeName('');
+		} else if (!recipeName) {
+			setMessage('Не выбрано название рецепта');
+			setIsModal(true);
+			return;
+		} else if (recipeExistsAlready) {
+			setMessage('');
+			setIsModal(true);
+			return;
 		} else {
 			setMessage(
 				'Рецепт не был добавлен!' +
@@ -66,7 +81,7 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 
 	return (
 		<AStack max gap={'8'} className={classNames(cls.CreateRecipeForm, className)}>
-			{isModal && <Modal autoCloseTimer={2000} autoClose visible={isModal}>{message}</Modal>}
+			{isModal && <Modal closeModal={setIsModal} autoCloseTimer={2000} autoClose visible={isModal}>{message}</Modal>}
 			<Text content={'Сохранить рецепт: '}/>
 			<Input placeholder={'Название рецепта'} value={recipeName} onChange={onInputHandler()}/>
 			<Button variant={ButtonVariants.rounded} onClick={onCreateRecipe}>

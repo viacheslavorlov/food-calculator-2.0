@@ -7,9 +7,9 @@ import cls from './Link.module.scss';
 
 interface LinkPrors {
 	className?: string;
-	Icon: React.VFC<React.SVGProps<SVGSVGElement>>;
+	Icon?: React.VFC<React.SVGProps<SVGSVGElement>>;
 	to: string;
-	title: string;
+	title?: string;
 	children?: ReactNode;
 	onClick?: () => void;
 }
@@ -20,7 +20,8 @@ export const Link = memo((props: LinkPrors) => {
 		Icon,
 		to,
 		title,
-		onClick
+		onClick,
+		children
 	} = props;
 
 	const activeClass = (isActive: boolean) => isActive
@@ -33,8 +34,9 @@ export const Link = memo((props: LinkPrors) => {
 			className={({isActive}) => activeClass(isActive)}
 			to={to}
 		>
+			{children}
 			<Text className={cls.header__navbar_text} content={title}/>
-			<IconSVG className={cls.icon} Icon={Icon}/>
+			{Icon && <IconSVG className={cls.icon} Icon={Icon}/>}
 		</NavLink>
 	);
 });

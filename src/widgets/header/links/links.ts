@@ -1,7 +1,7 @@
-import AddIcon from '../../../shared/assets/add-item-alt-svgrepo-com.svg';
-import Products from '../../../shared/assets/list2-svgrepo-com.svg';
-import Packages from '../../../shared/assets/package-delivery-box-3-svgrepo-com.svg';
-import Delete from '../../../shared/assets/delete-1-svgrepo-com.svg';
+import AddIcon from '/src/shared/assets/add-item-alt-svgrepo-com.svg';
+import Products from '/src/shared/assets/list2-svgrepo-com.svg';
+import Packages from '/src/shared/assets/package-delivery-box-3-svgrepo-com.svg';
+import Delete from '/src/shared/assets/delete-1-svgrepo-com.svg';
 
 
 export const links = [

@@ -4,14 +4,16 @@ import {Button, ButtonVariants} from 'shared/ui/Button/Button';
 import {Search, searchActions} from 'features/searchProducts';
 import {memo, useCallback, useState} from 'react';
 import cls from './SearcWidget.module.scss';
+import {IconSVG} from 'shared/ui/Icon/Icon';
 import {AppearAnimation} from 'shared/ui/animations/ApearAnimation/AppearAnimation';
 import {useAppDispatch} from 'store/hooks';
 import {SEARCH_VISIBILITY_LOCAL_STORAGE_KEY} from '../const/searchVisibilityLocalStorage';
+import Expand from 'shared/assets/expand.svg';
+import Collapse from 'shared/assets/collapse.svg';
 
 interface SearchWigetProps {
 	className?: string;
 }
-
 
 export const SearchWidget = memo((props: SearchWigetProps) => {
 	const {className} = props;
@@ -34,7 +36,7 @@ export const SearchWidget = memo((props: SearchWigetProps) => {
 					onClick={onVisibilityChange} className={cls.button}
 					variant={ButtonVariants.round}
 				>
-					{isSearchVisible ? '<' : '>'}
+					<IconSVG className={cls.buttonIcon} height={20} width={20} Icon={isSearchVisible ? Collapse : Expand}/>
 				</Button>
 			</HStack>
 			{isSearchVisible && (

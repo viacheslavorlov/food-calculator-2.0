@@ -36,7 +36,7 @@ export const Header = memo(() => {
 				<Text title={'Расчет себестоимости продуктов'} className={cls.header__name}/>
 				{showMenuButton &&
 					<Button variant={ButtonVariants.rectangle} onClick={onMenuHandle} className={cls.btn}>
-						<Text content={'Меню'}/>
+						{/*<Text content={'Меню'}/>*/}
 						<IconSVG Icon={Menu} className={cls.icon}/>
 					</Button>}
 			</div>

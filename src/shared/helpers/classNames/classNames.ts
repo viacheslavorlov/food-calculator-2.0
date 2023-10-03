@@ -1,9 +1,9 @@
-export const classNames = (...args: Array<string | undefined>) => {
-	const result = [];
+export const classNames = (...args: Array<string | undefined | null>) => {
+	let result = '';
 	for (let i = 0; i < args.length; i++) {
-		if (args[i] !== undefined) {
-			result.push(args[i]);
+		if (args[i]) {
+			result += ' ' + args[i];
 		}
 	}
-	return result.join(' ');
+	return result.trim();
 };
