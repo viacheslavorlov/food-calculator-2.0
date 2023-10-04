@@ -11,7 +11,7 @@
     background-color: var(--bg-color-inverted);
     color: var(--input-color);
     font-weight: 600;
-    appearance: textfield;
+
 }
 
 .Input::placeholder {
@@ -26,10 +26,6 @@
     display: none;
     appearance: none;
     margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-}
-
-.Input[type='number']:hover, .Input:focus, .Input:active {
-    appearance: textfield;
 }
 
 .Input:focus {
