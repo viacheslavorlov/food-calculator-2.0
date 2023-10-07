@@ -1,10 +1,10 @@
 import {lazy, Suspense} from 'react';
 import {LoadingPage} from 'pages/LoadingPage';
 
-const DeleteItemsLazy = lazy(() => import('./DeleteItems'));
+const PageNotFoundLazy = lazy(() => import('./PageNotFound'));
 
-export const DeleteItemsAsync = () => (
+export const PageNotFoundAsync = () => (
 	<Suspense fallback={<LoadingPage/>}>
-		<DeleteItemsLazy/>
+		<PageNotFoundLazy/>
 	</Suspense>
 );

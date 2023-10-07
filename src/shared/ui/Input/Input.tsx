@@ -10,21 +10,21 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 export const Input = forwardRef((props: InputProps, ref: Ref<HTMLInputElement>) => {
-    const {
-        className,
-        type = 'text',
-        ...additionalArgs
-    } = props;
+	const {
+		className,
+		type = 'text',
+		...additionalArgs
+	} = props;
 
 
 
-    return (
-        <input
-            {...additionalArgs}
-            ref={ref}
-            type={type}
-            className={classNames(cls.Input, className)}
-        />
-    );
+	return (
+		<input
+			{...additionalArgs}
+			ref={ref}
+			type={type}
+			className={classNames(cls.Input, className)}
+		/>
+	);
 });
 

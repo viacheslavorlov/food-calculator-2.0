@@ -1,3 +1,10 @@
-import {lazy} from 'react';
+import {lazy, Suspense} from 'react';
+import {LoadingPage} from 'pages/LoadingPage';
 
-export const MainPageAsync= lazy(() => import('./Main'));
+const MainPageLazy = lazy(() => import('./Main'));
+
+export const MainPageAsync = () => (
+	<Suspense fallback={<LoadingPage/>}>
+		<MainPageLazy/>
+	</Suspense>
+);

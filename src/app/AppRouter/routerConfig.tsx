@@ -1,6 +1,11 @@
-import {AddNewItems, DeleteItems, MainPage, PageNotFound, RecipesPage} from '../../pages';
 import {ReactNode} from 'react';
-import {SingleRecipePage} from 'pages';
+import {AddNewItems} from 'pages/AddNewProductPage';
+import {DeleteItems} from 'pages/DeleteItemPage';
+import {MainPage} from 'pages/MainPage';
+import {PageNotFound} from 'pages/PageNotFound';
+import { RecipesPage } from 'pages/RecipesPage';
+import {SingleRecipePage} from 'pages/SingleRecipePage';
+
 
 export type Paths = '/' | '/recipes' | '/new-item' | '/delete-item' | '/recipes/:id' | '*';
 interface IRouterConfig {

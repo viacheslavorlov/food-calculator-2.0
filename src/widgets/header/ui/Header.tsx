@@ -3,7 +3,6 @@ import Menu from 'shared/assets/menu.svg';
 import {Button, ButtonVariants} from 'shared/ui/Button/Button';
 import {IconSVG} from 'shared/ui/Icon/Icon';
 import {Link} from 'shared/ui/Link/Link';
-import {Text} from 'shared/ui/Text/Text';
 import {ThemeSwitcher} from 'widgets/themeSwitcher';
 import cls from './Header.module.scss';
 import {links} from '../links/links';
@@ -35,8 +34,15 @@ export const Header = memo(() => {
 			<div className={cls.headerWrapper}>
 				<h1 className={cls.header__name}>Расчет себестоимости продуктов </h1>
 				{showMenuButton &&
-					<Button variant={ButtonVariants.rectangle} onClick={onMenuHandle} className={cls.btn}>
-						<IconSVG Icon={Menu} className={cls.icon}/>
+					<Button
+						variant={ButtonVariants.rectangle}
+						onClick={onMenuHandle}
+						className={cls.btn}	
+					>
+						<IconSVG
+							Icon={Menu}
+							className={cls.icon}
+						/>
 					</Button>}
 			</div>
 

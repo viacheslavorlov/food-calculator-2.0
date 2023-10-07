@@ -47,6 +47,13 @@ export default (env: EnvProp): webpack.Configuration => {
 			path: paths.output,
 			filename: '[name].[chunkhash:4].js',
 		},
-
+		optimization: {
+			splitChunks: {
+				chunks: 'all',
+			},
+			runtimeChunk: {
+				name: 'runtime',
+			},
+		},
 	};
 };
