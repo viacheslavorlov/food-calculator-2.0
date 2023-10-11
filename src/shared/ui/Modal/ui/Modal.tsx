@@ -1,16 +1,18 @@
-import { classNames } from 'shared/helpers/classNames/classNames';
+import {classNames} from 'shared/helpers/classNames/classNames';
+import {IconSVG} from '../../Icon/Icon';
 import cls from './Modal.module.scss';
-import { ReactNode, useEffect } from 'react';
-import { Overlay } from '../../Overlay/Overlay';
-import { Button, ButtonBackground, ButtonVariants } from '../../Button/Button';
+import {ReactNode, useEffect} from 'react';
+import {Overlay} from '../../Overlay/Overlay';
+import {Button, ButtonBackground, ButtonVariants} from '../../Button/Button';
+import Close from 'shared/assets/close.svg';
 
 interface ModalProps {
-  className?: string;
-  children: ReactNode;
-  visible?: boolean;
-  autoClose?: boolean;
-  autoCloseTimer?: number;
-  closeModal: (bool: boolean) => void;
+	className?: string;
+	children: ReactNode;
+	visible?: boolean;
+	autoClose?: boolean;
+	autoCloseTimer?: number;
+	closeModal: (bool: boolean) => void;
 }
 
 export const Modal = ({
@@ -47,7 +49,7 @@ export const Modal = ({
 					onClick={handleModalClose}
 					background={ButtonBackground.red}
 				>
-          X
+					<IconSVG Icon={Close} height={15} width={15} className={cls.closeBtnIcon}/>
 				</Button>
 				{children}
 			</div>

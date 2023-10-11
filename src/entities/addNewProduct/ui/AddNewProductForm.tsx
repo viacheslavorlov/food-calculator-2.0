@@ -1,5 +1,5 @@
 import {db} from 'db/db';
-import {ChangeEvent, memo, useEffect, useRef, useState} from 'react';
+import {ChangeEvent, useEffect, useRef, useState} from 'react';
 import {Button, ButtonBackground, ButtonVariants} from 'shared/ui/Button/Button';
 import {Input} from 'shared/ui/Input/Input';
 import {Modal} from 'shared/ui/Modal/ui/Modal';
@@ -9,16 +9,13 @@ import {IProduct} from 'store/types';
 import cls from './AddNewProductForm.module.scss';
 import {classNames} from 'shared/helpers/classNames/classNames';
 
-interface AddNewProductFormProps {
-	className?: string;
-}
 
-export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
+export const AddNewProductForm = () => {
 	const [price, setPrice] = useState<number | undefined>(undefined);
 	const [amountInOnePack, setAmountInOnePack] = useState<number | undefined>(undefined);
 	const nameRef = useRef<HTMLInputElement | null>(null);
 	const metricRef = useRef<HTMLInputElement | null>(null);
-	const [isModal, setIsModal] = useState(false);
+	const [isModal, setIsModal] = useState(true);
 	const [modalMessage, setModalMessage] = useState('');
 	const [modalTimer, setModalTimer] = useState(1000);
 
@@ -44,8 +41,8 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 				await db.products.add(product).then(() => {
 					setIsModal(true);
 					setModalMessage('Продукт добавлен!');
-					setAmountInOnePack(undefined);
-					setPrice(undefined);
+					setAmountInOnePack(0);
+					setPrice(0);
 					metricRef.current!.value = '';
 					nameRef.current!.value = '';
 				});
@@ -70,13 +67,8 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 		}
 	}, [isModal, modalTimer]);
 
-	useEffect(() => {
-		setAmountInOnePack(0);
-		setPrice(0);
-	}, []);
-
 	return (
-		<VStack max justify={'center'} align={'center'} gap="4" className={className}>
+		<VStack max justify={'center'} align={'center'} gap="4">
 			<Text className={cls.text} title={'Добавить новый продукт'}/>
 			<Text className={cls.text} content={'Название продукта:'}/>
 			<Input
@@ -95,7 +87,7 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 			/>
 			<Text className={cls.text} content={'Цена за упаковку:'}/>
 			<Input
-				className={classNames(cls.input, cls.numberInput)}
+				className={classNames(cls.input)}
 				value={price}
 				onChange={onPriceChange}
 				type="number"
@@ -104,7 +96,7 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 			/>
 			<Text className={cls.text} content={'Количество в одной упаковке:'}/>
 			<Input
-				className={classNames(cls.input, cls.numberInput)}
+				className={classNames(cls.input)}
 				value={amountInOnePack}
 				onChange={onPackAmountChange}
 				type="number"
@@ -124,11 +116,11 @@ export const AddNewProductForm = memo(({className}: AddNewProductFormProps) => {
 					closeModal={setIsModal}
 					visible={isModal}
 					autoClose={true}
-					autoCloseTimer={modalTimer}
+					// autoCloseTimer={modalTimer}
 				>
 					{modalMessage}
 				</Modal>
 			)}
 		</VStack>
 	);
-});
+};
