@@ -26,9 +26,11 @@ const RecipesPage = memo(() => {
 
 	return (
 		<Page>
-			<h1>Рецепты</h1>
-			{!isLoading && !error && recipes && <RecipeList recipes={recipes}/>}
-			{error && <h1>Ошибка!</h1>	}
+			<>
+				<h1>Рецепты</h1>
+				{!isLoading && !error && recipes && <RecipeList recipes={recipes}/>}
+				{error && <h1>Ошибка!</h1>}
+			</>
 		</Page>
 	);
 });

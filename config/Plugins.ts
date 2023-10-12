@@ -2,7 +2,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import {Paths} from '../webpack.config';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
+//* import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
 
 export const plugins = (paths: Paths) => [
@@ -26,5 +26,5 @@ export const plugins = (paths: Paths) => [
 		// cwd: process.cwd(),
 	}),
 	new webpack.ProgressPlugin(),
-	new BundleAnalyzerPlugin()
+	// new BundleAnalyzerPlugin()
 ];

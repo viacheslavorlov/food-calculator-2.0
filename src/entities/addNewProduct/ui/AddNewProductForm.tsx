@@ -15,7 +15,7 @@ export const AddNewProductForm = () => {
 	const [amountInOnePack, setAmountInOnePack] = useState<number | undefined>(undefined);
 	const nameRef = useRef<HTMLInputElement | null>(null);
 	const metricRef = useRef<HTMLInputElement | null>(null);
-	const [isModal, setIsModal] = useState(true);
+	const [isModal, setIsModal] = useState(false);
 	const [modalMessage, setModalMessage] = useState('');
 	const [modalTimer, setModalTimer] = useState(1000);
 
