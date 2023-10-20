@@ -30,10 +30,10 @@ export const AddNewProductForm = () => {
 		try {
 			if (nameRef.current?.value && price && metricRef.current?.value && amountInOnePack) {
 				const product: IProduct = {
-					name: nameRef.current?.value,
+					name: nameRef.current?.value || '',
 					id: Date.now(),
 					price,
-					metric: metricRef.current?.value,
+					metric: metricRef.current?.value || '',
 					amountInOnePack,
 					amountCurrent: 0,
 					timesUsed: 0,

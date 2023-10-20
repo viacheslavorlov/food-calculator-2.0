@@ -1,6 +1,7 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import webpack from 'webpack';
 import {Paths} from '../webpack.config';
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 //* import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer';
 import CircularDependencyPlugin from 'circular-dependency-plugin';
@@ -12,6 +13,7 @@ export const plugins = (paths: Paths) => [
 		title: 'Food Price',
 		scriptLoading: 'defer',
 	}),
+	new ForkTsCheckerWebpackPlugin(),
 	new CircularDependencyPlugin({
 		// exclude detection of files based on a RegExp
 		exclude: /a\.js|node_modules/,

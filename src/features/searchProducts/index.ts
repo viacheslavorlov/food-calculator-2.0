@@ -1,4 +1,4 @@
-export {SearchOrder, SearchProp, SearchProductsSchema} from 'features/searchProducts/model/type/SearchProductsSchema';
+export type {SearchOrder, SearchProp, SearchProductsSchema} from 'features/searchProducts/model/type/SearchProductsSchema';
 
 export {searchActions, searchReducer} from './model/slice/searchProductSlice';
 

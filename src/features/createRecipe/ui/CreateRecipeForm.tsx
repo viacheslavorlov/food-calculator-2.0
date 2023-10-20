@@ -36,6 +36,10 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 		timesUsed: 0
 	};
 
+	const onCloseModal = useCallback(() => {
+		setIsModal(false);
+	}, []);
+
 	const createRecipe = async () => {
 		try {
 			await db.recipes.add(newRecipe);
@@ -80,7 +84,7 @@ export const CreateRecipeForm = memo((props: CreateRecipeFormProps) => {
 
 	return (
 		<AStack max gap={'8'} className={classNames(cls.CreateRecipeForm, className)}>
-			{isModal && <Modal closeModal={setIsModal} autoCloseTimer={2000} autoClose visible={isModal}>{message}</Modal>}
+			{isModal && <Modal closeModal={onCloseModal} autoCloseTimer={2000} autoClose visible={isModal}>{message}</Modal>}
 			<Text content={'Сохранить рецепт: '}/>
 			<Input placeholder={'Название рецепта'} value={recipeName} onChange={onInputHandler()}/>
 			<Button variant={ButtonVariants.rounded} onClick={onCreateRecipe}>
