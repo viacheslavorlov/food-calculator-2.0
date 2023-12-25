@@ -9,7 +9,7 @@ import {ProductList} from 'features/ProductList';
 import {ClearActiveProducts} from 'features/clearActiveProducts';
 import {Page} from 'shared/ui/Page/Page';
 import {SearchWidget} from 'widgets/SearchWiget';
-import { IncomeOutcomePage } from 'pages/IncomeOutcomePage';
+// import { IncomeOutcomePage } from 'pages/IncomeOutcomePage';
 
 const MainPage = memo(() => {
 	const products = useLiveQuery(
@@ -31,7 +31,7 @@ const MainPage = memo(() => {
 			<ProductList activeProducts={activeProducts}/>
 			<ResultValue list={activeProducts} className={cls.result}/>
 			<CreateRecipeForm/>
-			<IncomeOutcomePage/>
+			{/* <IncomeOutcomePage/> */}
 		</Page>
 	);
 });
