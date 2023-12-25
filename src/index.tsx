@@ -2,7 +2,7 @@ import {store} from 'app/reduxStore/store';
 import {StrictMode} from 'react';
 import ReactDOM from 'react-dom/client';
 import {Provider} from 'react-redux';
-import {HashRouter} from 'react-router-dom';
+import {BrowserRouter,} from 'react-router-dom';
 import {ThemeProvider} from 'widgets/themeSwitcher';
 import App from './app/App/App';
 
@@ -11,13 +11,13 @@ const root = ReactDOM.createRoot(
 );
 root.render(
 	<StrictMode>
-		<HashRouter basename="/">
+		<BrowserRouter basename="/">
 			<Provider store={store()}>
 				<ThemeProvider>
 					<App/>
 				</ThemeProvider>
 			</Provider>
-		</HashRouter>
+		</BrowserRouter>
 	</StrictMode>
 );
 
